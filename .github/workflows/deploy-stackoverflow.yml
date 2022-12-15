@@ -30,6 +30,8 @@ jobs:
         with:
           name: stackoverflow
           runtime: python310
-          memory_mb: 128
+          source_dir: stackoverflow
           entry_point: handler
+          memory_mb: 128
           region: us-east4
+          service_account_email: ${{ secrets.GCP_ETL_SERVICE_ACCOUNT }}
