@@ -1,0 +1,35 @@
+name: Deploy
+
+on:
+
+  push:
+    branches:
+      - main
+      - dev
+
+    paths:
+      - stackoverflow/**
+      - .github/workflows/deploy-stackoverflow.yml
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.REF_NAME }}
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Authenticate Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_KEYFILE }}
+
+      - name: Deploy Function
+        uses: google-github-actions/deploy-cloud-functions@v1
+        with:
+          name: stackoverflow
+          runtime: python310
+          memory_mb: 128
+          entry_point: handler
+          region: us-east4
