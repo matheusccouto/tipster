@@ -24,6 +24,14 @@ jobs:
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_KEYFILE }}
+      
+      - name: Update Google Cloud Schedule
+        run: |
+          gcloud scheduler jobs update pubsub stackoverflow \
+            --location=us-east4 \
+            --schedule="0 */12 * * *" \
+            --topic=etl \
+            --message-body="foo"
 
       - name: Deploy Function
         uses: google-github-actions/deploy-cloud-functions@v1
@@ -36,4 +44,4 @@ jobs:
           region: us-east4
           service_account_email: ${{ secrets.GCP_ETL_SERVICE_ACCOUNT }}
           event_trigger_type: providers/cloud.pubsub/eventTypes/topic.publish
-          event_trigger_service: stackoverflow
+          event_trigger_resource: stackoverflow
