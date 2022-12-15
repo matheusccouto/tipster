@@ -35,3 +35,5 @@ jobs:
           memory_mb: 512
           region: us-east4
           service_account_email: ${{ secrets.GCP_ETL_SERVICE_ACCOUNT }}
+          event_trigger_type: providers/cloud.pubsub/eventTypes/topic.publish
+          event_trigger_service: stackoverflow
