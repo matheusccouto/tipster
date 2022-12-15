@@ -10,7 +10,7 @@ import requests
 URL = "https://projects.fivethirtyeight.com/soccer-api/club/spi_matches_latest.csv"
 
 
-def handler(request):  # pylint: disable=unused-argument
+def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """Function handler."""
     content = requests.get(URL, timeout=None).content
 
