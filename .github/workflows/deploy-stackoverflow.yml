@@ -31,7 +31,8 @@ jobs:
           gcloud scheduler jobs update pubsub stackoverflow \
             --location=us-east4 \
             --schedule="0 */12 * * *" \
-            --topic=etl \
+            --time-zone="America/Sao_Paulo" \
+            --topic=stackoverflow \
             --message-body="foo"
 
       - name: Deploy Function
@@ -45,4 +46,4 @@ jobs:
           region: us-east4
           service_account_email: extract-transform-load@${{ steps.auth.outputs.project_id }}.iam.gserviceaccount.com
           event_trigger_type: providers/cloud.pubsub/eventTypes/topic.publish
-          event_trigger_resource: projects/${{ steps.auth.outputs.project_id }}/topics/etl
+          event_trigger_resource: projects/${{ steps.auth.outputs.project_id }}/topics/stackoverflow
