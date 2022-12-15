@@ -20,7 +20,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Authenticate Google Cloud
+      - id: auth
+        name: Authenticate Google Cloud
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_KEYFILE }}
@@ -44,4 +45,4 @@ jobs:
           region: us-east4
           service_account_email: ${{ secrets.GCP_ETL_SERVICE_ACCOUNT }}
           event_trigger_type: providers/cloud.pubsub/eventTypes/topic.publish
-          event_trigger_resource: topics/etl
+          event_trigger_resource: projects/${{ steps.auth.outputs.project_id }}/topics/etl
