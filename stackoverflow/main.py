@@ -17,7 +17,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     data = pd.read_csv(io.StringIO(content.decode())).convert_dtypes()
     data["loaded_at"] = datetime.datetime.now()
 
-    data.to_gbq(destination_table="fivethirtyeight.spi", if_exists="append")
+    data.to_gbq(destination_table="fivethirtyeight.spi", if_exists="replace")
     return {"statusCode": 200, "message": f"loaded {data.shape[0]} rows"}
 
 
