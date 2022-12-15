@@ -1,0 +1,10 @@
+default:
+  outputs:
+    default:
+      dataset: tipster
+      location: us
+      method: oauth
+      project: tipster-main
+      threads: 2
+      type: bigquery
+  target: default
