@@ -7,7 +7,7 @@ import pandas as pd
 import requests
 
 
-URL = "https://projects.fivethirtyeight.com/soccer-api/club/spi_matches_latest.csv"
+URL = "https://projects.fivethirtyeight.com/soccer-api/club/spi_matches.csv"
 
 
 def handler(*args, **kwargs):  # pylint: disable=unused-argument
