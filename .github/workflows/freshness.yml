@@ -1,4 +1,4 @@
-name: freshness
+name: Freshness
 
 on:
   schedule:
