@@ -1,10 +1,16 @@
 """Extract odds from The Odds API."""
 
 import datetime
+import logging
 import os
 
 import pandas as pd
 import requests
+import google.cloud.logging
+
+client = google.cloud.logging.Client()
+client.setup_logging()
+
 
 URL = "https://api.the-odds-api.com/v4/sports/{sport}/odds"
 SPORTS = ["soccer_efl_champ"]
@@ -69,6 +75,11 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     data["bookmaker_last_update"] = pd.to_datetime(data["bookmaker_last_update"])
 
     data.to_gbq(destination_table="theoddsapi.odds", if_exists="append")
+
+    logging.info("loaded %s rows", data.shape[0])
+    logging.info("requests used: %s", response.headers["x-requests-used"])
+    logging.info("requests remaining: %s", response.headers["x-requests-remaining"])
+
     return {
         "statusCode": 200,
         "message": f"loaded {data.shape[0]} rows",
