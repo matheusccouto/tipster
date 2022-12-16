@@ -4,9 +4,9 @@ import datetime
 import logging
 import os
 
+import google.cloud.logging
 import pandas as pd
 import requests
-import google.cloud.logging
 
 client = google.cloud.logging.Client()
 client.setup_logging()

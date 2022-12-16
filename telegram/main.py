@@ -2,7 +2,11 @@
 
 import os
 
+import google.cloud.logging
 import telegram
+
+client = google.cloud.logging.Client()
+client.setup_logging()
 
 
 def handler(*args, **kwargs):  # pylint: disable=unused-argument

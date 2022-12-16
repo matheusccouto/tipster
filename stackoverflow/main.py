@@ -1,10 +1,14 @@
 """Google Cloud Function to extract soccer power index from fivethirtyeight."""
 
-import io
 import datetime
+import io
 
+import google.cloud.logging
 import pandas as pd
 import requests
+
+client = google.cloud.logging.Client()
+client.setup_logging()
 
 
 URL = "https://projects.fivethirtyeight.com/soccer-api/club/spi_matches.csv"
