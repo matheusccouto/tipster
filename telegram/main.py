@@ -9,7 +9,7 @@ def handler(*args, **kwargs):
     """Send telegrams messages."""
     bot = telegram.Bot(os.getenv("TELEGRAM_TOKEN"))
 
-    text = "HellO!"
+    text = "Hello! This is a test..."
     bot.sendMessage(chat_id=os.getenv("TELEGRAM_CHAT_ID"), text=text)
 
     return {"statusCode": 200}
