@@ -2,7 +2,7 @@ name: Freshness
 
 on:
   schedule:
-    - cron:  15 */12 * * *
+    - cron:  30 * * * *
   workflow_dispatch:
 
 jobs:
@@ -40,5 +40,5 @@ jobs:
         working-directory: dbt
 
       - name: Freshness
-        run: dbt source freshness
+        run: dbt snapshot
         working-directory: dbt
