@@ -16,5 +16,13 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+snapshots:
+  fivethirtyeight:
+    +target_schema: fivethirtyeight
+    spi_snapshot:
+      strategy: check
+      unique_key: date || '-' || team1 || '-' || team2
+      check_cols: all
+
 models:
   tipster:
