@@ -5,7 +5,7 @@ import os
 import telegram
 
 
-def handler(*args, **kwargs):
+def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """Send telegrams messages."""
     bot = telegram.Bot(os.getenv("TELEGRAM_TOKEN"))
 
