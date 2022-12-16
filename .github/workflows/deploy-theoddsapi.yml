@@ -42,8 +42,9 @@ jobs:
           runtime: python310
           source_dir: theoddsapi
           entry_point: handler
-          memory_mb: 256
+          memory_mb: 128
           region: us-east4
           service_account_email: extract-transform-load@${{ steps.auth.outputs.project_id }}.iam.gserviceaccount.com
           event_trigger_type: providers/cloud.pubsub/eventTypes/topic.publish
           event_trigger_resource: projects/${{ steps.auth.outputs.project_id }}/topics/theoddsapi
+          env_vars: THE_ODDS_API_KEY=${{ secrets.THE_ODDS_API_KEY }}
