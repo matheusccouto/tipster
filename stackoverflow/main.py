@@ -19,6 +19,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     content = requests.get(URL, timeout=None).content
 
     data = pd.read_csv(io.StringIO(content.decode())).convert_dtypes()
+    data["date"] = pd.to_datetime(data["date"])
     data["loaded_at"] = datetime.datetime.now()
 
     data.to_gbq(destination_table="fivethirtyeight.spi", if_exists="replace")

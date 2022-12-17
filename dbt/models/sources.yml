@@ -9,3 +9,12 @@ sources:
     loaded_at_field: loaded_at
     tables:
       - name: spi
+
+  - name: theoddsapi
+    freshness:
+      error_after:
+        count: 24
+        period: hour
+    loaded_at_field: loaded_at
+    tables:
+      - name: odds

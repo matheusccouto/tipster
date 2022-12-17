@@ -73,6 +73,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     data = pd.DataFrame.from_records(records).convert_dtypes()
     data["loaded_at"] = datetime.datetime.now()
     data["bookmaker_last_update"] = pd.to_datetime(data["bookmaker_last_update"])
+    data["commence_time"] = pd.to_datetime(data["commence_time"])
 
     data.to_gbq(destination_table="theoddsapi.odds", if_exists="append")
 

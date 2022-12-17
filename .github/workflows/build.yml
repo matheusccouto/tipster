@@ -1,0 +1,56 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  dbt:
+    runs-on: ubuntu-latest
+    environment: ${{ github.REF_NAME }}
+
+    env:
+      DBT_PROFILES_DIR: "."
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Authenticate GCP
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCP_KEYFILE }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      - name: Install Requirements
+        run: pip install -r requirements.txt
+        working-directory: dbt
+
+      - name: Build
+        run: dbt build
+        working-directory: dbt
+
+      - name: Generate Docs
+        if: ${{ github.REF_NAME == 'main' }}
+        run: |
+          dbt docs generate
+          mkdir docs
+          cp target/catalog.json docs/catalog.json
+          cp target/manifest.json docs/manifest.json
+          cp target/run_results.json docs/run_results.json
+          cp target/index.html docs/index.html
+        working-directory: dbt
+
+      - name: Deploy Github Pages
+        if: ${{ github.REF_NAME == 'main' }}
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: github-pages
+          folder: docs
+        working-directory: dbt
