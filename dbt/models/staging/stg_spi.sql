@@ -13,5 +13,5 @@ FROM
     LEFT JOIN {{ ref("name") }} As home ON spi.team1 = home.fivethirtyeight
     LEFT JOIN {{ ref("name") }} As away ON spi.team2 = away.fivethirtyeight
 WHERE  -- FIXME: Temporary
-  league = 'English League Championship'
+  league IN ('English League Championship','Scottish Premiership')
   and season = 2022

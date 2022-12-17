@@ -18,3 +18,7 @@ sources:
     loaded_at_field: loaded_at
     tables:
       - name: odds
+
+  - name: tipster
+    tables:
+      - name: sent

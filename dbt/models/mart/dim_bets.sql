@@ -1,12 +1,7 @@
 WITH match AS (
   SELECT
     *,
-    greatest(ev_home, ev_draw, ev_away) AS ev,
-    CASE
-      WHEN ev_home = greatest(ev_home, ev_draw, ev_away) THEN 'home'
-      WHEN ev_draw = greatest(ev_home, ev_draw, ev_away) THEN 'draw'
-      WHEN ev_away = greatest(ev_home, ev_draw, ev_away) THEN 'away'
-    END AS bet
+    greatest(ev_home, ev_draw, ev_away) AS ev
   FROM
     {{ ref("fct_match") }}
 )
@@ -25,8 +20,17 @@ SELECT
   m.price_draw,
   m.price_away,
   ubk.user,
-  m.bet,
   m.ev,
+  CASE
+    WHEN m.ev_home = m.ev THEN 'home'
+    WHEN m.ev_draw = m.ev THEN 'draw'
+    WHEN m.ev_away = m.ev THEN 'away'
+  END AS bet,
+  CASE
+    WHEN m.ev_home = m.ev THEN price_home
+    WHEN m.ev_draw = m.ev THEN price_draw
+    WHEN m.ev_away = m.ev THEN price_away
+  END AS price
 FROM
   match AS m
   INNER JOIN {{ ref("user_bookmaker") }} AS ubk ON m.bookmaker_key = ubk.bookmaker
