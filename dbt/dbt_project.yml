@@ -22,7 +22,13 @@ snapshots:
       +target_schema: fivethirtyeight
       spi:
         strategy: check
-        unique_key: "date || ' - ' || team1 || ' - ' || team2"
+        unique_key: date || ' - ' || team1 || ' - ' || team2
+        check_cols: all
+    tipster:
+      +target_schema: tipster
+      dim_bets:
+        strategy: check
+        unique_key: id || ' - ' || user
         check_cols: all
 
 models:

@@ -9,9 +9,9 @@ SELECT
     odd.bookmaker_title,
     odd.bookmaker_last_update AS updated_at,
     odd.market_key,
-    odd.price_home_team,
+    odd.price_home_team AS price_home,
     odd.price_draw,
-    odd.price_away_team,
+    odd.price_away_team AS price_away,
     odd.loaded_at,
 FROM
     {{ source ('theoddsapi', 'odds') }} AS odd
