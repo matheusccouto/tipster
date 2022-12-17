@@ -52,5 +52,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: github-pages
-          folder: docs
-        working-directory: dbt
+          folder: dbt/docs
