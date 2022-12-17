@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_match
+    description: Matches
+    columns:
+      - name: prob_home
+        description: Home team win probability
+        tests:
+          - not_null
+      - name: prob_draw
+        description: Draw probability
+        tests:
+          - not_null
+      - name: prob_away
+        description: Away team win probability
+        tests:
+          - not_null

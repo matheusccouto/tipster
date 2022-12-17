@@ -3,8 +3,8 @@ SELECT
     odd.sport_key,
     odd.sport_title,
     odd.commence_time AS start_at,
-    odd.home_team,
-    odd.away_team,
+    home.tipster AS home,
+    away.tipster AS away,
     odd.bookmaker_key,
     odd.bookmaker_title,
     odd.bookmaker_last_update AS updated_at,
@@ -15,3 +15,5 @@ SELECT
     odd.loaded_at,
 FROM
     {{ source ('theoddsapi', 'odds') }} AS odd
+    LEFT JOIN {{ ref("name") }} As home ON odd.home_team = home.theoddsapi
+    LEFT JOIN {{ ref("name") }} As away ON odd.away_team = away.theoddsapi
