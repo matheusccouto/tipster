@@ -1,4 +1,4 @@
-name: Freshness
+name: Snapshot
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  freshness:
+  snapshot:
     strategy:
       fail-fast: false
       matrix:
