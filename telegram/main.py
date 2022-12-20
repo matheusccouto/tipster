@@ -1,6 +1,7 @@
 """Telegram bot for getting Cartola FC tips with Azure function."""
 
 import os
+from datetime import datetime
 
 import google.cloud.logging
 import pandas as pd
@@ -51,7 +52,11 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
             text="\n\n\n".join(paragraphs),
             parse_mode="html",
         )
-        user_data[["user", "id"]].to_gbq("tipster.sent", if_exists="append")
+        sent_at = datetime.now()
+
+        sent = user_data[["user", "id"]]
+        sent["sent_at"] = sent_at
+        sent.to_gbq("tipster.sent", if_exists="append")
 
     return {"statusCode": 200}
 
