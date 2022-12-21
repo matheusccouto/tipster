@@ -1,8 +1,8 @@
 SELECT
     odd.id,
     odd.start_at,
-    odd.sport_key AS league_key,
-    spi.league AS league_name,
+    odd.league,
+    spi.league_emoji,
     odd.home,
     odd.away,
     odd.bookmaker_key,

@@ -1,7 +1,8 @@
 SELECT
     odd.id,
     odd.sport_key,
-    odd.sport_title,
+    league.tipster AS league,
+    concat(emoji.unicode, ' ',league.tipster) AS league_emoji,
     odd.commence_time AS start_at,
     home.tipster AS home,
     away.tipster AS away,
@@ -15,5 +16,7 @@ SELECT
     odd.loaded_at,
 FROM
     {{ source ('theoddsapi', 'odds') }} AS odd
-    LEFT JOIN {{ ref("name") }} As home ON odd.home_team = home.theoddsapi
-    LEFT JOIN {{ ref("name") }} As away ON odd.away_team = away.theoddsapi
+    LEFT JOIN {{ ref("league_name") }} AS league ON odd.sport_key = league.theoddsapi
+    LEFT JOIN {{ ref("emoji") }} AS emoji ON league.country = emoji.country
+    LEFT JOIN {{ ref("club_name") }} AS home ON odd.home_team = home.theoddsapi
+    LEFT JOIN {{ ref("club_name") }} AS away ON odd.away_team = away.theoddsapi

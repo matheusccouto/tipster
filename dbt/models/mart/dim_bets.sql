@@ -8,8 +8,8 @@ WITH match AS (
 SELECT
   m.id,
   m.start_at,
-  m.league_key,
-  m.league_name,
+  m.league,
+  m.league_emoji,
   m.home,
   m.away,
   m.bookmaker_key,
