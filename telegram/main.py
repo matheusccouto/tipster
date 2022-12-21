@@ -3,6 +3,7 @@
 import os
 from datetime import datetime
 
+import emoji
 import google.cloud.logging
 import pandas as pd
 import telegram
@@ -17,7 +18,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """Send telegrams messages."""
     bot = telegram.Bot(os.getenv("TELEGRAM_TOKEN"))
 
-    data = pd.read_gbq(query="SELECT * FROM tipster.dim_bets WHERE user = 'tipster'")
+    data = pd.read_gbq(query="SELECT * FROM tipster.dim_bets_new WHERE user = 'tipster'")
     data["date"] = data["start_at"].dt.tz_convert(TZ).dt.strftime("%d/%m/%Y")
 
     data["1"] = data.apply(
@@ -38,8 +39,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         paragraphs = []
         for (date, league), group in user_data.groupby(["date", "league_emoji"]):
 
-            header = f"\U0001F4C5 {date}\n{league.encode('raw-unicode-escape').decode('unicode-escape')}"
-            print(header)
+            header = emoji.emojize(f"{date}\n{league}".encode('raw-unicode-escape').decode('unicode-escape'))
             body = "\n\n".join(
                 group.sort_values("start_at").apply(
                     lambda x: f"{x['1']} {x['x']} {x['2']}\n{x['bookmaker_name']} {x['price']}",

@@ -2,7 +2,7 @@ SELECT
     odd.id,
     odd.sport_key,
     league.tipster AS league,
-    concat(emoji.unicode, ' ',league.tipster) AS league_emoji,
+    concat(emoji.emoji, ' ',league.tipster) AS league_emoji,
     odd.commence_time AS start_at,
     home.tipster AS home,
     away.tipster AS away,
