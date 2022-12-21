@@ -28,7 +28,7 @@ snapshots:
       +target_schema: tipster
       dim_bets:
         strategy: check
-        unique_key: id || ' - ' || user
+        unique_key: id || ' - '  || bookmaker_key || ' - ' || user
         check_cols: all
 
 models:
