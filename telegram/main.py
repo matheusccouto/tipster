@@ -1,4 +1,4 @@
-"""Telegram bot for getting Cartola FC tips with Azure function."""
+"""Telegram bot for sending betting tips."""
 
 import os
 from datetime import datetime
