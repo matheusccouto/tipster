@@ -2,16 +2,16 @@ tipster,theoddsapi,fivethirtyeight,country
 Primera División,soccer_argentina_primera_division,5641,Argentina
 A-League,soccer_australia_aleague,1948,Australia
 Austrian Bundesliga,,1827,Austria
-Premier League,soccer_epl,2411,United Kingdom
+Premier League,soccer_epl,2411,England
 Pro League,soccer_belgium_first_div,1832,Belgium
 Série A,soccer_brazil_campeonato,2105,Brazil
 Super League,soccer_china_superleague,1979,China
 Superliga,soccer_denmark_superliga,1837,Denmark
 Eredivisie,soccer_norway_eliteserien,1849,Netherlands
-Championship,soccer_efl_champ,2412,United Kingdom
-League One,soccer_england_league1,2413,United Kingdom
-League Two,soccer_england_league2,2414,United Kingdom
-Women's Super League,,7921,United Kingdom
+Championship,soccer_efl_champ,2412,England
+League One,soccer_england_league1,2413,England
+League Two,soccer_england_league2,2414,England
+Women's Super League,,7921,England
 Ligue 1,soccer_france_ligue_one,1843,France
 Ligue 2,soccer_france_ligue_two,1844,France
 2. Bundesliga,soccer_germany_bundesliga2,1846,Germany
@@ -29,7 +29,7 @@ Eliteserien,soccer_norway_eliteserien,1859,Norway
 Ekstraklasa,soccer_poland_ekstraklasa,,Poland
 Primeira Liga,soccer_portugal_primeira_liga,1864,Portugal
 Premier League,soccer_russia_premier_league,1866,Russia
-Premiership,soccer_spl,2417,United Kingdom
+Premiership,soccer_spl,2417,Scotland
 Premier Division,,1983,South Africa
 LaLiga,soccer_spain_la_liga,1869,Spain
 LaLiga 2,soccer_spain_segunda_division,1871,Spain

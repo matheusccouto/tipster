@@ -14,6 +14,7 @@ client.setup_logging()
 
 URL = "https://api.the-odds-api.com/v4/sports/{sport}/odds"
 SPORTS = [
+    "soccer_epl",  # English Premier League
     "soccer_efl_champ",  # English League Championship
     "soccer_spl",  # Scottish Premiership
 ]
