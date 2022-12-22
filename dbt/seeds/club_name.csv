@@ -1,43 +1,489 @@
 tipster,theoddsapi,fivethirtyeight
-Birmingham City,Birmingham City,Birmingham
-Huddersfield Town,Huddersfield Town,Huddersfield Town
-Watford,Watford,Watford
-Cardiff City,Cardiff City,Cardiff City
-Hull City,Hull City,Hull City
-Bristol City,Bristol City,Bristol City
-Rotherham United,Rotherham United,Rotherham United
-Luton Town,Luton Town,Luton Town
-Coventry City,Coventry City,Coventry City
-Reading,Reading,Reading
-Sheffield United,Sheffield United,Sheffield United
-Burnley,Burnley,Burnley
-Middlesbrough,Middlesbrough,Middlesbrough
-Norwich City,Norwich City,Norwich City
-Sunderland,Sunderland,Sunderland
-West Bromwich,West Bromwich,West Bromwich Albion
-Wigan,Wigan Athletic,Wigan
-Preston North End,Preston North End,Preston North End
-Queens Park Rangers,Queens Park Rangers,Queens Park Rangers
-Millwall,Millwall,Millwall
-Blackburn,Blackburn Rovers,Blackburn
-Blackpool,Blackpool,Blackpool
-Swansea City,Swansea City,Swansea City
-Stoke City,Stoke City,Stoke City
-Aberdeen,Aberdeen,Aberdeen
-Celtic,Celtic,Celtic
-Dundee United,Dundee United,Dundee Utd
-Hearts,Hearts,Hearts
-Hibernian,Hibernian,Hibernian
-Kilmarnock,Kilmarnock,Kilmarnock
-Livingston,Livingston,Livingston
-Motherwell,Motherwell,Motherwell
-Rangers,Rangers,Rangers
-Ross County,Ross County,Ross County
-St Johnstone,St Johnstone,St Johnstone
-St Mirren,St Mirren,St Mirren
+,,Austria Lustenau
+,,Cashpoint SC Rheindorf Altach
+,,FC Salzburg
+,,FK Austria Vienna
+,,Hartberg
+,,LASK Linz
+,,Rapid Vienna
+,,SK Austria Klagenfurt
+,,SK Sturm Graz
+,,SV Ried
+,,WSG Swarovski Wattens
+,,Wolfsberger AC
+,,Anderlecht
+,,Antwerp
+,,Cercle Brugge
+,,Club Brugge
+,,Eupen
+,,Genk
+,,KAA Gent
+,,KV Kortrijk
+,,KV Mechelen
+,,KV Oostende
+,,KVC Westerlo
+,,OH Leuven
+,,RFC Seraing
+,,SV Zulte Waregem
+,,Sporting de Charleroi
+,,St. Truidense
+,,Standard Liege
+,,Union Saint Gilloise
+,,AC Horsens
+,,AGF Aarhus
+,,AaB
+,,Brondby
+,,FC Copenhagen
+,,FC Midtjylland
+,,FC Nordsjaelland
+,,Lyngby
+,,Odense BK
+,,Randers FC
+,,Silkeborg
+,,Viborg
+,,AC Ajaccio
+,,AS Monaco
+,,Angers
+,,Auxerre
+,,Brest
+,,Clermont Foot
+,,Lens
+,,Lille
+,,Lorient
+,,Lyon
+,,Marseille
+,,Montpellier
+,,Nantes
+,,Nice
+,,Paris Saint-Germain
+,,Reims
+,,Stade Rennes
+,,Strasbourg
+,,Toulouse
+,,Troyes
+,,Amiens
+,,Annecy
+,,Bastia
+,,Bordeaux
+,,Caen
+,,Dijon FCO
+,,Grenoble
+,,Guingamp
+,,Laval
+,,Le Havre
+,,Metz
+,,Nimes
+,,Niort
+,,Paris FC
+,,Pau
+,,Rodez
+,,Sochaux
+,,St Etienne
+,,US Quevilly
+,,Valenciennes
+,,1. FC Union Berlin
+,,Bayer Leverkusen
+,,Bayern Munich
+,,Borussia Dortmund
+,,Borussia Monchengladbach
+,,Eintracht Frankfurt
+,,FC Augsburg
+,,FC Cologne
+,,Hertha Berlin
+,,Mainz
+,,RB Leipzig
+,,SC Freiburg
+,,Schalke 04
+,,TSG Hoffenheim
+,,VfB Stuttgart
+,,VfL Bochum
+,,VfL Wolfsburg
+,,Werder Bremen
+,,1. FC Heidenheim 1846
+,,1. FC Kaiserslautern
+,,1. FC Magdeburg
+,,1. FC Nürnberg
+,,Arminia Bielefeld
+,,Eintracht Braunschweig
+,,FC St. Pauli
+,,Fortuna Düsseldorf
+,,Hamburg SV
+,,Hannover 96
+,,Hansa Rostock
+,,Holstein Kiel
+,,Jahn Regensburg
+,,Karlsruher SC
+,,SC Paderborn
+,,SV Darmstadt 98
+,,SV Sandhausen
+,,SpVgg Greuther Fürth
+,,AZ
+,,Ajax
+,,Cambuur Leeuwarden
+,,Emmen
+,,Excelsior
+,,FC Groningen
+,,FC Twente
+,,FC Utrecht
+,,FC Volendam
+,,Feyenoord
+,,Fortuna Sittard
+,,Go Ahead Eagles
+,,Heerenveen
+,,NEC
+,,PSV
+,,RKC
+,,Sparta
+,,Vitesse
+,,AC Milan
+,,AS Roma
+,,Atalanta
+,,Bologna
+,,Cremonese
+,,Empoli
+,,Fiorentina
+,,Internazionale
+,,Juventus
+,,Lazio
+,,Lecce
+,,Monza
+,,Napoli
+,,Salernitana
+,,Sampdoria
+,,Sassuolo
+,,Spezia
+,,Torino
+,,Udinese
+,,Verona
+,,Ascoli
+,,Bari
+,,Benevento
+,,Brescia
+,,Cagliari
+,,Cittadella
+,,Como
+,,Cosenza
+,,F.B.C Unione Venezia
+,,Frosinone
+,,Genoa
+,,Modena
+,,Palermo
+,,Parma
+,,Perugia
+,,Pisa
+,,Reggina
+,,Spal
+,,Sudtirol
+,,Ternana
+,,Aalesund
+,,Bodo/Glimt
+,,FK Jerv
+,,Hamarkamaratene
+,,Haugesund
+,,Kristiansund BK
+,,Lillestrom
+,,Molde
+,,Odd BK
+,,Rosenborg
+,,Sandefjord
+,,Sarpsborg
+,,Stromsgodset
+,,Tromso
+,,Valerenga
+,,Viking FK
+,,Benfica
+,,Boavista
+,,Braga
+,,Casa Pia
+,,Chaves
+,,Estoril Praia
+,,FC Arouca
+,,FC Porto
+,,Famalicao
+,,Gil Vicente
+,,Guimaraes
+,,Maritimo
+,,Pacos Ferreira
+,,Portimonense
+,,Rio Ave
+,,Santa Clara
+,,Sporting CP
+,,Vizela
+,,CSKA Moscow
+,,Dinamo Moscow
+,,FC Khimki
+,,FC Krasnodar
+,,FK Nizhny Novgorod
+,,Fakel Voronezh
+,,Gazovik Orenburg
+,,Krylia Sovetov
+,,Lokomotiv Moscow
+,,Rostov
+,,Sochi
+,,Spartak Moscow
+,,Terek Grozny
+,,Torpedo Moskow
+,,Ural Sverdlovsk Oblast
+,,Zenit St Petersburg
+,,Almeria
+,,Athletic Bilbao
+,,Atletico Madrid
+,,Barcelona
+,,Cadiz
+,,Celta Vigo
+,,Elche
+,,Espanyol
+,,Getafe
+,,Girona FC
+,,Mallorca
+,,Osasuna
+,,Rayo Vallecano
+,,Real Betis
+,,Real Madrid
+,,Real Sociedad
+,,Real Valladolid
+,,Sevilla FC
+,,Valencia
+,,Villarreal
+,,Alavés
+,,Albacete
+,,Burgos
+,,Eibar
+,,FC Andorra
+,,FC Cartagena
+,,Granada
+,,Las Palmas
+,,Leganes
+,,Levante
+,,Lugo
+,,Mirandes
+,,Málaga
+,,Racing Santander
+,,Real Oviedo
+,,Real Zaragoza
+,,SD Huesca
+,,SD Ponferradina
+,,Sporting Gijón
+,,Tenerife
+,,UD Ibiza
+,,Villarreal B
+,,AIK
+,,BK Hacken
+,,Degerfors IF
+,,Djurgardens IF
+,,GIF Sundsvall
+,,Hammarby
+,,Helsingborgs IF
+,,IF Elfsborg
+,,IFK Goteborg
+,,IFK Norrkoping
+,,IFK Värnamo
+,,IK Sirius
+,,Kalmar FF
+,,Malmo FF
+,,Mjallby
+,,Varbergs BoIS FC
+,,Basel
+,,FC Lugano
+,,FC Luzern
+,,FC Sion
+,,FC Zurich
+,,Grasshoppers Zürich
+,,Servette
+,,St Gallen
+,,Winterthur
+,,Young Boys
+,,Adana Demirspor
+,,Alanyaspor
+,,Ankaragucu
+,,Antalyaspor
+,,Besiktas
+,,Fatih Karagümrük
+,,Fenerbahce
+,,Galatasaray
+,,Gazisehir Gaziantep
+,,Giresunspor
+,,Hatayspor
+,,Istanbul Basaksehir
+,,Istanbulspor
+,,Kasimpasa
+,,Kayserispor
+,,Konyaspor
+,,Sivasspor
+,,Trabzonspor
+,,Umraniyespor
+,,AEK Athens
+,,Aris Salonika
+,,Asteras Tripolis
+,,Atromitos
+,,Giannina
+,,Ionikos FC
+,,Lamia
+,,Levadiakos
+,,OFI Crete
+,,Olympiacos
+,,PAOK Salonika
+,,Panathinaikos
+,,Panetolikos
+,,Volos NFC
+,,Avispa Fukuoka
+,,Cerezo Osaka
+,,Consadole Sapporo
+,,FC Tokyo
+,,Gamba Osaka
+,,Jubilo Iwata
+,,Kashima Antlers
+,,Kashiwa Reysol
+,,Kawasaki Frontale
+,,Kyoto Purple Sanga
+,,Nagoya Grampus Eight
+,,Sagan Tosu
+,,Sanfrecce Hiroshima
+,,Shimizu S-Pulse
+,,Shonan Bellmare
+,,Urawa Red Diamonds
+,,Vissel Kobe
+,,Yokohama F. Marinos
+,,Adelaide United
+,,Brisbane Roar
+,,Central Coast Mariners
+,,Macarthur FC
+,,Melbourne City
+,,Melbourne Victory
+,,Newcastle Jets
+,,Perth Glory
+,,Sydney FC
+,,Wellington Phoenix
+,,Western Sydney FC
+,,Western United
+,,Atlanta United FC
+,,Austin FC
+,,Charlotte FC
+,,Chicago Fire
+,,Colorado Rapids
+,,Columbus Crew
+,,DC United
+,,FC Cincinnati
+,,FC Dallas
+,,Houston Dynamo
+,,Inter Miami CF
+,,Los Angeles FC
+,,Los Angeles Galaxy
+,,Minnesota United FC
+,,Montreal Impact
+,,Nashville SC
+,,New England Revolution
+,,New York City FC
+,,New York Red Bulls
+,,Orlando City SC
+,,Philadelphia Union
+,,Portland Timbers
+,,Real Salt Lake
+,,San Jose Earthquakes
+,,Seattle Sounders FC
+,,Sporting Kansas City
+,,Toronto FC
+,,Vancouver Whitecaps
+,,Atlas
+,,Atlético San Luis
+,,Club América
+,,Cruz Azul
+,,FC Juárez
+,,Guadalajara
+,,León
+,,Mazatlán FC
+,,Monterrey
+,,Necaxa
+,,Pachuca
+,,Puebla
+,,Pumas Unam
+,,Querétaro
+,,Santos Laguna
+,,Tigres UANL
+,,Tijuana
+,,Toluca
+,,Beijing Guoan
+,,Chongqing Lifan
+,,Dalian Aerbin
+,,Guangzhou Evergrande
+,,Guangzhou RF
+,,Guizhou Renhe
+,,Hebei China Fortune FC
+,,Henan Jianye
+,,Jiangsu Suning FC
+,,Shandong Luneng
+,,Shanghai Greenland
+,,Shanghai SIPG
+,,Shenzhen FC
+,,Tianjin Quanujian
+,,Tianjin Teda
+,,Wuhan Zall
+,,AmaZulu
+,,Black Aces
+,,Chippa United
+,,Golden Arrows
+,,Kaizer Chiefs
+,,Mamelodi Sundowns
+,,Maritzburg Utd
+,,Moroka Swallows
+,,Orlando Pirates
+,,Richards Bay
+,,Royal AM
+,,Sekhukhune United
+,,Stellenbosch FC
+,,SuperSport United
+,,TS Galaxy
+,,Tshakhuma Tsha Madzivhandila
+,,América Mineiro
+,,Atletico Mineiro
+,,Atlético Goianiense
+,,Atlético Paranaense
+,,Avaí
+,,Botafogo
+,,Bragantino
+,,Ceará
+,,Corinthians
+,,Coritiba
+,,Cuiaba
+,,Flamengo
+,,Fluminense
+,,Fortaleza
+,,Goiás
+,,Internacional
+,,Juventude
+,,Palmeiras
+,,Santos
+,,São Paulo
+,,Arizona United
+,,Atlanta United 2
+,,Birmingham Legion FC
+,,Charleston Battery
+,,Colorado Springs Switchbacks FC
+,,Detroit City FC
+,,El Paso Locomotive FC
+,,Hartford Athletic
+,,Indy Eleven
+,,LA Galaxy II
+,,Las Vegas Lights FC
+,,Loudoun United FC
+,,Louisville City FC
+,,Memphis 901 FC
+,,Miami FC
+,,Monterey Bay
+,,New Mexico United
+,,New York Red Bulls II
+,,Oakland Roots
+,,Orange County SC
+,,Pittsburgh Riverhounds
+,,Rio Grande Valley FC Toros
+,,Sacramento Republic FC
+,,San Antonio FC
+,,San Diego Loyal SC
+,,Tampa Bay Rowdies
+,,Tulsa Roughnecks
+Bournemouth,Bournemouth,AFC Bournemouth
 Arsenal,Arsenal,Arsenal
 Aston Villa,Aston Villa,Aston Villa
-Bournemouth,Bournemouth,AFC Bournemouth
 Brentford,Brentford,Brentford
 Brighton,Brighton and Hove Albion,Brighton and Hove Albion
 Chelsea,Chelsea,Chelsea
@@ -51,7 +497,140 @@ Man City,Manchester City,Manchester City
 Man United,Manchester United,Manchester United
 Newcastle,Newcastle United,Newcastle
 Nottm Forest,Nottingham Forest,Nottingham Forest
+Reading,Reading,Reading
 Southampton,Southampton,Southampton
 Tottenham,Tottenham Hotspur,Tottenham Hotspur
 West Ham,West Ham United,West Ham United
 Wolves,Wolverhampton Wanderers,Wolverhampton
+Birmingham,Birmingham City,Birmingham
+Blackburn Rovers,Blackburn Rovers,Blackburn
+Blackpool,Blackpool,Blackpool
+Bristol City,Bristol City,Bristol City
+Burnley,Burnley,Burnley
+Cardiff City,Cardiff City,Cardiff City
+Coventry,Coventry City,Coventry City
+Huddersfield,Huddersfield Town,Huddersfield Town
+Hull City,Hull City,Hull City
+Luton Town,Luton Town,Luton Town
+Middlesbrough,Middlesbrough,Middlesbrough
+Millwall,Millwall,Millwall
+Norwich City,Norwich City,Norwich City
+Preston,Preston North End,Preston North End
+QPR,Queens Park Rangers,Queens Park Rangers
+Rotherham,Rotherham United,Rotherham United
+Sheffield United,Sheffield United,Sheffield United
+Stoke City,Stoke City,Stoke City
+Sunderland,Sunderland,Sunderland
+Swansea,Swansea City,Swansea City
+Watford,Watford,Watford
+West Brom,West Bromwich,West Bromwich Albion
+Wigan,Wigan Athletic,Wigan
+,,Accrington Stanley
+,,Barnsley
+,,Bolton
+,,Bristol Rovers
+,,Burton Albion
+,,Cambridge United
+,,Charlton Athletic
+,,Cheltenham Town
+,,Derby County
+,,Exeter City
+,,Fleetwood Town
+,,Forest Green Rovers
+,,Ipswich Town
+,,Lincoln City
+,,Milton Keynes Dons
+,,Morecambe
+,,Oxford United
+,,Peterborough United
+,,Plymouth Argyle
+,,Port Vale
+,,Portsmouth
+,,Sheffield Wednesday
+,,Shrewsbury Town
+,,Wycombe Wanderers
+,,AFC Wimbledon
+,,Barrow
+,,Bradford City
+,,Carlisle United
+,,Colchester United
+,,Crawley Town
+,,Crewe Alexandra
+,,Doncaster Rovers
+,,Gillingham
+,,Grimsby Town
+,,Harrogate Town
+,,Hartlepool
+,,Leyton Orient
+,,Mansfield Town
+,,Newport County
+,,Northampton Town
+,,Rochdale
+,,Salford City
+,,Stevenage
+,,Stockport County
+,,Sutton United
+,,Swindon Town
+,,Tranmere Rovers
+,,Walsall
+Aberdeen,Aberdeen,Aberdeen
+Celtic,Celtic,Celtic
+Dundee United,Dundee United,Dundee Utd
+Hearts,Hearts,Hearts
+Hibernian,Hibernian,Hibernian
+Kilmarnock,Kilmarnock,Kilmarnock
+Livingston,Livingston,Livingston
+Motherwell,Motherwell,Motherwell
+Rangers,Rangers,Rangers
+Ross County,Ross County,Ross County
+St. Johnstone,St Johnstone,St Johnstone
+St. Mirren,St Mirren,St Mirren
+,,Aldosivi
+,,Argentinos Juniors
+,,Arsenal Sarandi
+,,Atlético Tucumán
+,,Banfield
+,,Barracas Central
+,,Boca Juniors
+,,CA Independiente
+,,Central Córdoba Santiago del Estero
+,,Colon Santa Fe
+,,Defensa y Justicia
+,,Estudiantes
+,,Gimnasia La Plata
+,,Godoy Cruz
+,,Huracán
+,,Lanus
+,,Newell's Old Boys
+,,Patronato
+,,Platense
+,,Racing Club
+,,River Plate
+,,Rosario Central
+,,San Lorenzo
+,,Sarmiento
+,,Talleres de Córdoba
+,,Tigre
+,,Union Santa Fe
+,,Velez Sarsfield
+,,Arsenal Women
+,,Chelsea FC Women
+,,Everton Ladies
+,,Leicester City WFC
+,,Liverpool Women
+,,Manchester City Women
+,,Manchester United Women
+,,Tottenham Women
+,,West Ham United Ladies
+,,Angel City FC
+,,Chicago Red Stars
+,,Houston Dash
+,,Kansas City
+,,North Carolina FC
+,,Orlando Pride
+,,Portland Thorns
+,,Racing Louisville FC
+,,San Diego Wave FC
+,,Seattle Reign FC
+,,Sky Blue FC
+,,Washington Spirit
