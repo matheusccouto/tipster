@@ -37,6 +37,5 @@ FROM
   INNER JOIN {{ ref("user_bookmaker") }} AS ubk ON m.bookmaker_key = ubk.bookmaker
   LEFT JOIN {{ ref("user_ev") }} AS uev ON ubk.user = uev.user
 WHERE
-  m.start_at > current_timestamp()
-  AND m.ev >= uev.ev
+  m.ev >= uev.ev
 QUALIFY ROW_NUMBER() OVER (PARTITION BY m.id, ubk.user ORDER BY m.ev DESC) = 1

@@ -10,6 +10,7 @@ import telegram
 
 client = google.cloud.logging.Client()
 client.setup_logging()
+pd.options.mode.chained_assignment = None
 
 TZ = "America/Sao_Paulo"
 
@@ -27,7 +28,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         SELECT
             *
         FROM
-            tipster.dim_bets
+            tipster.dim_bets_new
         WHERE
             user = 'tipster'
         ORDER BY
@@ -77,11 +78,10 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
             text="\n\n\n".join(paragraphs),
             parse_mode="html",
         )
-        sent_at = datetime.now()
 
-        sent = user_data[["user", "id", "ev"]]
-        sent["sent_at"] = sent_at
-        sent.to_gbq("tipster.sent", if_exists="append")
+        sent = user_data[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
+        sent["sent_at"] = datetime.now()
+        sent.to_gbq("tipster.sent", if_exists="replace")
 
     return {"statusCode": 200}
 
