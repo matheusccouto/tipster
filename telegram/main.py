@@ -8,8 +8,8 @@ import google.cloud.logging
 import pandas as pd
 import telegram
 
-# client = google.cloud.logging.Client()
-# client.setup_logging()
+client = google.cloud.logging.Client()
+client.setup_logging()
 
 TZ = "America/Sao_Paulo"
 
@@ -23,7 +23,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """Send telegrams messages."""
     bot = telegram.Bot(os.getenv("TELEGRAM_TOKEN"))
 
-    query = "SELECT * FROM tipster.dim_bets WHERE user = 'tipster' ORDER BY start_at"
+    query = "SELECT * FROM tipster.dim_bets_new WHERE user = 'tipster' ORDER BY start_at"
     data = pd.read_gbq(query=query)
     data["date"] = data["start_at"].dt.tz_convert(TZ).dt.strftime("%d/%m/%Y")
 
