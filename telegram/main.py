@@ -52,15 +52,9 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
 
     for _, user_data in data.groupby("user"):
 
-        paragraphs = []
         for date, date_data in user_data.groupby("date", sort=False):
 
-            date = emojize(f"\U0001F4C5 {date}")
-            paragraphs.append(date)
-
             for league, group in date_data.groupby("league_emoji", sort=False):
-
-                header = emojize(league)
 
                 texts = group.sort_values("start_at").apply(
                     lambda x: (
@@ -70,14 +64,14 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
                     axis=1,
                 )
 
+                header = emojize(f"\U0001F4C5 {date}\n{league}")
                 body = "\n\n".join(texts)
-                paragraphs.append(f"{header}\n\n{body}")
 
-        bot.sendMessage(
-            chat_id=os.getenv("TELEGRAM_CHAT_ID"),
-            text="\n\n\n".join(paragraphs),
-            parse_mode="html",
-        )
+                bot.sendMessage(
+                    chat_id=os.getenv("TELEGRAM_CHAT_ID"),
+                    text=f"{header}\n\n{body}",
+                    parse_mode="html",
+                )
 
         sent = user_data[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
         sent["sent_at"] = datetime.now()
