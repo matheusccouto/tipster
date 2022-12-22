@@ -1,7 +1,8 @@
 SELECT
     odd.id,
     odd.start_at,
-    odd.league,
+    odd.league_id,
+    odd.league_name,
     spi.league_emoji,
     odd.home,
     odd.away,
@@ -22,7 +23,8 @@ FROM
     {{ ref("stg_odds") }} AS odd
 LEFT JOIN
     {{ ref("stg_spi") }} AS spi 
-        ON date(odd.start_at) = spi.date 
+        ON date(odd.start_at) = spi.date
+        AND odd.league_id = spi.league_id
         AND odd.home = spi.home 
         AND odd.away = spi.away
 WHERE

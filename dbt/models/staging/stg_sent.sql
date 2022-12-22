@@ -1,5 +1,7 @@
 SELECT DISTINCT
     user,
-    id
+    id,
+    ev,
+    sent_at
 FROM
     {{ source("tipster", "sent") }}

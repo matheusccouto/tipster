@@ -1,42 +1,41 @@
-tipster,theoddsapi,fivethirtyeight,country
-Primera División,soccer_argentina_primera_division,5641,Argentina
-A-League,soccer_australia_aleague,1948,Australia
-Austrian Bundesliga,,1827,Austria
-Premier League,soccer_epl,2411,England
-Pro League,soccer_belgium_first_div,1832,Belgium
-Série A,soccer_brazil_campeonato,2105,Brazil
-Super League,soccer_china_superleague,1979,China
-Superliga,soccer_denmark_superliga,1837,Denmark
-Eredivisie,soccer_norway_eliteserien,1849,Netherlands
-Championship,soccer_efl_champ,2412,England
-League One,soccer_england_league1,2413,England
-League Two,soccer_england_league2,2414,England
-Women's Super League,,7921,England
-Ligue 1,soccer_france_ligue_one,1843,France
-Ligue 2,soccer_france_ligue_two,1844,France
-2. Bundesliga,soccer_germany_bundesliga2,1846,Germany
-Bundesliga,soccer_germany_bundesliga,1845,Germany
-Super League 1,,1884,Greece
-Serie A,soccer_italy_serie_a,1854,Italy
-Serie B,soccer_italy_serie_b,1856,Italy
-J League,soccer_japan_j_league,1947,Japan
-MLS,soccer_usa_mls,1951,United States
-Liga MX Apertura,soccer_mexico_ligamx,1952,Mexico
-Liga MX Clausura,soccer_mexico_ligamx,1975,Mexico
-NWSL Challenge Cup,,9541,United States
-NWSL,,4582,United States
-Eliteserien,soccer_norway_eliteserien,1859,Norway
-Ekstraklasa,soccer_poland_ekstraklasa,,Poland
-Primeira Liga,soccer_portugal_primeira_liga,1864,Portugal
-Premier League,soccer_russia_premier_league,1866,Russia
-Premiership,soccer_spl,2417,Scotland
-Premier Division,,1983,South Africa
-LaLiga,soccer_spain_la_liga,1869,Spain
-LaLiga 2,soccer_spain_segunda_division,1871,Spain
-Allsvenskan,soccer_sweden_allsvenskan,1874,Sweden
-Super League,soccer_switzerland_superleague,1879,Switzerland
-Süper Lig,soccer_turkey_super_league,1882,Turkey
-Champions League,soccer_uefa_champs_league,1818,European Union
-Europa Conference League,soccer_uefa_europa_conference_league,10281,European Union
-Europa League,soccer_uefa_europa_league,1820,European Union
-USL,,2160,United States
+id,tipster,theoddsapi,fivethirtyeight,country
+1,Champions League,soccer_uefa_champs_league,1818,European Union
+2,Europa Conference League,soccer_uefa_europa_conference_league,10281,European Union
+3,Europa League,soccer_uefa_europa_league,1820,European Union
+4,Premier League,soccer_epl,2411,England
+5,Bundesliga,soccer_germany_bundesliga,1845,Germany
+6,LaLiga,soccer_spain_la_liga,1869,Spain
+7,Serie A,soccer_italy_serie_a,1854,Italy
+8,Ligue 1,soccer_france_ligue_one,1843,France
+9,Eredivisie,soccer_norway_eliteserien,1849,Netherlands
+10,Primeira Liga,soccer_portugal_primeira_liga,1864,Portugal
+11,Série A,soccer_brazil_campeonato,2105,Brazil
+12,Liga MX Apertura,soccer_mexico_ligamx,1952,Mexico
+13,Liga MX Clausura,soccer_mexico_ligamx,1975,Mexico
+14,Premier League,soccer_russia_premier_league,1866,Russia
+15,Championship,soccer_efl_champ,2412,England
+16,Pro League,soccer_belgium_first_div,1832,Belgium
+17,Austrian Bundesliga,,1827,Austria
+18,Süper Lig,soccer_turkey_super_league,1882,Turkey
+19,MLS,soccer_usa_mls,1951,United States
+20,Superliga,soccer_denmark_superliga,1837,Denmark
+21,Premiership,soccer_spl,2417,Scotland
+22,Super League,soccer_switzerland_superleague,1879,Switzerland
+23,Primera División,soccer_argentina_primera_division,5641,Argentina
+24,J League,soccer_japan_j_league,1947,Japan
+25,Eliteserien,soccer_norway_eliteserien,1859,Norway
+26,Ligue 2,soccer_france_ligue_two,1844,France
+27,LaLiga 2,soccer_spain_segunda_division,1871,Spain
+28,Serie B,soccer_italy_serie_b,1856,Italy
+29,Super League 1,,1884,Greece
+30,2. Bundesliga,soccer_germany_bundesliga2,1846,Germany
+31,Allsvenskan,soccer_sweden_allsvenskan,1874,Sweden
+32,League One,soccer_england_league1,2413,England
+33,A-League,soccer_australia_aleague,1948,Australia
+34,USL,,2160,United States
+35,Premier Division,,1983,South Africa
+36,Super League,soccer_china_superleague,1979,China
+37,League Two,soccer_england_league2,2414,England
+101,Women's Super League,,7921,England
+102,NWSL,,4582,United States
+103,NWSL Challenge Cup,,9541,United States

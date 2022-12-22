@@ -1,6 +1,7 @@
 SELECT
     spi.season AS season,
-    league.tipster AS league,
+    league.id AS league_id,
+    league.tipster AS league_name,
     concat(emoji.emoji, ' ', league.tipster) AS league_emoji,
     home.tipster AS home,
     away.tipster AS away,

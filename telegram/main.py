@@ -23,7 +23,16 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """Send telegrams messages."""
     bot = telegram.Bot(os.getenv("TELEGRAM_TOKEN"))
 
-    query = "SELECT * FROM tipster.dim_bets_new WHERE user = 'tipster' ORDER BY start_at"
+    query = """
+        SELECT
+            *
+        FROM
+            tipster.dim_bets
+        WHERE
+            user = 'tipster'
+        ORDER BY
+            date(start_at), league_id
+    """
     data = pd.read_gbq(query=query)
     data["date"] = data["start_at"].dt.tz_convert(TZ).dt.strftime("%d/%m/%Y")
 
@@ -45,20 +54,22 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         paragraphs = []
         for date, date_data in user_data.groupby("date", sort=False):
 
-            paragraphs.append(emojize(f"\U0001F4C5 {date}"))
+            date = emojize(f"\U0001F4C5 {date}")
+            paragraphs.append(date)
 
-            for league, group in date_data.groupby("league_emoji"):
+            for league, group in date_data.groupby("league_emoji", sort=False):
 
                 header = emojize(league)
-                body = "\n\n".join(
-                    group.sort_values("start_at").apply(
-                        lambda x: (
-                            f"{x['1']} {x['x']} {x['2']}\n"
-                            f"{x['bookmaker_name']} @ {x['price']}"
-                        ),
-                        axis=1,
-                    )
+
+                texts = group.sort_values("start_at").apply(
+                    lambda x: (
+                        f"{x['1']} {x['x']} {x['2']}\n"
+                        f"{x['bookmaker_name']} @ {x['price']}"
+                    ),
+                    axis=1,
                 )
+
+                body = "\n\n".join(texts)
                 paragraphs.append(f"{header}\n\n{body}")
 
         bot.sendMessage(
@@ -68,7 +79,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         )
         sent_at = datetime.now()
 
-        sent = user_data[["user", "id"]]
+        sent = user_data[["user", "id", "ev"]]
         sent["sent_at"] = sent_at
         sent.to_gbq("tipster.sent", if_exists="append")
 
