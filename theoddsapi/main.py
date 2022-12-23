@@ -22,7 +22,7 @@ SPORTS = [
     'soccer_spain_la_liga', # LaLiga
     'soccer_italy_serie_a', # Serie A
     'soccer_france_ligue_one', # Ligue 1
-    'soccer_norway_eliteserien', # Eredivisie
+    'soccer_netherlands_eredivisie', # Eredivisie
     'soccer_portugal_primeira_liga', # Primeira Liga
     'soccer_brazil_campeonato', # Série A
     'soccer_mexico_ligamx', # Liga MX Apertura

@@ -7,7 +7,7 @@ id,tipster,theoddsapi,fivethirtyeight,country
 60,LaLiga,soccer_spain_la_liga,1869,Spain
 70,Serie A,soccer_italy_serie_a,1854,Italy
 80,Ligue 1,soccer_france_ligue_one,1843,France
-90,Eredivisie,soccer_norway_eliteserien,1849,Netherlands
+90,Eredivisie,soccer_netherlands_eredivisie,1849,Netherlands
 100,Primeira Liga,soccer_portugal_primeira_liga,1864,Portugal
 110,Série A,soccer_brazil_campeonato,2105,Brazil
 120,Liga MX Apertura,soccer_mexico_ligamx,1952,Mexico
@@ -25,7 +25,7 @@ id,tipster,theoddsapi,fivethirtyeight,country
 240,J League,soccer_japan_j_league,1947,Japan
 250,Eliteserien,soccer_norway_eliteserien,1859,Norway
 260,Ligue 2,soccer_france_ligue_two,1844,France
-270,LaLiga 2,0soccer_spain_segunda_division,1871,Spain
+270,LaLiga 2,soccer_spain_segunda_division,1871,Spain
 280,Serie B,soccer_italy_serie_b,1856,Italy
 290,Super League 1,,1884,Greece
 300,2. Bundesliga,soccer_germany_bundesliga2,1846,Germany
