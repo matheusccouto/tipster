@@ -32,10 +32,10 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         WHERE
             user = 'tipster'
         ORDER BY
-            date(start_at), league_id
+            league_id, date(start_at)
     """
     data = pd.read_gbq(query=query)
-    data["date"] = data["start_at"].dt.tz_convert(TZ).dt.strftime("%d/%m/%Y")
+    data["date"] = data["start_at"].dt.tz_convert(TZ).dt.strftime("%d/%m/%y")
 
     data["1"] = data.apply(
         lambda x: f"<b><u>{x['home']}</u></b>" if x["bet"] == "home" else x["home"],
@@ -52,26 +52,25 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
 
     for _, user_data in data.groupby("user"):
 
-        for date, date_data in user_data.groupby("date", sort=False):
+        for (league, date), group in user_data.groupby(["league_emoji", "date"], sort=False):
 
-            for league, group in date_data.groupby("league_emoji", sort=False):
+            texts = group.sort_values("start_at").apply(
+                lambda x: (
+                    f"{x['1']} {x['x']} {x['2']}\n"
+                    f"{x['bookmaker_name']} @ {x['price']}\n"
+                    f"EV = {100 * x['ev']:.1f}%"
+                ),
+                axis=1,
+            )
 
-                texts = group.sort_values("start_at").apply(
-                    lambda x: (
-                        f"{x['1']} {x['x']} {x['2']}\n"
-                        f"{x['bookmaker_name']} @ {x['price']}"
-                    ),
-                    axis=1,
-                )
+            header = emojize(f"{league}  {date}")
+            body = "\n\n".join(texts)
 
-                header = emojize(f"\U0001F4C5 {date}\n{league}")
-                body = "\n\n".join(texts)
-
-                bot.sendMessage(
-                    chat_id=os.getenv("TELEGRAM_CHAT_ID"),
-                    text=f"{header}\n\n{body}",
-                    parse_mode="html",
-                )
+            bot.sendMessage(
+                chat_id=os.getenv("TELEGRAM_CHAT_ID"),
+                text=f"{header}\n\n{body}",
+                parse_mode="html",
+            )
 
         sent = user_data[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
         sent["sent_at"] = datetime.now()
