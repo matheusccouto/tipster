@@ -50,31 +50,27 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         axis=1,
     )
 
-    for _, user_data in data.groupby("user"):
+    for _, group in data.groupby("user"):
 
-        for (league, date), group in user_data.groupby(["league_emoji", "date"], sort=False):
+        for _, row in group.iterrows():
 
-            texts = group.sort_values("start_at").apply(
-                lambda x: (
-                    f"{x['1']} {x['x']} {x['2']}\n"
-                    f"{x['bookmaker_name']} @ {x['price']}\n"
-                    f"EV = {100 * x['ev']:.1f}%"
-                ),
-                axis=1,
+            body = (
+                f"{row['1']} {row['x']} {row['2']}"
+                f" @ {row['bookmaker_name']} {row['price']}"
+                # f"\nEV = {100 * row['ev']:.1f}%"
             )
 
-            header = emojize(f"{league}  {date}")
-            body = "\n\n".join(texts)
+            header = emojize(f"{row['league_emoji']} {row['date']}")
 
             bot.sendMessage(
                 chat_id=os.getenv("TELEGRAM_CHAT_ID"),
-                text=f"{header}\n\n{body}",
+                text=f"{header}\n{body}",
                 parse_mode="html",
             )
 
-        sent = user_data[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
+        sent = group[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
         sent["sent_at"] = datetime.now()
-        sent.to_gbq("tipster.sent", if_exists="replace")
+        sent.to_gbq("tipster.sent", if_exists="append")
 
     return {"statusCode": 200}
 
