@@ -1,636 +1,772 @@
-tipster,theoddsapi,fivethirtyeight
-Austria Lustenau,,Austria Lustenau
-Altach,,Cashpoint SC Rheindorf Altach
-RB Salzburg,Salzburg,FC Salzburg
-Austria Wien,,FK Austria Vienna
-Hartberg,,Hartberg
-LASK,,LASK Linz
-Rapid Wien,,Rapid Vienna
-Austria Klagenfurt,,SK Austria Klagenfurt
-SK Sturm Graz,,SK Sturm Graz
-Ried,,SV Ried
-WSG Tirol,,WSG Swarovski Wattens
-Wolfsberger,,Wolfsberger AC
-Anderlecht,Anderlecht,Anderlecht
-Antwerp,Royal Antwerp,Antwerp
-Cercle Brugge,Cercle Brugge KSV,Cercle Brugge
-Club Brugge,Club Brugge,Club Brugge
-Eupen,Eupen,Eupen
-Genk,Genk,Genk
-Gent,Gent,KAA Gent
-Kortrijk,KV Kortrijk,KV Kortrijk
-Mechelen,KV Mechelen,KV Mechelen
-Oostende,Oostende,KV Oostende
-Westerlo,Westerlo,KVC Westerlo
-Oud-Heverlee Leuven,Leuven,OH Leuven
-RFC Seraing,Seraing United,RFC Seraing
-Zulte Waregem,SV Zulte-Waregem,SV Zulte Waregem
-Charleroi,Charleroi,Sporting de Charleroi
-STVV,Sint Truiden,St. Truidense
-Standard,Standard Liege,Standard Liege
-Union Saint-Gilloise,Union Saint-Gilloise,Union Saint Gilloise
-Horsens,AC Horsens,AC Horsens
-AGF,AGF Aarhus,AGF Aarhus
-AaB,AaB,AaB
-Brøndby,Brondby IF,Brondby
-Copenhagen,FC Copenhagen,FC Copenhagen
-Midtjylland,FC Midtjylland,FC Midtjylland
-Nordsjælland,FC Nordsjaelland,FC Nordsjaelland
-Lyngby,Lyngby,Lyngby
-OB,OB Odense BK,Odense BK
-Randers,Randers FC,Randers FC
-Silkeborg,Silkeborg IF,Silkeborg
-Viborg,Viborg FF,Viborg
-Ajaccio,AC Ajaccio,AC Ajaccio
-Monaco,AS Monaco,AS Monaco
-Angers,Angers,Angers
-Auxerre,Auxerre,Auxerre
-Brest,Brest,Brest
-Clermont Foot,Clermont,Clermont Foot
-Lens,RC Lens,Lens
-LOSC,Lille,Lille
-Lorient,Lorient,Lorient
-Lyon,Lyon,Lyon
-Marseille,Marseille,Marseille
-Montpellier,Montpellier,Montpellier
-Nantes,Nantes,Nantes
-Nice,Nice,Nice
-PSG,Paris Saint Germain,Paris Saint-Germain
-Reims,Stade de Reims,Reims
-Rennes,Rennes,Stade Rennes
-Strasbourg,Strasbourg,Strasbourg
-Toulouse,Toulouse,Toulouse
-Troyes,Troyes,Troyes
-Amiens SC,Amiens,Amiens
-Annecy,Annecy FC,Annecy
-Bastia,SC Bastia,Bastia
-Bordeaux,Bordeaux,Bordeaux
-Caen,SM Caen,Caen
-Dijon,Dijon FCO,Dijon FCO
-Grenoble Foot 38,Grenoble,Grenoble
-Guingamp,EA Guingamp,Guingamp
-Stade Laval,Stade Lavallois,Laval
-Le Havre,Le Havre,Le Havre
-Metz,Metz,Metz
-Nîmes,Nîmes Olympique,Nimes
-Niort,Niort,Niort
-Paris FC,Paris FC,Paris FC
-Pau,Pau FC,Pau
-Rodez,Rodez AF,Rodez
-Sochaux,Sochaux,Sochaux
-St-Étienne,Saint Etienne,St Etienne
-Quevilly-Rouen,US Quevilly-Rouen,US Quevilly
-Valenciennes,Valenciennes,Valenciennes
-Union Berlin,Union Berlin,1. FC Union Berlin
-Leverkusen,Bayer Leverkusen,Bayer Leverkusen
-Bayern,Bayern Munich,Bayern Munich
-Dortmund,Borussia Dortmund,Borussia Dortmund
-Mönchengladbach,Borussia Monchengladbach,Borussia Monchengladbach
-Eintracht Frankfurt,Eintracht Frankfurt,Eintracht Frankfurt
-Augsburg,Augsburg,FC Augsburg
-Köln,FC Koln,FC Cologne
-Hertha,Hertha Berlin,Hertha Berlin
-Mainz,FSV Mainz 05,Mainz
-RB Leipzig,RB Leipzig,RB Leipzig
-SC Freiburg,SC Freiburg,SC Freiburg
-Schalke,Schalke 04,Schalke 04
-Hoffenheim,TSG Hoffenheim,TSG Hoffenheim
-VfB Stuttgart,VfB Stuttgart,VfB Stuttgart
-VfL Bochum,VfL Bochum,VfL Bochum
-Wolfsburg,VfL Wolfsburg,VfL Wolfsburg
-Werder,Werder Bremen,Werder Bremen
-Heidenheim,1. FC Heidenheim,1. FC Heidenheim 1846
-1. FCK,1. FC Kaiserslautern,1. FC Kaiserslautern
-1. FC Magdeburg,1. FC Magdeburg,1. FC Magdeburg
-Nürnberg,1. FC Nürnberg,1. FC Nürnberg
-Arminia,Arminia Bielefeld,Arminia Bielefeld
-Eintracht Braunschweig,Eintracht Braunschweig,Eintracht Braunschweig
-FC St. Pauli,FC St. Pauli,FC St. Pauli
-Düsseldorf,Fortuna Düsseldorf,Fortuna Düsseldorf
-Hamburger SV,Hamburger SV,Hamburg SV
-Hannover 96,Hannover 96,Hannover 96
-Hansa,Hansa Rostock,Hansa Rostock
-Holstein Kiel,Holstein Kiel,Holstein Kiel
-Jahn Regensburg,Jahn Regensburg,Jahn Regensburg
-Karlsruher,Karlsruher SC,Karlsruher SC
-Paderborn,SC Paderborn,SC Paderborn
-Darmstadt,Darmstadt 98,SV Darmstadt 98
-Sandhausen,SV Sandhausen,SV Sandhausen
-Fürth,Greuther Fürth,SpVgg Greuther Fürth
-AZ Alkmaar,AZ Alkmaar,AZ
-Ajax,AFC Ajax,Ajax
-Cambuur,SC Cambuur,Cambuur Leeuwarden
-FC Emmen,FC Emmen,Emmen
-Excelsior,Excelsior,Excelsior
-Groningen,Groningen,FC Groningen
-Twente,FC Twente Enschede,FC Twente
-Utrecht,FC Utrecht,FC Utrecht
-FC Volendam,FC Volendam,FC Volendam
-Feyenoord,Feyenoord,Feyenoord
-Fortuna Sittard,Fortuna Sittard,Fortuna Sittard
-Go Ahead Eagles,Go Ahead Eagles,Go Ahead Eagles
-Heerenveen,Heerenveen,Heerenveen
-NEC,NEC Nijmegen,NEC
-PSV,PSV Eindhoven,PSV
-RKC Waalwijk,RKC Waalwijk,RKC
-Sparta Rotterdam,Sparta Rotterdam,Sparta
-Vitesse,Vitesse Arnhem,Vitesse
-Milan,AC Milan,AC Milan
-Roma,Roma,AS Roma
-Atalanta BC,Atalanta BC,Atalanta
-Bologna,Bologna,Bologna
-Cremonese,Cremonese,Cremonese
-Empoli,Empoli,Empoli
-Fiorentina,Fiorentina,Fiorentina
-Inter,Internazionale Milano,Internazionale
-Juventus,Juventus,Juventus
-Lazio,Lazio,Lazio
-Lecce,Lecce,Lecce
-Monza,Monza,Monza
-Napoli,Napoli,Napoli
-Salernitana,Salernitana,Salernitana
-Sampdoria,Sampdoria,Sampdoria
-Sassuolo,Sassuolo,Sassuolo
-Spezia,Spezia,Spezia
-Torino,Torino,Torino
-Udinese,Udinese,Udinese
-Verona,Hellas Verona FC,Verona
-Ascoli,Ascoli,Ascoli
-Bari,Bari,Bari
-Benevento,Benevento,Benevento
-Brescia,Brescia,Brescia
-Cagliari,Cagliari,Cagliari
-Cittadella,Cittadella,Cittadella
-Como,Como,Como
-Cosenza,Cosenza,Cosenza
-Venezia,Venezia,F.B.C Unione Venezia
-Frosinone,Frosinone,Frosinone
-Genoa,Genoa,Genoa
-Modena,Modena,Modena
-Palermo,Palermo,Palermo
-Parma,Parma,Parma
-Perugia,Perugia,Perugia
-Pisa,Pisa,Pisa
-Reggina,Reggina,Reggina
-SPAL,SPAL,Spal
-Südtirol,Südtirol,Sudtirol
-Ternana,Ternana,Ternana
-Aalesund,Aalesund,Aalesund
-Bodø/Glimt,Bodø/Glimt,Bodo/Glimt
-,,FK Jerv
-HamKam,HamKam,Hamarkamaratene
-Haugesund,Haugesund,Haugesund
-,,Kristiansund BK
-Lillestrom,Lillestrom,Lillestrom
-Molde,Molde,Molde
-Odds BK,Odds BK,Odd BK
-Rosenborg,Rosenborg,Rosenborg
-Sandefjord,Sandefjord,Sandefjord
-Sarpsborg,Sarpsborg FK,Sarpsborg
-Strømsgodset,Stromsgodset,Stromsgodset
-Tromso,Tromso,Tromso
-Vålerenga,Vålerenga,Valerenga
-Viking,Viking FK,Viking FK
-Benfica,Benfica,Benfica
-Boavista,Boavista Porto,Boavista
-Braga,Braga,Braga
-Casa Pia,Casa Pia,Casa Pia
-Chaves,Chaves,Chaves
-Estoril Praia,Estoril,Estoril Praia
-Arouca,Arouca,FC Arouca
-Porto,FC Porto,FC Porto
-Famalicão,Famalicão,Famalicao
-Gil Vicente,Gil Vicente,Gil Vicente
-Vitória SC,Vitória SC,Guimaraes
-Marítimo,CS Maritimo,Maritimo
-Paços de Ferreira,Pacos de Ferreira,Pacos Ferreira
-Portimonense,Portimonense,Portimonense
-Rio Ave,Rio Ave FC,Rio Ave
-Santa Clara,Santa Clara,Santa Clara
-Sporting,Sporting Lisbon,Sporting CP
-Vizela,Vizela,Vizela
-CSKA Moscow,,CSKA Moscow
-Dynamo Moscow,,Dinamo Moscow
-Khimki,,FC Khimki
-Krasnodar,,FC Krasnodar
-Nizhny Novgorod,,FK Nizhny Novgorod
-Fakel,,Fakel Voronezh
-Orenburg,,Gazovik Orenburg
-Krylya Sovetov,,Krylia Sovetov
-Lokomotiv Moscow,,Lokomotiv Moscow
-FC Rostov,,Rostov
-PFC Sochi,,Sochi
-Spartak Moscow,,Spartak Moscow
-Akhmat Grozny,,Terek Grozny
-Torpedo Moskow,,Torpedo Moskow
-Ural,,Ural Sverdlovsk Oblast
-Zenit,,Zenit St Petersburg
-Almería,Almería,Almeria
-Athletic Bilbao,Athletic Bilbao,Athletic Bilbao
-Atlético Madrid,Atlético Madrid,Atletico Madrid
-Barcelona,Barcelona,Barcelona
-Cádiz,Cádiz CF,Cadiz
-Celta Vigo,Celta Vigo,Celta Vigo
-Elche,Elche CF,Elche
-Espanyol,Espanyol,Espanyol
-Getafe,Getafe,Getafe
-Girona,Girona,Girona FC
-Mallorca,Mallorca,Mallorca
-Osasuna,CA Osasuna,Osasuna
-Rayo Vallecano,Rayo Vallecano,Rayo Vallecano
-Real Betis,Real Betis,Real Betis
-Real Madrid,Real Madrid,Real Madrid
-Real Sociedad,Real Sociedad,Real Sociedad
-Valladolid,Valladolid,Real Valladolid
-Sevilla,Sevilla,Sevilla FC
-Valencia,Valencia,Valencia
-Villarreal,Villarreal,Villarreal
-Alavés,Alavés,Alavés
-Albacete,Albacete,Albacete
-Burgos,Burgos CF,Burgos
-Eibar,SD Eibar,Eibar
-Andorra,Andorra CF,FC Andorra
-FC Cartagena,FC Cartagena,FC Cartagena
-Granada,Granada CF,Granada
-Las Palmas,Las Palmas,Las Palmas
-Leganés,Leganés,Leganes
-Levante,Levante,Levante
-Lugo,Lugo,Lugo
-CD Mirandés,CD Mirandés,Mirandes
-Málaga,Málaga,Málaga
-Racing,Real Racing Club de Santander,Racing Santander
-Oviedo,Oviedo,Real Oviedo
-Zaragoza,Zaragoza,Real Zaragoza
-Huesca,SD Huesca,SD Huesca
-Ponferradina,SD Ponferradina,SD Ponferradina
-Sporting Gijón,Sporting Gijón,Sporting Gijón
-Tenerife,Tenerife,Tenerife
-Ibiza,UD Ibiza,UD Ibiza
-Villarreal,Villarreal,Villarreal B
-AIK,AIK,AIK
-Häcken,BK Hacken,BK Hacken
-Degerfors,Degerfors IF,Degerfors IF
-Djurgårdens,Djurgårdens IF,Djurgardens IF
-,,GIF Sundsvall
-Hammarby,Hammarby IF,Hammarby
-,,Helsingborgs IF
-Elfsborg,IF Elfsborg,IF Elfsborg
-Göteborg,IFK Goteborg,IFK Goteborg
-Norrköping,IFK Norrkoping,IFK Norrkoping
-Värnamo,IFK Värnamo,IFK Värnamo
-Sirius,IK Sirius,IK Sirius
-Kalmar,Kalmar FF,Kalmar FF
-Malmö FF,Malmo FF,Malmo FF
-Mjällby,Mjällby AIF,Mjallby
-Varbergs BoIS,Varbergs BoIS,Varbergs BoIS FC
-Basel,FC Basel,Basel
-Lugano,FC Lugano,FC Lugano
-Luzern,FC Luzern,FC Luzern
-Sion,FC Sion,FC Sion
-FC Zurich,FC Zurich,FC Zurich
-Grasshoppers,Grasshopper Zürich,Grasshoppers Zürich
-Servette,Servette,Servette
-St. Gallen,FC St Gallen,St Gallen
-Winterthur,FC Winterthur,Winterthur
-Young Boys,BSC Young Boys,Young Boys
-Adana Demirspor,Adana Demirspor,Adana Demirspor
-Alanyaspor,Alanyaspor,Alanyaspor
-Ankaragücü,Ankaragücü,Ankaragucu
-Antalyaspor,Antalyaspor,Antalyaspor
-Beşiktaş,Besiktas JK,Besiktas
-Fatih Karagümrük,Fatih Karagümrük,Fatih Karagümrük
-Fenerbahçe,Fenerbahce,Fenerbahce
-Galatasaray,Galatasaray,Galatasaray
-Gaziantep,Gazişehir Gaziantep,Gazisehir Gaziantep
-Giresunspor,Giresunspor,Giresunspor
-Hatayspor,Hatayspor,Hatayspor
-İstanbul Başakşehir,Basaksehir,Istanbul Basaksehir
-İstanbulspor,Istanbulspor,Istanbulspor
-Kasımpaşa,Kasimpasa SK,Kasimpasa
-Kayserispor,Kayserispor,Kayserispor
-Konyaspor,Torku Konyaspor,Konyaspor
-Sivasspor,Sivasspor,Sivasspor
-Trabzonspor,Trabzonspor,Trabzonspor
-Ümraniyespor,Ümraniyespor,Umraniyespor
-,,AEK Athens
-,,Aris Salonika
-,,Asteras Tripolis
-,,Atromitos
-,,Giannina
-,,Ionikos FC
-,,Lamia
-,,Levadiakos
-,,OFI Crete
-,,Olympiacos
-,,PAOK Salonika
-,,Panathinaikos
-,,Panetolikos
-,,Volos NFC
-,,Avispa Fukuoka
-,,Cerezo Osaka
-,,Consadole Sapporo
-,,FC Tokyo
-,,Gamba Osaka
-,,Jubilo Iwata
-,,Kashima Antlers
-,,Kashiwa Reysol
-,,Kawasaki Frontale
-,,Kyoto Purple Sanga
-,,Nagoya Grampus Eight
-,,Sagan Tosu
-,,Sanfrecce Hiroshima
-,,Shimizu S-Pulse
-,,Shonan Bellmare
-,,Urawa Red Diamonds
-,,Vissel Kobe
-,,Yokohama F. Marinos
-Adelaide United,Adelaide United,Adelaide United
-Brisbane Roar,Brisbane Roar,Brisbane Roar
-Central Coast Mariners,Central Coast Mariners,Central Coast Mariners
-Macarthur,Macarthur FC,Macarthur FC
-Melbourne City FC,Melbourne City,Melbourne City
-Melbourne Victory,Melbourne Victory,Melbourne Victory
-Newcastle Jets,Newcastle Jets FC,Newcastle Jets
-Perth Glory,Perth Glory,Perth Glory
-Sydney FC,Sydney FC,Sydney FC
-Wellington Phoenix,Wellington Phoenix FC,Wellington Phoenix
-Western Sydney Wanderers,Western Sydney Wanderers,Western Sydney FC
-Western United,Western United FC,Western United
-,,Atlanta United FC
-,,Austin FC
-,,Charlotte FC
-,,Chicago Fire
-,,Colorado Rapids
-,,Columbus Crew
-,,DC United
-,,FC Cincinnati
-,,FC Dallas
-,,Houston Dynamo
-,,Inter Miami CF
-,,Los Angeles FC
-,,Los Angeles Galaxy
-,,Minnesota United FC
-,,Montreal Impact
-,,Nashville SC
-,,New England Revolution
-,,New York City FC
-,,New York Red Bulls
-,,Orlando City SC
-,,Philadelphia Union
-,,Portland Timbers
-,,Real Salt Lake
-,,San Jose Earthquakes
-,,Seattle Sounders FC
-,,Sporting Kansas City
-,,Toronto FC
-,,Vancouver Whitecaps
-Atlas,Atlas,Atlas
-San Luis,Atlético San Luis,Atlético San Luis
-Club América,América,Club América
-Cruz Azul,Cruz Azul,Cruz Azul
-Juárez,FC Juárez,FC Juárez
-Guadalajara,Guadalajara,Guadalajara
-León,León,León
-Mazatlán,Mazatlán FC,Mazatlán FC
-Monterrey,Monterrey,Monterrey
-Necaxa,Necaxa,Necaxa
-Pachuca,Pachuca,Pachuca
-Puebla,Puebla,Puebla
-Pumas UNAM,Pumas,Pumas Unam
-Querétaro,Querétaro,Querétaro
-Santos Laguna,Santos Laguna,Santos Laguna
-Tigres UANL,Tigres,Tigres UANL
-Club Tijuana,Tijuana,Tijuana
-Toluca,Toluca,Toluca
-Beijing Guoan,Beijing Sinobo Guoan FC,Beijing Guoan
-,,Chongqing Lifan
-Dalian Pro,Dalian Professional,Dalian Aerbin
-Guangzhou,Guangzhou Evergrande Taobao FC,Guangzhou Evergrande
-Guangzhou City,Guangzhou R&F FC,Guangzhou RF
-,,Guizhou Renhe
-Hebei CFFC,Hebei China Fortune FC,Hebei China Fortune FC
-Henan Jianye,Henan Jianye FC,Henan Jianye
-,,Jiangsu Suning FC
-Shandong Luneng,Shandong Luneng Taishan FC,Shandong Luneng
-Shanghai Shenhua,Shanghai Greenland Shenhua FC,Shanghai Greenland
-Shanghai Port,Shanghai SIPG FC,Shanghai SIPG
-Shenzhen FC,Shenzhen FC,Shenzhen FC
-,,Tianjin Quanujian
-Tianjin Teda,Tianjin Jinmen Tiger FC,Tianjin Teda
-Wuhan Zall,Wuhan Yangtze River FC,Wuhan Zall
-,,AmaZulu
-,,Black Aces
-,,Chippa United
-,,Golden Arrows
-,,Kaizer Chiefs
-,,Mamelodi Sundowns
-,,Maritzburg Utd
-,,Moroka Swallows
-,,Orlando Pirates
-,,Richards Bay
-,,Royal AM
-,,Sekhukhune United
-,,Stellenbosch FC
-,,SuperSport United
-,,TS Galaxy
-,,Tshakhuma Tsha Madzivhandila
-,,América Mineiro
-,,Atletico Mineiro
-,,Atlético Goianiense
-,,Atlético Paranaense
-,,Avaí
-,,Botafogo
-,,Bragantino
-,,Ceará
-,,Corinthians
-,,Coritiba
-,,Cuiaba
-,,Flamengo
-,,Fluminense
-,,Fortaleza
-,,Goiás
-,,Internacional
-,,Juventude
-,,Palmeiras
-,,Santos
-,,São Paulo
-,,Arizona United
-,,Atlanta United 2
-,,Birmingham Legion FC
-,,Charleston Battery
-,,Colorado Springs Switchbacks FC
-,,Detroit City FC
-,,El Paso Locomotive FC
-,,Hartford Athletic
-,,Indy Eleven
-,,LA Galaxy II
-,,Las Vegas Lights FC
-,,Loudoun United FC
-,,Louisville City FC
-,,Memphis 901 FC
-,,Miami FC
-,,Monterey Bay
-,,New Mexico United
-,,New York Red Bulls II
-,,Oakland Roots
-,,Orange County SC
-,,Pittsburgh Riverhounds
-,,Rio Grande Valley FC Toros
-,,Sacramento Republic FC
-,,San Antonio FC
-,,San Diego Loyal SC
-,,Tampa Bay Rowdies
-,,Tulsa Roughnecks
-Bournemouth,Bournemouth,AFC Bournemouth
-Arsenal,Arsenal,Arsenal
-Aston Villa,Aston Villa,Aston Villa
-Brentford,Brentford,Brentford
-Brighton,Brighton and Hove Albion,Brighton and Hove Albion
-Chelsea,Chelsea,Chelsea
-Crystal Palace,Crystal Palace,Crystal Palace
-Everton,Everton,Everton
-Fulham,Fulham,Fulham
-Leeds United,Leeds United,Leeds United
-Leicester City,Leicester City,Leicester City
-Liverpool,Liverpool,Liverpool
-Man City,Manchester City,Manchester City
-Man United,Manchester United,Manchester United
-Newcastle,Newcastle United,Newcastle
-Nottm Forest,Nottingham Forest,Nottingham Forest
-Reading,Reading,Reading
-Southampton,Southampton,Southampton
-Tottenham,Tottenham Hotspur,Tottenham Hotspur
-West Ham,West Ham United,West Ham United
-Wolves,Wolverhampton Wanderers,Wolverhampton
-Birmingham,Birmingham City,Birmingham
-Blackburn Rovers,Blackburn Rovers,Blackburn
-Blackpool,Blackpool,Blackpool
-Bristol City,Bristol City,Bristol City
-Burnley,Burnley,Burnley
-Cardiff City,Cardiff City,Cardiff City
-Coventry,Coventry City,Coventry City
-Huddersfield,Huddersfield Town,Huddersfield Town
-Hull City,Hull City,Hull City
-Luton Town,Luton Town,Luton Town
-Middlesbrough,Middlesbrough,Middlesbrough
-Millwall,Millwall,Millwall
-Norwich City,Norwich City,Norwich City
-Preston,Preston North End,Preston North End
-QPR,Queens Park Rangers,Queens Park Rangers
-Rotherham,Rotherham United,Rotherham United
-Sheffield United,Sheffield United,Sheffield United
-Stoke City,Stoke City,Stoke City
-Sunderland,Sunderland,Sunderland
-Swansea,Swansea City,Swansea City
-Watford,Watford,Watford
-West Brom,West Bromwich,West Bromwich Albion
-Wigan,Wigan Athletic,Wigan
-Accrington Stanley,Accrington Stanley,Accrington Stanley
-Barnsley,Barnsley,Barnsley
-Bolton,Bolton,Bolton
-Bristol Rovers,Bristol Rovers,Bristol Rovers
-Burton,Burton Albion,Burton Albion
-Cambridge United,Cambridge United,Cambridge United
-Charlton,Charlton Athletic,Charlton Athletic
-Cheltenham,Cheltenham,Cheltenham Town
-Derby County,Derby County,Derby County
-Exeter City,Exeter City,Exeter City
-Fleetwood,Fleetwood Town,Fleetwood Town
-Forest Green,Forest Green Rovers,Forest Green Rovers
-Ipswich Town,Ipswich Town,Ipswich Town
-Lincoln City,Lincoln City,Lincoln City
-MK Dons,Milton Keynes Dons,Milton Keynes Dons
-Morecambe,Morecambe,Morecambe
-Oxford Utd,Oxford United,Oxford United
-Peterborough,Peterborough United,Peterborough United
-Plymouth Argyle,Plymouth Argyle,Plymouth Argyle
-Port Vale,Port Vale,Port Vale
-Portsmouth,Portsmouth,Portsmouth
-Sheffield Wednesday,Sheffield Wednesday,Sheffield Wednesday
-Shrewsbury,Shrewsbury Town,Shrewsbury Town
-Wycombe,Wycombe Wanderers,Wycombe Wanderers
-AFC Wimbledon,AFC Wimbledon,AFC Wimbledon
-Barrow,Barrow,Barrow
-Bradford City,Bradford City,Bradford City
-Carlisle,Carlisle United,Carlisle United
-Colchester,Colchester United,Colchester United
-Crawley Town,Crawley Town,Crawley Town
-Crewe Alexandra,Crewe Alexandra,Crewe Alexandra
-Doncaster,Doncaster Rovers,Doncaster Rovers
-Gillingham,Gillingham,Gillingham
-Grimsby Town,Grimsby Town,Grimsby Town
-Harrogate Town,Harrogate Town,Harrogate Town
-Hartlepool,Hartlepool United,Hartlepool
-Leyton Orient,Leyton Orient,Leyton Orient
-Mansfield Town,Mansfield Town,Mansfield Town
-Newport County,Newport County,Newport County
-Northampton Town,Northampton Town,Northampton Town
-Rochdale,Rochdale,Rochdale
-Salford City,Salford City,Salford City
-Stevenage,Stevenage,Stevenage
-Stockport,Stockport County FC,Stockport County
-Sutton United,Sutton United,Sutton United
-Swindon Town,Swindon Town,Swindon Town
-Tranmere,Tranmere Rovers,Tranmere Rovers
-Walsall,Walsall,Walsall
-Aberdeen,Aberdeen,Aberdeen
-Celtic,Celtic,Celtic
-Dundee United,Dundee United,Dundee Utd
-Hearts,Hearts,Hearts
-Hibernian,Hibernian,Hibernian
-Kilmarnock,Kilmarnock,Kilmarnock
-Livingston,Livingston,Livingston
-Motherwell,Motherwell,Motherwell
-Rangers,Rangers,Rangers
-Ross County,Ross County,Ross County
-St. Johnstone,St Johnstone,St Johnstone
-St. Mirren,St Mirren,St Mirren
-,,Aldosivi
-,,Argentinos Juniors
-,,Arsenal Sarandi
-,,Atlético Tucumán
-,,Banfield
-,,Barracas Central
-,,Boca Juniors
-,,CA Independiente
-,,Central Córdoba Santiago del Estero
-,,Colon Santa Fe
-,,Defensa y Justicia
-,,Estudiantes
-,,Gimnasia La Plata
-,,Godoy Cruz
-,,Huracán
-,,Lanus
-,,Newell's Old Boys
-,,Patronato
-,,Platense
-,,Racing Club
-,,River Plate
-,,Rosario Central
-,,San Lorenzo
-,,Sarmiento
-,,Talleres de Córdoba
-,,Tigre
-,,Union Santa Fe
-,,Velez Sarsfield
-,,Arsenal Women
-,,Chelsea FC Women
-,,Everton Ladies
-,,Leicester City WFC
-,,Liverpool Women
-,,Manchester City Women
-,,Manchester United Women
-,,Tottenham Women
-,,West Ham United Ladies
-,,Angel City FC
-,,Chicago Red Stars
-,,Houston Dash
-,,Kansas City
-,,North Carolina FC
-,,Orlando Pride
-,,Portland Thorns
-,,Racing Louisville FC
-,,San Diego Wave FC
-,,Seattle Reign FC
-,,Sky Blue FC
-,,Washington Spirit
+new,old
+Austria Lustenau,Austria Lustenau
+Altach,Cashpoint SC Rheindorf Altach
+RB Salzburg,Salzburg
+RB Salzburg,FC Salzburg
+Austria Wien,FK Austria Vienna
+Hartberg,Hartberg
+LASK,LASK Linz
+Rapid Wien,Rapid Vienna
+Austria Klagenfurt,SK Austria Klagenfurt
+SK Sturm Graz,SK Sturm Graz
+Ried,SV Ried
+WSG Tirol,WSG Swarovski Wattens
+Wolfsberger,Wolfsberger AC
+Anderlecht,Anderlecht
+Antwerp,Royal Antwerp
+Antwerp,Antwerp
+Cercle Brugge,Cercle Brugge KSV
+Cercle Brugge,Cercle Brugge
+Club Brugge,Club Brugge
+Eupen,Eupen
+Genk,Genk
+Gent,Gent
+Gent,KAA Gent
+Kortrijk,KV Kortrijk
+Mechelen,KV Mechelen
+Oostende,KV Oostende
+Oostende,Oostende
+Westerlo,KVC Westerlo
+Westerlo,Westerlo
+Oud-Heverlee Leuven,Leuven
+Oud-Heverlee Leuven,OH Leuven
+RFC Seraing,RFC Seraing
+RFC Seraing,Seraing United
+Zulte Waregem,SV Zulte-Waregem
+Zulte Waregem,SV Zulte Waregem
+Charleroi,Charleroi
+Charleroi,Sporting de Charleroi
+STVV,St. Truidense
+STVV,Sint Truiden
+Standard,Standard Liege
+Union Saint-Gilloise,Union Saint-Gilloise
+Union Saint-Gilloise,Union Saint Gilloise
+Horsens,AC Horsens
+AGF,AGF Aarhus
+AaB,AaB
+Brøndby,Brondby IF
+Brøndby,Brondby
+Copenhagen,FC Copenhagen
+Midtjylland,FC Midtjylland
+Nordsjælland,FC Nordsjaelland
+Lyngby,Lyngby
+OB,Odense BK
+OB,OB Odense BK
+Randers,Randers FC
+Silkeborg,Silkeborg IF
+Silkeborg,Silkeborg
+Viborg,Viborg
+Viborg,Viborg FF
+Ajaccio,AC Ajaccio
+Monaco,AS Monaco
+Angers,Angers
+Auxerre,Auxerre
+Brest,Brest
+Clermont Foot,Clermont Foot
+Clermont Foot,Clermont
+Lens,RC Lens
+Lens,Lens
+LOSC,Lille
+Lorient,Lorient
+Lyon,Lyon
+Marseille,Marseille
+Montpellier,Montpellier
+Nantes,Nantes
+Nice,Nice
+PSG,Paris Saint-Germain
+PSG,Paris Saint Germain
+Reims,Stade de Reims
+Reims,Reims
+Rennes,Stade Rennes
+Rennes,Rennes
+Strasbourg,Strasbourg
+Toulouse,Toulouse
+Troyes,Troyes
+Amiens SC,Amiens
+Annecy,Annecy
+Annecy,Annecy FC
+Bastia,Bastia
+Bastia,SC Bastia
+Bordeaux,Bordeaux
+Caen,SM Caen
+Caen,Caen
+Dijon,Dijon FCO
+Grenoble Foot 38,Grenoble
+Guingamp,EA Guingamp
+Guingamp,Guingamp
+Stade Laval,Stade Lavallois
+Stade Laval,Laval
+Le Havre,Le Havre
+Metz,Metz
+Nîmes,Nîmes Olympique
+Nîmes,Nimes
+Niort,Niort
+Paris FC,Paris FC
+Pau,Pau
+Pau,Pau FC
+Rodez,Rodez
+Rodez,Rodez AF
+Sochaux,Sochaux
+St-Étienne,Saint Etienne
+St-Étienne,St Etienne
+Quevilly-Rouen,US Quevilly
+Quevilly-Rouen,US Quevilly-Rouen
+Valenciennes,Valenciennes
+Union Berlin,Union Berlin
+Union Berlin,1. FC Union Berlin
+Leverkusen,Bayer Leverkusen
+Leverkusen,Leverkusen
+Bayern,Bayern Munich
+Bayerm,Bayern München
+Dortmund,Borussia Dortmund
+Mönchengladbach,Borussia Monchengladbach
+Eintracht Frankfurt,Eintracht Frankfurt
+Augsburg,FC Augsburg
+Augsburg,Augsburg
+Köln,FC Cologne
+Köln,FC Koln
+Hertha,Hertha Berlin
+Mainz,Mainz
+Mainz,FSV Mainz 05
+RB Leipzig,RB Leipzig
+SC Freiburg,SC Freiburg
+Schalke,Schalke 04
+Hoffenheim,TSG Hoffenheim
+VfB Stuttgart,VfB Stuttgart
+VfL Bochum,VfL Bochum
+Wolfsburg,VfL Wolfsburg
+Werder,Werder Bremen
+Heidenheim,1. FC Heidenheim 1846
+Heidenheim,1. FC Heidenheim
+1. FCK,1. FC Kaiserslautern
+1. FC Magdeburg,1. FC Magdeburg
+Nürnberg,1. FC Nürnberg
+Arminia,Arminia Bielefeld
+Eintracht Braunschweig,Eintracht Braunschweig
+FC St. Pauli,FC St. Pauli
+Düsseldorf,Fortuna Düsseldorf
+Hamburger SV,Hamburger SV
+Hamburger SV,Hamburg SV
+Hannover 96,Hannover 96
+Hansa,Hansa Rostock
+Holstein Kiel,Holstein Kiel
+Jahn Regensburg,Jahn Regensburg
+Karlsruher,Karlsruher SC
+Paderborn,SC Paderborn
+Darmstadt,SV Darmstadt 98
+Darmstadt,Darmstadt 98
+Sandhausen,SV Sandhausen
+Fürth,Greuther Fürth
+Fürth,SpVgg Greuther Fürth
+AZ Alkmaar,AZ Alkmaar
+AZ Alkmaar,AZ
+Ajax,Ajax
+Ajax,AFC Ajax
+Cambuur,Cambuur Leeuwarden
+Cambuur,SC Cambuur
+FC Emmen,FC Emmen
+FC Emmen,Emmen
+Excelsior,Excelsior
+Groningen,FC Groningen
+Groningen,Groningen
+Twente,FC Twente Enschede
+Twente,FC Twente
+Utrecht,FC Utrecht
+FC Volendam,FC Volendam
+Feyenoord,Feyenoord
+Fortuna Sittard,Fortuna Sittard
+Go Ahead Eagles,Go Ahead Eagles
+Heerenveen,Heerenveen
+NEC,NEC
+NEC,NEC Nijmegen
+PSV,PSV
+PSV,PSV Eindhoven
+RKC Waalwijk,RKC
+RKC Waalwijk,RKC Waalwijk
+Sparta Rotterdam,Sparta Rotterdam
+Sparta Rotterdam,Sparta
+Vitesse,Vitesse
+Vitesse,Vitesse Arnhem
+Milan,AC Milan
+Roma,AS Roma
+Roma,Roma
+Atalanta BC,Atalanta BC
+Atalanta BC,Atalanta
+Bologna,Bologna
+Cremonese,Cremonese
+Empoli,Empoli
+Fiorentina,Fiorentina
+Inter,Internazionale Milano
+Inter,Internazionale
+Juventus,Juventus
+Lazio,Lazio
+Lecce,Lecce
+Monza,Monza
+Napoli,Napoli
+Salernitana,Salernitana
+Sampdoria,Sampdoria
+Sassuolo,Sassuolo
+Spezia,Spezia
+Torino,Torino
+Udinese,Udinese
+Verona,Hellas Verona FC
+Verona,Verona
+Ascoli,Ascoli
+Bari,Bari
+Benevento,Benevento
+Brescia,Brescia
+Cagliari,Cagliari
+Cittadella,Cittadella
+Como,Como
+Cosenza,Cosenza
+Venezia,Venezia
+Venezia,F.B.C Unione Venezia
+Frosinone,Frosinone
+Genoa,Genoa
+Modena,Modena
+Palermo,Palermo
+Parma,Parma
+Perugia,Perugia
+Pisa,Pisa
+Reggina,Reggina
+SPAL,Spal
+SPAL,SPAL
+Südtirol,Südtirol
+Südtirol,Sudtirol
+Ternana,Ternana
+Aalesund,Aalesund
+Bodø/Glimt,Bodo/Glimt
+Bodø/Glimt,Bodø/Glimt
+Jerv,FK Jerv
+HamKam,HamKam
+HamKam,Hamarkamaratene
+Haugesund,Haugesund
+Kristiansund,Kristiansund BK
+Lillestrom,Lillestrom
+Molde,Molde
+Odds BK,Odds BK
+Odds BK,Odd BK
+Rosenborg,Rosenborg
+Sandefjord,Sandefjord
+Sarpsborg,Sarpsborg FK
+Sarpsborg,Sarpsborg
+Strømsgodset,Stromsgodset
+Tromso,Tromso
+Vålerenga,Valerenga
+Vålerenga,Vålerenga
+Viking,Viking FK
+Benfica,Benfica
+Boavista,Boavista Porto
+Boavista,Boavista
+Braga,Braga
+Casa Pia,Casa Pia
+Chaves,Chaves
+Estoril Praia,Estoril
+Estoril Praia,Estoril Praia
+Arouca,FC Arouca
+Arouca,Arouca
+Porto,FC Porto
+Porto,Porto
+Famalicão,Famalicão
+Famalicão,Famalicao
+Gil Vicente,Gil Vicente
+Vitória SC,Vitória SC
+Vitória SC,Guimaraes
+Marítimo,Maritimo
+Marítimo,CS Maritimo
+Paços de Ferreira,Pacos Ferreira
+Paços de Ferreira,Pacos de Ferreira
+Portimonense,Portimonense
+Rio Ave,Rio Ave
+Rio Ave,Rio Ave FC
+Santa Clara,Santa Clara
+Sporting,Sporting CP
+Sporting,Sporting Lisbon
+Vizela,Vizela
+CSKA Moscow,CSKA Moscow
+Dynamo Moscow,Dinamo Moscow
+Khimki,FC Khimki
+Krasnodar,FC Krasnodar
+Nizhny Novgorod,FK Nizhny Novgorod
+Fakel,Fakel Voronezh
+Orenburg,Gazovik Orenburg
+Krylya Sovetov,Krylia Sovetov
+Lokomotiv Moscow,Lokomotiv Moscow
+FC Rostov,Rostov
+PFC Sochi,Sochi
+Spartak Moscow,Spartak Moscow
+Akhmat Grozny,Terek Grozny
+Torpedo Moskow,Torpedo Moskow
+Ural,Ural Sverdlovsk Oblast
+Zenit,Zenit St Petersburg
+Almería,Almería
+Almería,Almeria
+Athletic Bilbao,Athletic Bilbao
+Atlético Madrid,Atletico Madrid
+Atlético Madrid,Atlético Madrid
+Barcelona,Barcelona
+Barcelona,FC Barcelona
+Cádiz,Cadiz
+Cádiz,Cádiz CF
+Celta Vigo,Celta Vigo
+Elche,Elche
+Elche,Elche CF
+Espanyol,Espanyol
+Getafe,Getafe
+Girona,Girona FC
+Girona,Girona
+Mallorca,Mallorca
+Osasuna,Osasuna
+Osasuna,CA Osasuna
+Rayo Vallecano,Rayo Vallecano
+Real Betis,Real Betis
+Real Madrid,Real Madrid
+Real Sociedad,Real Sociedad
+Valladolid,Real Valladolid
+Valladolid,Valladolid
+Sevilla,Sevilla
+Sevilla,Sevilla FC
+Valencia,Valencia
+Villarreal,Villarreal
+Alavés,Alavés
+Albacete,Albacete
+Burgos,Burgos
+Burgos,Burgos CF
+Eibar,Eibar
+Eibar,SD Eibar
+Andorra,FC Andorra
+Andorra,Andorra CF
+FC Cartagena,FC Cartagena
+Granada,Granada
+Granada,Granada CF
+Las Palmas,Las Palmas
+Leganés,Leganés
+Leganés,Leganes
+Levante,Levante
+Lugo,Lugo
+CD Mirandés,Mirandes
+CD Mirandés,CD Mirandés
+Málaga,Málaga
+Racing,Racing Santander
+Racing,Real Racing Club de Santander
+Oviedo,Real Oviedo
+Oviedo,Oviedo
+Zaragoza,Real Zaragoza
+Zaragoza,Zaragoza
+Huesca,SD Huesca
+Ponferradina,SD Ponferradina
+Sporting Gijón,Sporting Gijón
+Tenerife,Tenerife
+Ibiza,UD Ibiza
+Villarreal,Villarreal B
+AIK,AIK
+Häcken,BK Hacken
+Degerfors,Degerfors IF
+Djurgårdens,Djurgårdens IF
+Djurgårdens,Djurgardens IF
+Sundsvall,GIF Sundsvall
+Hammarby,Hammarby
+Hammarby,Hammarby IF
+Helsingborgs,Helsingborgs IF
+Elfsborg,IF Elfsborg
+Göteborg,IFK Goteborg
+Norrköping,IFK Norrkoping
+Värnamo,IFK Värnamo
+Sirius,IK Sirius
+Kalmar,Kalmar FF
+Malmö FF,Malmo FF
+Mjällby,Mjallby
+Mjällby,Mjällby AIF
+Varbergs BoIS,Varbergs BoIS FC
+Varbergs BoIS,Varbergs BoIS
+Basel,Basel
+Basel,FC Basel
+Lugano,FC Lugano
+Luzern,FC Luzern
+Sion,FC Sion
+FC Zurich,FC Zurich
+Grasshoppers,Grasshoppers Zürich
+Grasshoppers,Grasshopper Zürich
+Servette,Servette
+St. Gallen,St Gallen
+St. Gallen,FC St Gallen
+Winterthur,Winterthur
+Winterthur,FC Winterthur
+Young Boys,BSC Young Boys
+Young Boys,Young Boys
+Adana Demirspor,Adana Demirspor
+Alanyaspor,Alanyaspor
+Ankaragücü,Ankaragucu
+Ankaragücü,Ankaragücü
+Antalyaspor,Antalyaspor
+Beşiktaş,Besiktas JK
+Beşiktaş,Besiktas
+Fatih Karagümrük,Fatih Karagümrük
+Fenerbahçe,Fenerbahce
+Galatasaray,Galatasaray
+Gaziantep,Gazişehir Gaziantep
+Gaziantep,Gazisehir Gaziantep
+Giresunspor,Giresunspor
+Hatayspor,Hatayspor
+İstanbul Başakşehir,Istanbul Basaksehir
+İstanbul Başakşehir,Basaksehir
+İstanbulspor,Istanbulspor
+Kasımpaşa,Kasimpasa
+Kasımpaşa,Kasimpasa SK
+Kayserispor,Kayserispor
+Konyaspor,Konyaspor
+Konyaspor,Torku Konyaspor
+Sivasspor,Sivasspor
+Trabzonspor,Trabzonspor
+Ümraniyespor,Ümraniyespor
+Ümraniyespor,Umraniyespor
+,AEK Athens
+,Aris Salonika
+,Asteras Tripolis
+,Atromitos
+,Giannina
+,Ionikos FC
+,Lamia
+,Levadiakos
+,OFI Crete
+,Olympiacos
+,PAOK Salonika
+,Panathinaikos
+,Panetolikos
+,Volos NFC
+,Avispa Fukuoka
+,Cerezo Osaka
+,Consadole Sapporo
+,FC Tokyo
+,Gamba Osaka
+,Jubilo Iwata
+,Kashima Antlers
+,Kashiwa Reysol
+,Kawasaki Frontale
+,Kyoto Purple Sanga
+,Nagoya Grampus Eight
+,Sagan Tosu
+,Sanfrecce Hiroshima
+,Shimizu S-Pulse
+,Shonan Bellmare
+,Urawa Red Diamonds
+,Vissel Kobe
+,Yokohama F. Marinos
+Adelaide United,Adelaide United
+Brisbane Roar,Brisbane Roar
+Central Coast Mariners,Central Coast Mariners
+Macarthur,Macarthur FC
+Melbourne City FC,Melbourne City
+Melbourne Victory,Melbourne Victory
+Newcastle Jets,Newcastle Jets
+Newcastle Jets,Newcastle Jets FC
+Perth Glory,Perth Glory
+Sydney FC,Sydney FC
+Wellington Phoenix,Wellington Phoenix FC
+Wellington Phoenix,Wellington Phoenix
+Western Sydney Wanderers,Western Sydney FC
+Western Sydney Wanderers,Western Sydney Wanderers
+Western United,Western United FC
+Western United,Western United
+,Atlanta United FC
+,Austin FC
+,Charlotte FC
+,Chicago Fire
+,Colorado Rapids
+,Columbus Crew
+,DC United
+,FC Cincinnati
+,FC Dallas
+,Houston Dynamo
+,Inter Miami CF
+,Los Angeles FC
+,Los Angeles Galaxy
+,Minnesota United FC
+,Montreal Impact
+,Nashville SC
+,New England Revolution
+,New York City FC
+,New York Red Bulls
+,Orlando City SC
+,Philadelphia Union
+,Portland Timbers
+,Real Salt Lake
+,San Jose Earthquakes
+,Seattle Sounders FC
+,Sporting Kansas City
+,Toronto FC
+,Vancouver Whitecaps
+Atlas,Atlas
+San Luis,Atlético San Luis
+Club América,Club América
+Club América,América
+Cruz Azul,Cruz Azul
+Juárez,FC Juárez
+Guadalajara,Guadalajara
+León,León
+Mazatlán,Mazatlán FC
+Monterrey,Monterrey
+Necaxa,Necaxa
+Pachuca,Pachuca
+Puebla,Puebla
+Pumas UNAM,Pumas
+Pumas UNAM,Pumas Unam
+Querétaro,Querétaro
+Santos Laguna,Santos Laguna
+Tigres UANL,Tigres UANL
+Tigres UANL,Tigres
+Club Tijuana,Tijuana
+Toluca,Toluca
+Beijing Guoan,Beijing Sinobo Guoan FC
+Beijing Guoan,Beijing Guoan
+,Chongqing Lifan
+Dalian Pro,Dalian Aerbin
+Dalian Pro,Dalian Professional
+Guangzhou,Guangzhou Evergrande Taobao FC
+Guangzhou,Guangzhou Evergrande
+Guangzhou City,Guangzhou R&F FC
+Guangzhou City,Guangzhou RF
+,Guizhou Renhe
+Hebei CFFC,Hebei China Fortune FC
+Henan Jianye,Henan Jianye
+Henan Jianye,Henan Jianye FC
+,Jiangsu Suning FC
+Shandong Luneng,Shandong Luneng Taishan FC
+Shandong Luneng,Shandong Luneng
+Shanghai Shenhua,Shanghai Greenland
+Shanghai Shenhua,Shanghai Greenland Shenhua FC
+Shanghai Port,Shanghai SIPG FC
+Shanghai Port,Shanghai SIPG
+Shenzhen FC,Shenzhen FC
+,Tianjin Quanujian
+Tianjin Teda,Tianjin Jinmen Tiger FC
+Tianjin Teda,Tianjin Teda
+Wuhan Zall,Wuhan Zall
+Wuhan Zall,Wuhan Yangtze River FC
+,AmaZulu
+,Black Aces
+,Chippa United
+,Golden Arrows
+,Kaizer Chiefs
+,Mamelodi Sundowns
+,Maritzburg Utd
+,Moroka Swallows
+,Orlando Pirates
+,Richards Bay
+,Royal AM
+,Sekhukhune United
+,Stellenbosch FC
+,SuperSport United
+,TS Galaxy
+,Tshakhuma Tsha Madzivhandila
+,América Mineiro
+,Atletico Mineiro
+,Atlético Goianiense
+,Atlético Paranaense
+,Avaí
+,Botafogo
+,Bragantino
+,Ceará
+,Corinthians
+,Coritiba
+,Cuiaba
+,Flamengo
+,Fluminense
+,Fortaleza
+,Goiás
+,Internacional
+,Juventude
+,Palmeiras
+,Santos
+,São Paulo
+,Arizona United
+,Atlanta United 2
+,Birmingham Legion FC
+,Charleston Battery
+,Colorado Springs Switchbacks FC
+,Detroit City FC
+,El Paso Locomotive FC
+,Hartford Athletic
+,Indy Eleven
+,LA Galaxy II
+,Las Vegas Lights FC
+,Loudoun United FC
+,Louisville City FC
+,Memphis 901 FC
+,Miami FC
+,Monterey Bay
+,New Mexico United
+,New York Red Bulls II
+,Oakland Roots
+,Orange County SC
+,Pittsburgh Riverhounds
+,Rio Grande Valley FC Toros
+,Sacramento Republic FC
+,San Antonio FC
+,San Diego Loyal SC
+,Tampa Bay Rowdies
+,Tulsa Roughnecks
+Bournemouth,AFC Bournemouth
+Bournemouth,Bournemouth
+Arsenal,Arsenal
+Aston Villa,Aston Villa
+Brentford,Brentford
+Brighton,Brighton and Hove Albion
+Chelsea,Chelsea
+Crystal Palace,Crystal Palace
+Everton,Everton
+Fulham,Fulham
+Leeds United,Leeds United
+Leicester City,Leicester City
+Liverpool,Liverpool
+Man City,Manchester City
+Man United,Manchester United
+Newcastle,Newcastle
+Newcastle,Newcastle United
+Nottm Forest,Nottingham Forest
+Reading,Reading
+Southampton,Southampton
+Tottenham,Tottenham Hotspur
+West Ham,West Ham United
+Wolves,Wolverhampton Wanderers
+Wolves,Wolverhampton
+Birmingham,Birmingham City
+Birmingham,Birmingham
+Blackburn Rovers,Blackburn
+Blackburn Rovers,Blackburn Rovers
+Blackpool,Blackpool
+Bristol City,Bristol City
+Burnley,Burnley
+Cardiff City,Cardiff City
+Coventry,Coventry City
+Huddersfield,Huddersfield Town
+Hull City,Hull City
+Luton Town,Luton Town
+Middlesbrough,Middlesbrough
+Millwall,Millwall
+Norwich City,Norwich City
+Preston,Preston North End
+QPR,Queens Park Rangers
+Rotherham,Rotherham United
+Sheffield United,Sheffield United
+Stoke City,Stoke City
+Sunderland,Sunderland
+Swansea,Swansea City
+Watford,Watford
+West Brom,West Bromwich
+West Brom,West Bromwich Albion
+Wigan,Wigan Athletic
+Wigan,Wigan
+Accrington Stanley,Accrington Stanley
+Barnsley,Barnsley
+Bolton,Bolton
+Bristol Rovers,Bristol Rovers
+Burton,Burton Albion
+Cambridge United,Cambridge United
+Charlton,Charlton Athletic
+Cheltenham,Cheltenham Town
+Cheltenham,Cheltenham
+Derby County,Derby County
+Exeter City,Exeter City
+Fleetwood,Fleetwood Town
+Forest Green,Forest Green Rovers
+Ipswich Town,Ipswich Town
+Lincoln City,Lincoln City
+MK Dons,Milton Keynes Dons
+Morecambe,Morecambe
+Oxford Utd,Oxford United
+Peterborough,Peterborough United
+Plymouth Argyle,Plymouth Argyle
+Port Vale,Port Vale
+Portsmouth,Portsmouth
+Sheffield Wednesday,Sheffield Wednesday
+Shrewsbury,Shrewsbury Town
+Wycombe,Wycombe Wanderers
+AFC Wimbledon,AFC Wimbledon
+Barrow,Barrow
+Bradford City,Bradford City
+Carlisle,Carlisle United
+Colchester,Colchester United
+Crawley Town,Crawley Town
+Crewe Alexandra,Crewe Alexandra
+Doncaster,Doncaster Rovers
+Gillingham,Gillingham
+Grimsby Town,Grimsby Town
+Harrogate Town,Harrogate Town
+Hartlepool,Hartlepool United
+Hartlepool,Hartlepool
+Leyton Orient,Leyton Orient
+Mansfield Town,Mansfield Town
+Newport County,Newport County
+Northampton Town,Northampton Town
+Rochdale,Rochdale
+Salford City,Salford City
+Stevenage,Stevenage
+Stockport,Stockport County FC
+Stockport,Stockport County
+Sutton United,Sutton United
+Swindon Town,Swindon Town
+Tranmere,Tranmere Rovers
+Walsall,Walsall
+Aberdeen,Aberdeen
+Celtic,Celtic
+Dundee United,Dundee Utd
+Dundee United,Dundee United
+Hearts,Hearts
+Hibernian,Hibernian
+Kilmarnock,Kilmarnock
+Livingston,Livingston
+Motherwell,Motherwell
+Rangers,Rangers
+Ross County,Ross County
+St. Johnstone,St Johnstone
+St. Mirren,St Mirren
+,Aldosivi
+,Argentinos Juniors
+,Arsenal Sarandi
+,Atlético Tucumán
+,Banfield
+,Barracas Central
+,Boca Juniors
+,CA Independiente
+,Central Córdoba Santiago del Estero
+,Colon Santa Fe
+,Defensa y Justicia
+,Estudiantes
+,Gimnasia La Plata
+,Godoy Cruz
+,Huracán
+,Lanus
+,Newell's Old Boys
+,Patronato
+,Platense
+,Racing Club
+,River Plate
+,Rosario Central
+,San Lorenzo
+,Sarmiento
+,Talleres de Córdoba
+,Tigre
+,Union Santa Fe
+,Velez Sarsfield
+,Arsenal Women
+,Chelsea FC Women
+,Everton Ladies
+,Leicester City WFC
+,Liverpool Women
+,Manchester City Women
+,Manchester United Women
+,Tottenham Women
+,West Ham United Ladies
+,Angel City FC
+,Chicago Red Stars
+,Houston Dash
+,Kansas City
+,North Carolina FC
+,Orlando Pride
+,Portland Thorns
+,Racing Louisville FC
+,San Diego Wave FC
+,Seattle Reign FC
+,Sky Blue FC
+,Washington Spirit

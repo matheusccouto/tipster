@@ -5,8 +5,8 @@ SELECT
     league.tipster AS league_name,
     league.country AS league_country,
     odd.commence_time AS start_at,
-    home.tipster AS home,
-    away.tipster AS away,
+    home.new AS home,
+    away.new AS away,
     odd.bookmaker_key,
     book.name AS bookmaker_name,
     book.url AS bookmaker_url,
@@ -20,5 +20,5 @@ FROM
     {{ source ('theoddsapi', 'odds') }} AS odd
 LEFT JOIN {{ ref("league") }} AS league ON odd.sport_key = league.theoddsapi
 LEFT JOIN {{ ref("bookmaker") }} AS book ON odd.bookmaker_key = book.key
-LEFT JOIN {{ ref("club") }} AS home ON odd.home_team = home.theoddsapi
-LEFT JOIN {{ ref("club") }} AS away ON odd.away_team = away.theoddsapi
+LEFT JOIN {{ ref("club") }} AS home ON odd.home_team = home.old
+LEFT JOIN {{ ref("club") }} AS away ON odd.away_team = away.old
