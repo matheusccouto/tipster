@@ -10,7 +10,7 @@ SELECT
   m.start_at,
   m.league_id,
   m.league_name,
-  m.league_emoji,
+  flag.emoji AS flag_emoji,
   m.home,
   m.away,
   m.bookmaker_key,
@@ -36,6 +36,7 @@ FROM
   match AS m
   INNER JOIN {{ ref("user_bookmaker") }} AS ubk ON m.bookmaker_key = ubk.bookmaker
   LEFT JOIN {{ ref("user_ev") }} AS uev ON ubk.user = uev.user
+  LEFT JOIN {{ ref("flag") }} AS flag ON m.league_country = flag.country
 WHERE
   m.ev >= uev.ev
 QUALIFY ROW_NUMBER() OVER (PARTITION BY m.id, ubk.user ORDER BY m.ev DESC) = 1

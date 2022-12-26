@@ -57,10 +57,9 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
             body = (
                 f"{row['1']} {row['x']} {row['2']}\n"
                 f"{row['bookmaker_name']} {row['price']}"
-                # f"\nEV = {100 * row['ev']:.1f}%"
             )
 
-            header = emojize(f"{row['league_emoji']} {row['date']}")
+            header = emojize(f"{row['league_emoji']} {row['league_name']} {row['date']}")
 
             bot.sendMessage(
                 chat_id=os.getenv("TELEGRAM_CHAT_ID"),
