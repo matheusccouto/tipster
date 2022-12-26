@@ -6,21 +6,21 @@ models:
     columns:
       - name: home
         description: Home team name
-        # tests:
-        #   - not_null
+        tests:
+          - not_null
       - name: away
         description: Away team name
-        # tests:
-        #   - not_null
+        tests:
+          - not_null
 
   - name: stg_odds
     description: The Odds API lines
     columns:
       - name: home
         description: Home team name
-        # tests:
-        #   - not_null
+        tests:
+          - not_null
       - name: away
         description: Away team name
-        # tests:
-        #   - not_null
+        tests:
+          - not_null
