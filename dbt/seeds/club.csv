@@ -468,34 +468,34 @@ Western Sydney Wanderers,Western Sydney FC
 Western Sydney Wanderers,Western Sydney Wanderers
 Western United,Western United FC
 Western United,Western United
-,Atlanta United FC
-,Austin FC
-,Charlotte FC
-,Chicago Fire
-,Colorado Rapids
-,Columbus Crew
-,DC United
-,FC Cincinnati
-,FC Dallas
-,Houston Dynamo
-,Inter Miami CF
-,Los Angeles FC
-,Los Angeles Galaxy
-,Minnesota United FC
-,Montreal Impact
-,Nashville SC
-,New England Revolution
-,New York City FC
-,New York Red Bulls
-,Orlando City SC
-,Philadelphia Union
-,Portland Timbers
-,Real Salt Lake
-,San Jose Earthquakes
-,Seattle Sounders FC
-,Sporting Kansas City
-,Toronto FC
-,Vancouver Whitecaps
+Atlanta United,Atlanta United FC
+Austin,Austin FC
+Charlotte,Charlotte FC
+Chicago Fire,Chicago Fire
+Colorado Rapids,Colorado Rapids
+Columbus Crew,Columbus Crew
+DC United,DC United
+Cincinnati,FC Cincinnati
+Dallas,FC Dallas
+Houston Dynamo,Houston Dynamo
+Inter Miami,Inter Miami CF
+LAFC,Los Angeles FC
+LA Galaxy,Los Angeles Galaxy
+Minnesota United,Minnesota United FC
+Montreal Impact,Montreal Impact
+Nashville,Nashville SC
+New England Revolution,New England Revolution
+New York City,New York City FC
+New York Red Bulls,New York Red Bulls
+Orlando City,Orlando City SC
+Philadelphia Union,Philadelphia Union
+Portland Timbers,Portland Timbers
+Real Salt Lake,Real Salt Lake
+San Jose Earthquakes,San Jose Earthquakes
+Seattle Sounders,Seattle Sounders FC
+Sporting Kansas City,Sporting Kansas City
+Toronto,Toronto FC
+Vancouver Whitecaps,Vancouver Whitecaps
 Atlas,Atlas
 San Luis,Atlético San Luis
 Club América,Club América
@@ -519,18 +519,18 @@ Club Tijuana,Tijuana
 Toluca,Toluca
 Beijing Guoan,Beijing Sinobo Guoan FC
 Beijing Guoan,Beijing Guoan
-,Chongqing Lifan
+Chongqing Liangjiang,Chongqing Lifan
 Dalian Pro,Dalian Aerbin
 Dalian Pro,Dalian Professional
 Guangzhou,Guangzhou Evergrande Taobao FC
 Guangzhou,Guangzhou Evergrande
 Guangzhou City,Guangzhou R&F FC
 Guangzhou City,Guangzhou RF
-,Guizhou Renhe
+Beijing Renhe,Guizhou Renhe
 Hebei CFFC,Hebei China Fortune FC
 Henan Jianye,Henan Jianye
 Henan Jianye,Henan Jianye FC
-,Jiangsu Suning FC
+Jiangsu,Jiangsu Suning FC
 Shandong Luneng,Shandong Luneng Taishan FC
 Shandong Luneng,Shandong Luneng
 Shanghai Shenhua,Shanghai Greenland
@@ -538,74 +538,74 @@ Shanghai Shenhua,Shanghai Greenland Shenhua FC
 Shanghai Port,Shanghai SIPG FC
 Shanghai Port,Shanghai SIPG
 Shenzhen FC,Shenzhen FC
-,Tianjin Quanujian
+Tianjin Quanjian,Tianjin Quanujian
 Tianjin Teda,Tianjin Jinmen Tiger FC
 Tianjin Teda,Tianjin Teda
 Wuhan Zall,Wuhan Zall
 Wuhan Zall,Wuhan Yangtze River FC
-,AmaZulu
-,Black Aces
-,Chippa United
-,Golden Arrows
-,Kaizer Chiefs
-,Mamelodi Sundowns
-,Maritzburg Utd
-,Moroka Swallows
-,Orlando Pirates
-,Richards Bay
-,Royal AM
-,Sekhukhune United
-,Stellenbosch FC
-,SuperSport United
-,TS Galaxy
-,Tshakhuma Tsha Madzivhandila
-,América Mineiro
-,Atletico Mineiro
-,Atlético Goianiense
-,Atlético Paranaense
-,Avaí
-,Botafogo
-,Bragantino
-,Ceará
-,Corinthians
-,Coritiba
-,Cuiaba
-,Flamengo
-,Fluminense
-,Fortaleza
-,Goiás
-,Internacional
-,Juventude
-,Palmeiras
-,Santos
-,São Paulo
-,Arizona United
-,Atlanta United 2
-,Birmingham Legion FC
-,Charleston Battery
-,Colorado Springs Switchbacks FC
-,Detroit City FC
-,El Paso Locomotive FC
-,Hartford Athletic
-,Indy Eleven
-,LA Galaxy II
-,Las Vegas Lights FC
-,Loudoun United FC
-,Louisville City FC
-,Memphis 901 FC
-,Miami FC
-,Monterey Bay
-,New Mexico United
-,New York Red Bulls II
-,Oakland Roots
-,Orange County SC
-,Pittsburgh Riverhounds
-,Rio Grande Valley FC Toros
-,Sacramento Republic FC
-,San Antonio FC
-,San Diego Loyal SC
-,Tampa Bay Rowdies
-,Tulsa Roughnecks
+AmaZulu,AmaZulu
+Black Aces,Black Aces
+Chippa United,Chippa United
+Golden Arrows,Golden Arrows
+Kaizer Chiefs,Kaizer Chiefs
+Mamelodi Sundowns,Mamelodi Sundowns
+Maritzburg United,Maritzburg Utd
+Swallows,Moroka Swallows
+Orlando Pirates,Orlando Pirates
+Richards Bay,Richards Bay
+Royal AM,Royal AM
+Sekhukhune United,Sekhukhune United
+Stellenbosch,Stellenbosch FC
+SuperSport United,SuperSport United
+TS Galaxy,TS Galaxy
+TTM,Tshakhuma Tsha Madzivhandila
+América-MG,América Mineiro
+Atletico-MG,Atletico Mineiro
+Atlético-GO,Atlético Goianiense
+Athletico-PR,Atlético Paranaense
+Avaí,Avaí
+Botafogo,Botafogo
+Bragantino,Bragantino
+Ceará,Ceará
+Corinthians,Corinthians
+Coritiba,Coritiba
+Cuiabá,Cuiaba
+Flamengo,Flamengo
+Fluminense,Fluminense
+Fortaleza,Fortaleza
+Goiás,Goiás
+Internacional,Internacional
+Juventude,Juventude
+Palmeiras,Palmeiras
+Santos,Santos
+São Paulo,São Paulo
+Arizona United,Arizona United
+Atlanta United 2,Atlanta United 2
+Birmingham Legion,Birmingham Legion FC
+Charleston Battery,Charleston Battery
+Colorado Springs Switchbacks,Colorado Springs Switchbacks FC
+Detroit City,Detroit City FC
+El Paso Locomotive,El Paso Locomotive FC
+Hartford Athletic,Hartford Athletic
+Indy Eleven,Indy Eleven
+LA Galaxy II,LA Galaxy II
+Las Vegas Lights,Las Vegas Lights FC
+Loudoun United,Loudoun United FC
+Louisville City,Louisville City FC
+Memphis 901,Memphis 901 FC
+Miami,Miami FC
+Monterey Bay,Monterey Bay
+New Mexico United,New Mexico United
+New York Red Bulls II,New York Red Bulls II
+Oakland Roots,Oakland Roots
+Orange County,Orange County SC
+Pittsburgh Riverhounds,Pittsburgh Riverhounds
+Rio Grande Valley Toros,Rio Grande Valley FC Toros
+Sacramento Republic,Sacramento Republic FC
+San Antonio,San Antonio FC
+San Diego Loyal,San Diego Loyal SC
+Tampa Bay Rowdies,Tampa Bay Rowdies
+Tulsa Roughnecks,Tulsa Roughnecks
 Bournemouth,AFC Bournemouth
 Bournemouth,Bournemouth
 Arsenal,Arsenal
