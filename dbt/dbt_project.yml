@@ -26,7 +26,7 @@ snapshots:
         check_cols: all
     tipster:
       +target_schema: tipster
-      dim_bets:
+      fct_h2h:
         strategy: check
         unique_key: id || ' - '  || bookmaker_key || ' - ' || user
         check_cols: all

@@ -15,10 +15,10 @@ SELECT
     odd.price_home_team AS price_home,
     odd.price_draw,
     odd.price_away_team AS price_away,
-    odd.loaded_at,
+    odd.loaded_at
 FROM
     {{ source ('theoddsapi', 'odds') }} AS odd
-    LEFT JOIN {{ ref("league") }} AS league ON odd.sport_key = league.theoddsapi
-    LEFT JOIN {{ ref("bookmaker") }} AS book ON odd.bookmaker_key = book.key
-    LEFT JOIN {{ ref("club") }} AS home ON odd.home_team = home.theoddsapi
-    LEFT JOIN {{ ref("club") }} AS away ON odd.away_team = away.theoddsapi
+LEFT JOIN {{ ref("league") }} AS league ON odd.sport_key = league.theoddsapi
+LEFT JOIN {{ ref("bookmaker") }} AS book ON odd.bookmaker_key = book.key
+LEFT JOIN {{ ref("club") }} AS home ON odd.home_team = home.theoddsapi
+LEFT JOIN {{ ref("club") }} AS away ON odd.away_team = away.theoddsapi

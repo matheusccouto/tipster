@@ -9,7 +9,7 @@ on:
 
     paths:
       - stackoverflow/**
-      - .github/workflows/deploy-stackoverflow.yml
+      - .github/workflows/stackoverflow-deploy.yml
 
 jobs:
   deploy:

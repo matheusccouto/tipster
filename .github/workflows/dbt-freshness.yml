@@ -1,12 +1,12 @@
-name: Snapshot
+name: dbt Freshness
 
 on:
   schedule:
-    - cron:  30 * * * *
+    - cron:  15 */12 * * *
   workflow_dispatch:
 
 jobs:
-  snapshot:
+  freshness:
     strategy:
       fail-fast: false
       matrix:
@@ -40,5 +40,5 @@ jobs:
         working-directory: dbt
 
       - name: Freshness
-        run: dbt snapshot
+        run: dbt source freshness
         working-directory: dbt

@@ -1,0 +1,43 @@
+name: dbt Linting
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+
+    paths:
+      - dbt/**
+      - .github/workflows/dbt-linting.yml
+
+jobs:
+  dbt:
+    runs-on: ubuntu-latest
+    environment: ${{ github.REF_NAME }}
+
+    env:
+      DBT_PROFILES_DIR: "."
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Authenticate GCP
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCP_KEYFILE }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      - name: Install requirements
+        run: |
+          pip install --upgrade pip wheel
+          pip install -r requirements.txt -r requirements-dev.txt
+        working-directory: dbt
+
+      - name: Lint
+        run: sqlfluff lint
+        working-directory: dbt

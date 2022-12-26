@@ -28,7 +28,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         SELECT
             *
         FROM
-            tipster.dim_bets_new
+            tipster.fct_h2h_new
         WHERE
             user = 'tipster'
         ORDER BY
@@ -56,15 +56,16 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
 
             body = (
                 f"{row['1']} {row['x']} {row['2']}\n"
-                f"{row['bookmaker_name']} {row['price']}"
+                f"<a href=\"{row['bookmaker_url']}\">{row['bookmaker_name']}</a> {row['price']}"
             )
 
-            header = emojize(f"{row['league_emoji']} {row['league_name']} {row['date']}")
+            header = emojize(f"{row['flag_emoji']} {row['league_name']} {row['date']}")
 
             bot.sendMessage(
                 chat_id=os.getenv("TELEGRAM_CHAT_ID"),
                 text=f"{header}\n{body}",
                 parse_mode="html",
+                disable_web_page_preview=True,
             )
 
         sent = group[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
