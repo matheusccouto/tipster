@@ -55,8 +55,8 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         for _, row in group.iterrows():
 
             body = (
-                f"{row['1']} {row['x']} {row['2']}"
-                f" @ {row['bookmaker_name']} {row['price']}"
+                f"{row['1']} {row['x']} {row['2']}\n"
+                f"{row['bookmaker_name']} {row['price']}"
                 # f"\nEV = {100 * row['ev']:.1f}%"
             )
 
