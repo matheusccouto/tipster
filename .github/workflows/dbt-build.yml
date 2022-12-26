@@ -57,3 +57,21 @@ jobs:
         with:
           branch: github-pages
           folder: dbt/docs
+
+      - name: Generate Docs
+        if: ${{ github.REF_NAME == 'main' }}
+        run: |
+          dbt docs generate
+          mkdir docs
+          cp target/catalog.json docs/catalog.json
+          cp target/manifest.json docs/manifest.json
+          cp target/run_results.json docs/run_results.json
+          cp target/index.html docs/index.html
+        working-directory: dbt
+
+      - name: Deploy Github Pages
+        if: ${{ github.REF_NAME == 'main' }}
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: github-pages
+          folder: dbt/docs
