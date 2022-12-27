@@ -4,11 +4,10 @@ on:
   push:
     branches:
       - main
-      - dev
 
     paths:
       - dbt/**
-      - .github/workflows/dbt-build.yml
+      - .github/workflows/dbt-docs.yml
 
 jobs:
   dbt:
@@ -36,6 +35,18 @@ jobs:
         run: pip install -r requirements.txt
         working-directory: dbt
 
-      - name: Build
-        run: dbt build
+      - name: Generate Docs
+        run: |
+          dbt docs generate
+          mkdir docs
+          cp target/catalog.json docs/catalog.json
+          cp target/manifest.json docs/manifest.json
+          cp target/run_results.json docs/run_results.json
+          cp target/index.html docs/index.html
         working-directory: dbt
+
+      - name: Deploy Github Pages
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: github-pages
+          folder: dbt/docs
