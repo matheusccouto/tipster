@@ -1,0 +1,44 @@
+name: dbt Test
+
+on:
+  schedule:
+    - cron:  45 */12 * * *
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        env:
+          - main
+          # - dev
+
+    runs-on: ubuntu-latest
+    environment: ${{ matrix.env }}
+
+    env:
+      DBT_PROFILES_DIR: "."
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - id: auth
+        name: Authenticate Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_KEYFILE }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      - name: Install Requirements
+        run: pip install -r requirements.txt
+        working-directory: dbt
+
+      - name: Test
+        run: dbt test
+        working-directory: dbt

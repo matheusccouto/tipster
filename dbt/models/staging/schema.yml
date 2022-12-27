@@ -17,7 +17,7 @@ models:
     description: The Odds API lines
     tests:
       - relationships:
-          column_name: date(start_at) || ' ' || league_id || ' ' || home || ' x ' || away
+          column_name: date(start_at, 'America/Los_Angeles') || ' ' || league_id || ' ' || home || ' x ' || away
           to: ref('stg_spi')
           field: date || ' ' || league_id || ' ' || home || ' x ' || away
           config:

@@ -21,7 +21,7 @@ ev AS (
         odds
     INNER JOIN
         {{ ref("stg_spi") }} AS spi
-        ON date(odds.start_at) = spi.date
+        ON date(odds.start_at, 'America/Los_Angeles') = spi.date
             AND odds.league_id = spi.league_id
             AND odds.home = spi.home
             AND odds.away = spi.away
