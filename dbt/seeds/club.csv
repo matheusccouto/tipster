@@ -22,6 +22,7 @@ Eupen,Eupen
 Genk,Genk
 Gent,Gent
 Gent,KAA Gent
+Gent,AA Gent
 Kortrijk,KV Kortrijk
 Mechelen,KV Mechelen
 Oostende,KV Oostende
@@ -198,6 +199,7 @@ Empoli,Empoli
 Fiorentina,Fiorentina
 Inter,Internazionale Milano
 Inter,Internazionale
+Inter,Inter Milan
 Juventus,Juventus
 Lazio,Lazio
 Lecce,Lecce
@@ -237,6 +239,7 @@ Ternana,Ternana
 Aalesund,Aalesund
 Bodø/Glimt,Bodo/Glimt
 Bodø/Glimt,Bodø/Glimt
+Bodø/Glimt,FK Bodø/Glimt
 Jerv,FK Jerv
 HamKam,HamKam
 HamKam,Hamarkamaratene
@@ -244,8 +247,8 @@ Haugesund,Haugesund
 Kristiansund,Kristiansund BK
 Lillestrom,Lillestrom
 Molde,Molde
-Odds BK,Odds BK
-Odds BK,Odd BK
+Odd,Odds BK
+Odd,Odd BK
 Rosenborg,Rosenborg
 Sandefjord,Sandefjord
 Sarpsborg,Sarpsborg FK
@@ -255,6 +258,9 @@ Tromso,Tromso
 Vålerenga,Valerenga
 Vålerenga,Vålerenga
 Viking,Viking FK
+Brann,SK Brann
+Stabæk,Stabaek
+Halmstad,Halmstads BK
 Benfica,Benfica
 Boavista,Boavista Porto
 Boavista,Boavista
@@ -543,6 +549,12 @@ Tianjin Teda,Tianjin Jinmen Tiger FC
 Tianjin Teda,Tianjin Teda
 Wuhan Zall,Wuhan Zall
 Wuhan Zall,Wuhan Yangtze River FC
+Shijiazhuang Ever Bright,Cangzhou Mighty Lions
+Changchun Yatai,Changchun Yatai
+Chengdu Rongcheng,Chengdu Rongcheng FC
+Meizhou Hakka,Meizhou Hakka
+Wuhan Three Towns,Wuhan Three Towns
+Hangzhou Greentown,Zhejiang
 AmaZulu,AmaZulu
 Black Aces,Black Aces
 Chippa United,Chippa United
@@ -770,3 +782,12 @@ San Diego Wave,San Diego Wave FC
 Seattle Reign,Seattle Reign FC
 NJ/NY Gotham,Sky Blue FC
 Washington Spirit,Washington Spirit
+AEK Larnaca,AEK Larnaca
+CFR Cluj,CFR Cluj
+Lech Poznań,Lech Poznań
+Ludogorets,Ludogorets
+Partizan Belgrade,Partizan Belgrade
+Qarabağ,Qarabağ
+Dnipro-1,SK Dnipro-1
+Sheriff,Sheriff Tiraspol
+Shakhtar Donetsk,Shakhtar Donetsk
