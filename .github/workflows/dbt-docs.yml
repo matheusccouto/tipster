@@ -1,4 +1,4 @@
-name: dbt Build
+name: dbt Docs
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
       - .github/workflows/dbt-docs.yml
 
 jobs:
-  dbt:
+  docs:
     runs-on: ubuntu-latest
     environment: ${{ github.REF_NAME }}
 
