@@ -15,6 +15,13 @@ models:
 
   - name: stg_odds
     description: The Odds API lines
+    tests:
+      - relationships:
+          column_name: date(start_at) || ' ' || league_id || ' ' || home || ' x ' || away
+          to: ref('stg_spi')
+          field: date || ' ' || league_id || ' ' || home || ' x ' || away
+          config:
+            where: start_at > current_timestamp() and start_at <= timestamp_add(current_timestamp(), interval 7 day)
     columns:
       - name: home
         description: Home team name
