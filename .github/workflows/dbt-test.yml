@@ -2,7 +2,7 @@ name: dbt Test
 
 on:
   schedule:
-    - cron:  45 */12 * * *
+    - cron:  0 3,15 * * *
   workflow_dispatch:
 
 jobs:

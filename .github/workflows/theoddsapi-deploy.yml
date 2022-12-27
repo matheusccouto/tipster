@@ -30,7 +30,7 @@ jobs:
         run: |
           gcloud scheduler jobs update pubsub theoddsapi \
             --location=us-east4 \
-            --schedule="0 12 * * *" \
+            --schedule="59 2,14 * * *" \
             --time-zone="America/Sao_Paulo" \
             --topic=theoddsapi \
             --message-body="foo"
@@ -43,7 +43,7 @@ jobs:
           source_dir: theoddsapi
           entry_point: handler
           memory_mb: 512
-          timeout: 540
+          timeout: 60
           region: us-east4
           service_account_email: extract-transform-load@${{ steps.auth.outputs.project_id }}.iam.gserviceaccount.com
           event_trigger_type: providers/cloud.pubsub/eventTypes/topic.publish
