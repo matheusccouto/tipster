@@ -1,7 +1,7 @@
 WITH odds AS (
     SELECT *
     FROM
-        {{ ref("stg_odds") }} AS odds
+        {{ ref("stg_odds") }}
     WHERE
         start_at > current_timestamp()
         AND market_key = 'h2h'
@@ -68,4 +68,5 @@ LEFT JOIN {{ ref("user_ev") }} AS uev ON ubk.user = uev.user
 LEFT JOIN {{ ref("flag") }} AS flag ON bets.league_country = flag.country
 WHERE
     bets.ev >= uev.ev
-QUALIFY row_number() OVER (PARTITION BY bets.id, ubk.user ORDER BY bets.ev DESC) = 1
+QUALIFY
+    row_number() OVER (PARTITION BY bets.id, ubk.user ORDER BY bets.ev DESC) = 1
