@@ -43,6 +43,7 @@ jobs:
           source_dir: stackoverflow
           entry_point: handler
           memory_mb: 512
+          timeout: 540
           region: us-east4
           service_account_email: extract-transform-load@${{ steps.auth.outputs.project_id }}.iam.gserviceaccount.com
           event_trigger_type: providers/cloud.pubsub/eventTypes/topic.publish
