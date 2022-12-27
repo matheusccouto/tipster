@@ -54,23 +54,23 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
 
         for _, row in group.iterrows():
 
+            header = emojize(f"{row['flag_emoji']} {row['league_name']} {row['date']}")
             body = (
                 f"{row['1']} {row['x']} {row['2']}\n"
                 f"<a href=\"{row['bookmaker_url']}\">{row['bookmaker_name']}</a> {row['price']}"
             )
-
-            header = emojize(f"{row['flag_emoji']} {row['league_name']} {row['date']}")
 
             bot.sendMessage(
                 chat_id=os.getenv("TELEGRAM_CHAT_ID"),
                 text=f"{header}\n{body}",
                 parse_mode="html",
                 disable_web_page_preview=True,
+                timeout=30,
             )
 
-        sent = group[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
-        sent["sent_at"] = datetime.now()
-        sent.to_gbq("tipster.sent", if_exists="append")
+            sent = row[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
+            sent["sent_at"] = datetime.now()
+            sent.to_gbq("tipster.sent", if_exists="append")
 
     return {"statusCode": 200}
 
