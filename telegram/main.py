@@ -68,9 +68,9 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
                 timeout=30,
             )
 
-            sent = row[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
-            sent["sent_at"] = datetime.now()
-            sent.to_frame().transpose().to_gbq("tipster.sent", if_exists="append")
+        sent = group[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
+        sent["sent_at"] = datetime.now()
+        sent.to_gbq("tipster.sent", if_exists="append")
 
     return {"statusCode": 200}
 
