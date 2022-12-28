@@ -36,8 +36,8 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """
     data = pd.read_gbq(query=query)
 
-    for (user, date), group in data.groupby(["user", "date"], sort=False):
-        sleep(0.334)
+    for (user, _, _), group in data.groupby(["user", "date", "league_id"], sort=False):
+        # sleep(1)
 
         bot.sendMessage(
             chat_id=os.getenv("TELEGRAM_CHAT_ID"),
