@@ -31,12 +31,10 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
             tipster.fct_tips
         WHERE
             user = 'tipster'
-        ORDER BY
-            start_at
     """
     data = pd.read_gbq(query=query)
 
-    for (user, _, _), group in data.groupby(["user", "date", "league_id"], sort=False):
+    for (_, _, user), group in data.groupby(["league_id", "date", "user"]):
         # sleep(1)
 
         bot.sendMessage(
