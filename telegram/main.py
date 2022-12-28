@@ -43,7 +43,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
             bot.sendMessage(
                 chat_id=os.getenv("TELEGRAM_CHAT_ID"),
                 text=row["message"],
-                parse_mode="markdows",
+                parse_mode="markdown",
                 disable_web_page_preview=True,
                 timeout=30,
             )
