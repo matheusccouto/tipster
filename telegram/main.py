@@ -36,7 +36,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """
     data = pd.read_gbq(query=query)
 
-    for _, group in data.groupby("user", "date", sort=False):
+    for (user, date), group in data.groupby(["user", "date"], sort=False):
         sleep(0.334)
 
         bot.sendMessage(
