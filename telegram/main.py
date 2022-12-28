@@ -13,8 +13,6 @@ client = google.cloud.logging.Client()
 client.setup_logging()
 pd.options.mode.chained_assignment = None
 
-TZ = "America/Sao_Paulo"
-
 
 def emojize(string):
     """Create emojis from unicode."""
@@ -27,7 +25,8 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
 
     query = """
         SELECT
-            *
+            *,
+            date(start_at, 'America/Sao_Paulo') AS date
         FROM
             tipster.fct_tips
         WHERE
@@ -37,7 +36,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """
     data = pd.read_gbq(query=query)
 
-    for _, group in data.groupby("user"):
+    for _, group in data.groupby("user", "date", sort=False):
         sleep(0.334)
 
         bot.sendMessage(
