@@ -27,9 +27,9 @@ snapshots:
     tipster:
       +target_schema: tipster
       fct_h2h:
-        strategy: check
-        unique_key: id || ' - '  || bookmaker_key || ' - ' || user
-        check_cols: all
+        strategy: timestamp
+        unique_key: id || ' - '  || bookmaker_key || ' - ' || loaded_at
+        updated_at: updated_at
 
 models:
   tipster:

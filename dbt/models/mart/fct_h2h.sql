@@ -14,6 +14,13 @@ WITH odds AS (
 ev AS (
     SELECT
         odds.*,
+        flag.emoji AS flag_emoji,
+        spi.prob_home,
+        spi.prob_draw,
+        spi.prob_away,
+        spi.importance,
+        spi.quality,
+        spi.rating,
         spi.prob_home * (odds.price_home - 1) - (1 - spi.prob_home) AS ev_home,
         spi.prob_draw * (odds.price_draw - 1) - (1 - spi.prob_draw) AS ev_draw,
         spi.prob_away * (odds.price_away - 1) - (1 - spi.prob_away) AS ev_away
@@ -25,48 +32,149 @@ ev AS (
             AND odds.league_id = spi.league_id
             AND odds.home = spi.home
             AND odds.away = spi.away
+    LEFT JOIN
+        `tipster-main`.tipster.flag AS flag ON
+            odds.league_country = flag.country
 ),
 
 bets AS (
     SELECT
-        *,
-        greatest(ev_home, ev_draw, ev_away) AS ev
+        id,
+        concat(
+            flag_emoji,
+            ' ',
+            league_name,
+            ' ',
+            date(start_at),
+            '\\n',
+            '*',
+            home,
+            '* x ',
+            away,
+            '\\n[',
+            bookmaker_name,
+            '](',
+            bookmaker_url,
+            ') ',
+            price_home
+        ) AS message,  -- noqa: L029
+        league_id,
+        league_name,
+        league_country,
+        start_at,
+        home AS club,
+        bookmaker_key,
+        bookmaker_name,
+        bookmaker_url,
+        updated_at,
+        'home' AS bet,
+        price_home AS price,
+        prob_home AS prob,
+        ev_home AS ev,
+        quality,
+        importance,
+        rating,
+        loaded_at
+    FROM
+        ev
+
+    UNION ALL
+
+    SELECT
+        id,
+        concat(
+            flag_emoji,
+            ' ',
+            league_name,
+            ' ',
+            date(start_at),
+            '\\n',
+            home,
+            ' *x* ',
+            away,
+            '\\n[',
+            bookmaker_name,
+            '](',
+            bookmaker_url,
+            ') ',
+            price_draw
+        ) AS message,  -- noqa: L029
+        league_id,
+        league_name,
+        league_country,
+        start_at,
+        NULL AS club,
+        bookmaker_key,
+        bookmaker_name,
+        bookmaker_url,
+        updated_at,
+        'draw' AS bet,
+        price_draw AS price,
+        prob_draw AS prob,
+        ev_draw AS ev,
+        quality,
+        importance,
+        rating,
+        loaded_at
+    FROM
+        ev
+
+    UNION ALL
+
+    SELECT
+        id,
+        concat(
+            flag_emoji,
+            ' ',
+            league_name,
+            ' ',
+            date(start_at),
+            '\\n',
+            home,
+            ' x *',
+            away,
+            '*\\n[',
+            bookmaker_name,
+            '](',
+            bookmaker_url,
+            ') ',
+            price_away
+        ) AS message,  -- noqa: L029
+        league_id,
+        league_name,
+        league_country,
+        start_at,
+        away AS club,
+        bookmaker_key,
+        bookmaker_name,
+        bookmaker_url,
+        updated_at,
+        'away' AS bet,
+        price_away AS price,
+        prob_away AS prob,
+        ev_away AS ev,
+        quality,
+        importance,
+        rating,
+        loaded_at
     FROM
         ev
 )
 
 SELECT
     bets.id,
+    bets.message,
     bets.start_at,
+    bets.club,
     bets.league_id,
     bets.league_name,
-    flag.emoji AS flag_emoji,
-    bets.home,
-    bets.away,
     bets.bookmaker_key,
-    bets.bookmaker_name,
-    bets.bookmaker_url,
     bets.updated_at,
-    bets.market_key,
-    ubk.user,
+    bets.bet,
+    bets.price,
+    bets.prob,
     bets.ev,
-    CASE
-        WHEN bets.ev_home = bets.ev THEN 'home'
-        WHEN bets.ev_draw = bets.ev THEN 'draw'
-        WHEN bets.ev_away = bets.ev THEN 'away'
-    END AS bet,
-    CASE
-        WHEN bets.ev_home = bets.ev THEN bets.price_home
-        WHEN bets.ev_draw = bets.ev THEN bets.price_draw
-        WHEN bets.ev_away = bets.ev THEN bets.price_away
-    END AS price
+    bets.loaded_at,
+    timestamp_diff(bets.start_at, bets.updated_at, HOUR) AS hours_left
 FROM
     bets
-INNER JOIN
-    {{ ref("user_bookmaker") }} AS ubk ON bets.bookmaker_key = ubk.bookmaker
-LEFT JOIN {{ ref("user_ev") }} AS uev ON ubk.user = uev.user
-LEFT JOIN {{ ref("flag") }} AS flag ON bets.league_country = flag.country
-WHERE
-    bets.ev >= uev.ev
-QUALIFY
-    row_number() OVER (PARTITION BY bets.id, ubk.user ORDER BY bets.ev DESC) = 1

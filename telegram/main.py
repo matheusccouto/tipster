@@ -28,42 +28,22 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         SELECT
             *
         FROM
-            tipster.fct_h2h_new
+            tipster.fct_tips
         WHERE
             user = 'tipster'
         ORDER BY
-            league_id, date(start_at)
+            league_id, start_at
     """
     data = pd.read_gbq(query=query)
-    data["date"] = data["start_at"].dt.tz_convert(TZ).dt.strftime("%d/%m/%y")
-
-    data["1"] = data.apply(
-        lambda x: f"<b><u>{x['home']}</u></b>" if x["bet"] == "home" else x["home"],
-        axis=1,
-    )
-    data["x"] = data.apply(
-        lambda x: "<b><u>x</u></b>" if x["bet"] == "draw" else "x",
-        axis=1,
-    )
-    data["2"] = data.apply(
-        lambda x: f"<b><u>{x['away']}</u></b>" if x["bet"] == "away" else x["away"],
-        axis=1,
-    )
 
     for _, group in data.groupby("user"):
 
         for _, row in group.iterrows():
 
-            header = emojize(f"{row['flag_emoji']} {row['league_name']} {row['date']}")
-            body = (
-                f"{row['1']} {row['x']} {row['2']}\n"
-                f"<a href=\"{row['bookmaker_url']}\">{row['bookmaker_name']}</a> {row['price']}"
-            )
-
             bot.sendMessage(
                 chat_id=os.getenv("TELEGRAM_CHAT_ID"),
-                text=f"{header}\n{body}",
-                parse_mode="html",
+                text=row["message"],
+                parse_mode="markdows",
                 disable_web_page_preview=True,
                 timeout=30,
             )
