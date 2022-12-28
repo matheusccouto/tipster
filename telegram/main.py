@@ -37,23 +37,19 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """
     data = pd.read_gbq(query=query)
 
-    for _, group in data.groupby("user"):
+    for _, row in data.iterrows():
+        sleep(0.334)
+        bot.sendMessage(
+            chat_id=os.getenv("TELEGRAM_CHAT_ID"),
+            text=emojize(row["message"]),
+            parse_mode="markdown",
+            disable_web_page_preview=True,
+            timeout=60,
+        )
 
-        for _, row in group.iterrows():
-
-            sleep(.1)
-
-            bot.sendMessage(
-                chat_id=os.getenv("TELEGRAM_CHAT_ID"),
-                text=emojize(row["message"]),
-                parse_mode="markdown",
-                disable_web_page_preview=True,
-                timeout=60,
-            )
-
-        sent = group[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
-        sent["sent_at"] = datetime.now()
-        sent.to_gbq("tipster.sent", if_exists="append")
+    sent = data[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
+    sent["sent_at"] = datetime.now()
+    sent.to_gbq("tipster.sent", if_exists="append")
 
     return {"statusCode": 200}
 
