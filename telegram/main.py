@@ -32,7 +32,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         WHERE
             user = 'tipster'
         ORDER BY
-            league_id, start_at
+            start_at
     """
     data = pd.read_gbq(query=query)
 
