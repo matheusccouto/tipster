@@ -2,6 +2,7 @@
 
 import os
 from datetime import datetime
+from time import sleep
 
 import emoji
 import google.cloud.logging
@@ -40,12 +41,14 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
 
         for _, row in group.iterrows():
 
+            sleep(.1)
+
             bot.sendMessage(
                 chat_id=os.getenv("TELEGRAM_CHAT_ID"),
                 text=emojize(row["message"]),
                 parse_mode="markdown",
                 disable_web_page_preview=True,
-                timeout=30,
+                timeout=60,
             )
 
         sent = group[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
