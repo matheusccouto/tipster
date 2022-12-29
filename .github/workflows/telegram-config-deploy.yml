@@ -29,7 +29,7 @@ jobs:
       - name: Deploy Function
         uses: google-github-actions/deploy-cloud-functions@v1
         with:
-          name: telegram
+          name: telegram-config
           runtime: python310
           source_dir: telegram-config
           entry_point: handler
