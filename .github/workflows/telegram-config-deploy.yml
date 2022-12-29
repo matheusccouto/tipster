@@ -38,7 +38,7 @@ jobs:
           region: us-east4
           service_account_email: telegram@${{ steps.auth.outputs.project_id }}.iam.gserviceaccount.com
           env_vars: TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}
-          # max_instances: 1
+          max_instances: 1
       
       - name: Register Webhook
         run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/setWebhook?url=https://us-east4-${{ steps.auth.outputs.project_id }}.cloudfunctions.net/telegram-config"

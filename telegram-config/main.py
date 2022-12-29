@@ -107,9 +107,11 @@ def handler(request):
 
     # sent.to_gbq("tipster.sent", if_exists="append")
 
-    welcome_msg = "You can control me by sending these commands:"
-    cmd_msg =  "\n\n\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
-    bot.sendMessage(chat_id=chat_id, text=welcome_msg + cmd_msg)
+    bot.sendMessage(chat_id=chat_id, text=f"context: {context[chat_id]}")
+
+    # welcome_msg = "You can control me by sending these commands:"
+    # cmd_msg =  "\n\n\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
+    # bot.sendMessage(chat_id=chat_id, text=welcome_msg + cmd_msg)
 
     return {"statusCode": 200}
 
