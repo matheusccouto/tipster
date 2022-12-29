@@ -1,0 +1,3 @@
+python-telegram-bot==13.15
+pandas-gbq==0.18.1
+google-cloud-logging

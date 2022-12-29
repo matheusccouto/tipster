@@ -1,0 +1,40 @@
+name: Deploy Telegram
+
+on:
+
+  push:
+    branches:
+      - main
+      - dev
+
+    paths:
+      - telegram/**
+      - .github/workflows/telegram-config-deploy.yml
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.REF_NAME }}
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - id: auth
+        name: Authenticate Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_KEYFILE }}
+
+      - name: Deploy Function
+        uses: google-github-actions/deploy-cloud-functions@v1
+        with:
+          name: telegram
+          runtime: python310
+          source_dir: telegram-config
+          entry_point: handler
+          memory_mb: 512
+          timeout: 540
+          region: us-east4
+          service_account_email: telegram@${{ steps.auth.outputs.project_id }}.iam.gserviceaccount.com
+          env_vars: TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}
