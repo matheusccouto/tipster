@@ -20,8 +20,8 @@ QUERY_SET_BOOKIE = """
     SELECT b.key, b.name
     FROM tipster.bookmaker AS b
     LEFT JOIN tipster.user_bookmaker AS u ON b.key = u.bookmaker AND user = {chat_id}
-    WHERE user IS NULL
-    ORDER BY name
+    WHERE u.user IS NULL
+    ORDER BY b.name
     """
 QUERY_LIST_BOOKIE = """
     SELECT bookmaker
@@ -33,8 +33,8 @@ QUERY_SET_LEAGUE = """
     SELECT b.key, b.name
     FROM tipster.bookmaker AS b
     LEFT JOIN tipster.user_bookmaker AS u ON b.key = u.bookmaker AND user = {chat_id}
-    WHERE user IS NULL
-    ORDER BY name
+    WHERE u.user IS NULL
+    ORDER BY b.name
     """
 QUERY_LIST_LEAGUE = """
     SELECT bookmaker
@@ -70,8 +70,6 @@ def handler(request):
     chat_id = update.message.chat.id
     text = update.message.text
 
-    bot.sendMessage(chat_id=chat_id, text=f"context: {context.get(chat_id)}")
-
     if "/setbookmaker" in text:
         context[chat_id] = "/setbookmaker"
         data = run_query(QUERY_SET_BOOKIE.format(chat_id=chat_id))
@@ -90,8 +88,9 @@ def handler(request):
         return {"statusCode": 200}
 
     if context.get(chat_id) == "/setbookmaker":
+        data = run_query(QUERY_SET_BOOKIE.format(chat_id=chat_id))
         try:
-            selected = run_query(QUERY_SET_BOOKIE)[int(text)]
+            selected = data[int(text)]
         except ValueError:
             bot.sendMessage(chat_id=chat_id, text=f"You should type only the number")
 
