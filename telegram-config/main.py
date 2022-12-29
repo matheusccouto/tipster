@@ -20,6 +20,18 @@ def handler(request):
     update = telegram.Update.de_json(request.get_json(), bot)
     chat_id = update.message.chat.id
 
+    if "/setbookmaker" in update.message.text:
+        query = f"""
+            SELECT key, name
+            FROM tipster.bookmaker
+            WHERE user = {chat_id}
+            ORDER BY name
+            """
+        data = pd.read_gbq(query=query)
+        text = "\n".join(data["name"])
+        bot.sendMessage(chat_id=chat_id, text=f"Select a bookmaker from the list\n\n{text}")
+        return {"statusCode": 200}
+
     if "/listbookmakers" in update.message.text:
         query = f"""
             SELECT bookmaker
@@ -31,7 +43,7 @@ def handler(request):
         text = text if text else "Please set a list one bookmaker"
         bot.sendMessage(chat_id=chat_id, text=text)
         return {"statusCode": 200}
-    
+
     if "/listleague" in update.message.text:
         query = f"""
             SELECT league
