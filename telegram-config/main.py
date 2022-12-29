@@ -2,8 +2,8 @@
 
 import os
 
+import google.cloud.bigquery
 import google.cloud.logging
-import pandas as pd
 import telegram
 
 CMD = {
@@ -16,13 +16,48 @@ CMD = {
     "setev": "Set your expected value threshold",
 }
 
-client = google.cloud.logging.Client()
-client.setup_logging()
+QUERY_SET_BOOKIE = """
+    SELECT b.key, b.name
+    FROM tipster.bookmaker AS b
+    LEFT JOIN tipster.user_bookmaker AS u ON b.key = u.bookmaker AND user = {chat_id}
+    WHERE user IS NULL
+    ORDER BY name
+    """
+QUERY_LIST_BOOKIE = """
+    SELECT bookmaker
+    FROM tipster.user_bookmaker
+    WHERE user = {chat_id}
+    ORDER BY bookmaker
+    """
+QUERY_SET_LEAGUE = """
+    SELECT b.key, b.name
+    FROM tipster.bookmaker AS b
+    LEFT JOIN tipster.user_bookmaker AS u ON b.key = u.bookmaker AND user = {chat_id}
+    WHERE user IS NULL
+    ORDER BY name
+    """
+QUERY_LIST_LEAGUE = """
+    SELECT bookmaker
+    FROM tipster.user_bookmaker
+    WHERE user = {chat_id}
+    ORDER BY bookmaker
+    """
+
+logging_client = google.cloud.logging.Client()
+logging_client.setup_logging()
+
+bigquery_client = google.cloud.bigquery.Client()
 
 bot = telegram.Bot(os.getenv("TELEGRAM_TOKEN"))
 bot.set_my_commands([(key, val) for key, val in CMD.items()])
 
 context = {}
+
+
+def run_query(query):
+    """Run a query in BigQuery."""
+    job = bigquery_client.query(query)
+    return job.result()
 
 
 def handler(request):
@@ -33,84 +68,41 @@ def handler(request):
 
     update = telegram.Update.de_json(request.get_json(), bot)
     chat_id = update.message.chat.id
+    text = update.message.text
 
     bot.sendMessage(chat_id=chat_id, text=f"context: {context.get(chat_id)}")
 
-    if "/setbookmaker" in update.message.text:
+    if "/setbookmaker" in text:
         context[chat_id] = "/setbookmaker"
-        query = f"""
-            SELECT key, name
-            FROM tipster.bookmaker
-            ORDER BY name
-            """
-        data = pd.read_gbq(query=query)
-        text = "\n".join(data["name"])
+        data = run_query(QUERY_SET_BOOKIE.format(chat_id=chat_id))
+        text = "\n".join({i: row.name for i, row in enumerate(data)})
         bot.sendMessage(
-            chat_id=chat_id, text=f"Select a bookmaker from the list\n\n{text}"
+            chat_id=chat_id,
+            text=f"Select a number from the list\n\n{text}",
         )
         return {"statusCode": 200}
 
-    if "/listbookmakers" in update.message.text:
-        query = f"""
-            SELECT bookmaker
-            FROM tipster.user_bookmaker
-            WHERE user = {chat_id}
-            ORDER BY bookmaker
-            """
-        text = "\n".join(pd.read_gbq(query=query)["bookmaker"])
-        text = text if text else "Please set a list one bookmaker"
-        bot.sendMessage(chat_id=chat_id, text=text)
-        return {"statusCode": 200}
-
-    if "/setleague" in update.message.text:
-        context[chat_id] = "/setleague"
-        query = f"""
-            SELECT id, tipster
-            FROM tipster.league
-            ORDER BY id
-            """
-        data = pd.read_gbq(query=query)
-        text = "\n".join(data["tipster"])
-        bot.sendMessage(
-            chat_id=chat_id, text=f"Select a league from the list\n\n{text}"
-        )
-        return {"statusCode": 200}
-
-    if "/listleague" in update.message.text:
-        query = f"""
-            SELECT league
-            FROM tipster.user_league
-            WHERE user = {chat_id}
-            ORDER BY league
-            """
-        text = "\n".join(pd.read_gbq(query=query)["league"])
-        text = text if text else "Please set a list one league"
+    if "/listbookmakers" in text:
+        data = run_query(QUERY_LIST_BOOKIE.format(chat_id=chat_id))
+        text = "\n".join([row.bookmaker for row in data])
+        text = text if text else "You do not have bookmakers"
         bot.sendMessage(chat_id=chat_id, text=text)
         return {"statusCode": 200}
 
     if context.get(chat_id) == "/setbookmaker":
-        bot.sendMessage(chat_id=chat_id, text=f"Added bookmaker {text}")
-        return {"statusCode": 200}
+        try:
+            selected = run_query(QUERY_SET_BOOKIE)[int(text)]
+        except ValueError:
+            bot.sendMessage(chat_id=chat_id, text=f"You should type only the number")
 
-    if context.get(chat_id) == "/deletebookmaker":
-        bot.sendMessage(chat_id=chat_id, text=f"Deleted bookmaker {text}")
-        return {"statusCode": 200}
-
-    if context.get(chat_id) == "/setleague":
-        bot.sendMessage(chat_id=chat_id, text=f"Added league {text}")
-        return {"statusCode": 200}
-
-    if context.get(chat_id) == "/deleteleague":
-        bot.sendMessage(chat_id=chat_id, text=f"Deleted league {text}")
+        bot.sendMessage(chat_id=chat_id, text=f"Added {selected.key}")
         return {"statusCode": 200}
 
     # sent.to_gbq("tipster.sent", if_exists="append")
 
-    bot.sendMessage(chat_id=chat_id, text=f"context: {context.get(chat_id)}")
-
-    # welcome_msg = "You can control me by sending these commands:"
-    # cmd_msg =  "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
-    # bot.sendMessage(chat_id=chat_id, text=welcome_msg + "\n\n" + cmd_msg)
+    welcome_msg = "You can control me by sending these commands:"
+    cmd_msg = "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
+    bot.sendMessage(chat_id=chat_id, text=welcome_msg + "\n\n" + cmd_msg)
 
     return {"statusCode": 200}
 
