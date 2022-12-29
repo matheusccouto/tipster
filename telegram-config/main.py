@@ -14,6 +14,7 @@ CMD = {
     "deleteleague": "Delete a league",
     "listleagues": "List your leagues",
     "setev": "Set your expected value threshold",
+    "cancel": "Cancel current command",
 }
 
 QUERY_SET_BOOKIE = """
@@ -70,6 +71,10 @@ def handler(request):
     chat_id = update.message.chat.id
     text = update.message.text
 
+    if "/cancel" in text:
+        context[chat_id] = None
+        return {"statusCode": 200}
+
     if "/setbookmaker" in text:
         context[chat_id] = "/setbookmaker"
         data = run_query(QUERY_SET_BOOKIE.format(chat_id=chat_id))
@@ -92,17 +97,17 @@ def handler(request):
         try:
             selected = data[int(text)]
         except ValueError:
-            bot.sendMessage(chat_id=chat_id, text=f"You should type only the number")
+            bot.sendMessage(chat_id=chat_id, text="Type only the number")
+        except IndexError:
+            bot.sendMessage(chat_id=chat_id, text="Type a number from the list")
 
+        context[chat_id] = None
         bot.sendMessage(chat_id=chat_id, text=f"Added {selected.key}")
         return {"statusCode": 200}
-
-    # sent.to_gbq("tipster.sent", if_exists="append")
 
     welcome_msg = "You can control me by sending these commands:"
     cmd_msg = "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
     bot.sendMessage(chat_id=chat_id, text=welcome_msg + "\n\n" + cmd_msg)
-
     return {"statusCode": 200}
 
 
