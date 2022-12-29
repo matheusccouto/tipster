@@ -2,7 +2,6 @@
 
 import os
 from datetime import datetime
-from time import sleep
 
 import emoji
 import google.cloud.logging
@@ -29,16 +28,13 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
             date(start_at, 'America/Sao_Paulo') AS date
         FROM
             tipster.fct_tips
-        WHERE
-            user = 'tipster'
     """
     data = pd.read_gbq(query=query)
 
     for (_, _, user), group in data.groupby(["league_id", "date", "user"]):
-        # sleep(1)
 
         bot.sendMessage(
-            chat_id=os.getenv("TELEGRAM_CHAT_ID"),
+            chat_id=user,
             text=emojize("\n\n".join(group["message"])),
             parse_mode="markdown",
             disable_web_page_preview=True,
