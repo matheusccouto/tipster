@@ -25,7 +25,7 @@ def handler(request):
         query = f"""
             SELECT bookmaker
             FROM tipster.user_bookmaker
-            WHERE user = {chat_id}
+            WHERE user = '{chat_id}'
             ORDER BY bookmaker
             """
         text = "\n".join(pd.read_gbq(query=query)["bookmaker"])
