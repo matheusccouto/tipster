@@ -1,14 +1,10 @@
 WITH odds AS (
     SELECT *
     FROM
-        {{ ref("stg_odds") }}
+        {{ ref("stg_odds" ) }}
     WHERE
         start_at > current_timestamp()
         AND market_key = 'h2h'
-    QUALIFY
-        row_number() OVER (
-            PARTITION BY id, bookmaker_key, market_key ORDER BY loaded_at DESC
-        ) = 1
 ),
 
 ev AS (
@@ -27,20 +23,20 @@ ev AS (
     FROM
         odds
     INNER JOIN
-        {{ ref("stg_spi") }} AS spi
+        {{ ref("stg_spi" ) }} AS spi
         ON date(odds.start_at, 'America/Los_Angeles') = spi.date
             AND odds.league_id = spi.league_id
             AND odds.home = spi.home
             AND odds.away = spi.away
     LEFT JOIN
-        `tipster-main`.tipster.flag AS flag ON
+        {{ ref("flag" ) }} AS flag ON
             odds.league_country = flag.country
 ),
 
 bets AS (
     SELECT
         id,
-        {{ target.dataset }}.message_h2h(
+        tipster.message_h2h(
             flag_emoji,
             league_name,
             date(start_at),
@@ -52,13 +48,9 @@ bets AS (
             price_home
         ) AS message,  -- noqa: L029
         league_id,
-        league_name,
-        league_country,
         start_at,
         home AS club,
         bookmaker_key,
-        bookmaker_name,
-        bookmaker_url,
         updated_at,
         'home' AS bet,
         price_home AS price,
@@ -75,7 +67,7 @@ bets AS (
 
     SELECT
         id,
-        {{ target.dataset }}.message_h2h(
+        tipster.message_h2h(
             flag_emoji,
             league_name,
             date(start_at),
@@ -87,13 +79,9 @@ bets AS (
             price_draw
         ) AS message,  -- noqa: L029
         league_id,
-        league_name,
-        league_country,
         start_at,
         NULL AS club,
         bookmaker_key,
-        bookmaker_name,
-        bookmaker_url,
         updated_at,
         'draw' AS bet,
         price_draw AS price,
@@ -110,7 +98,7 @@ bets AS (
 
     SELECT
         id,
-        {{ target.dataset }}.message_h2h(
+        tipster.message_h2h(
             flag_emoji,
             league_name,
             date(start_at),
@@ -122,13 +110,9 @@ bets AS (
             price_away
         ) AS message,  -- noqa: L029
         league_id,
-        league_name,
-        league_country,
         start_at,
         away AS club,
         bookmaker_key,
-        bookmaker_name,
-        bookmaker_url,
         updated_at,
         'away' AS bet,
         price_away AS price,
@@ -140,22 +124,25 @@ bets AS (
         loaded_at
     FROM
         ev
-)
+),
 
+bets_last AS (
+  SELECT
+      *,
+      first_value(bets.price) OVER (PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at) AS price_open,
+      min(bets.price) OVER (PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at) AS price_min,
+      max(bets.price) OVER (PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at) AS price_max
+  FROM
+      bets
+  QUALIFY
+      row_number() OVER (PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at DESC) = 1
+)
 SELECT
-    bets.id,
-    bets.message,
-    bets.start_at,
-    bets.club,
-    bets.league_id,
-    bets.league_name,
-    bets.bookmaker_key,
-    bets.updated_at,
-    bets.bet,
-    bets.price,
-    bets.prob,
-    bets.ev,
-    bets.loaded_at,
-    timestamp_diff(bets.start_at, bets.updated_at, HOUR) AS hours_left
+    *,
+    timestamp_diff(start_at, loaded_at, HOUR) AS hours_left,
+    count(DISTINCT bookmaker_key) OVER (PARTITION BY id, bet) AS market_count,
+    min(price) OVER (PARTITION BY id, bet) AS market_price_min,
+    percentile_cont(price, 0.5) OVER (PARTITION BY id, bet) AS market_price_median,
+    max(price) OVER (PARTITION BY id, bet) AS market_price_max,
 FROM
-    bets
+  bets_last

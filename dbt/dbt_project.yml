@@ -28,8 +28,8 @@ snapshots:
       +target_schema: tipster
       fct_h2h:
         strategy: timestamp
-        unique_key: id || ' - '  || bookmaker_key || ' - ' || loaded_at
-        updated_at: updated_at
+        unique_key: id || ' - '  || bet || ' - ' || bookmaker_key
+        updated_at: loaded_at
 
 models:
   tipster:
