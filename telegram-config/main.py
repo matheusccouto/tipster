@@ -29,6 +29,7 @@ def handler(request):
             ORDER BY bookmaker
             """
         text = "\n".join(pd.read_gbq(query=query)["bookmaker"])
+        text = text if text else "Please set a list one bookmaker"
         bot.sendMessage(chat_id=chat_id, text=text)
         return {"statusCode": 200}
 
