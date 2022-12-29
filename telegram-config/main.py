@@ -24,7 +24,6 @@ def handler(request):
         query = f"""
             SELECT key, name
             FROM tipster.bookmaker
-            WHERE user = {chat_id}
             ORDER BY name
             """
         data = pd.read_gbq(query=query)
