@@ -31,6 +31,18 @@ def handler(request):
         text = text if text else "Please set a list one bookmaker"
         bot.sendMessage(chat_id=chat_id, text=text)
         return {"statusCode": 200}
+    
+    if "/listleague" in update.message.text:
+        query = f"""
+            SELECT league
+            FROM tipster.user_league
+            WHERE user = {chat_id}
+            ORDER BY league
+            """
+        text = "\n".join(pd.read_gbq(query=query)["league"])
+        text = text if text else "Please set a list one league"
+        bot.sendMessage(chat_id=chat_id, text=text)
+        return {"statusCode": 200}
 
     # sent.to_gbq("tipster.sent", if_exists="append")
 
