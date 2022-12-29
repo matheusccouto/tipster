@@ -33,7 +33,6 @@ def handler(request):
 
     update = telegram.Update.de_json(request.get_json(), bot)
     chat_id = update.message.chat.id
-    context[chat_id] = ""
 
     bot.sendMessage(chat_id=chat_id, text=f"context: {context[chat_id]}")
 
@@ -89,19 +88,19 @@ def handler(request):
         bot.sendMessage(chat_id=chat_id, text=text)
         return {"statusCode": 200}
 
-    if context[chat_id] == "/setbookmaker":
+    if context.get(chat_id) == "/setbookmaker":
         bot.sendMessage(chat_id=chat_id, text=f"Added bookmaker {text}")
         return {"statusCode": 200}
 
-    if context[chat_id] == "/deletebookmaker":
+    if context.get(chat_id) == "/deletebookmaker":
         bot.sendMessage(chat_id=chat_id, text=f"Deleted bookmaker {text}")
         return {"statusCode": 200}
 
-    if context[chat_id] == "/setleague":
+    if context;get(chat_id) == "/setleague":
         bot.sendMessage(chat_id=chat_id, text=f"Added league {text}")
         return {"statusCode": 200}
 
-    if context[chat_id] == "/deleteleague":
+    if context.get(chat_id) == "/deleteleague":
         bot.sendMessage(chat_id=chat_id, text=f"Deleted league {text}")
         return {"statusCode": 200}
 
@@ -110,8 +109,8 @@ def handler(request):
     bot.sendMessage(chat_id=chat_id, text=f"context: {context[chat_id]}")
 
     # welcome_msg = "You can control me by sending these commands:"
-    # cmd_msg =  "\n\n\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
-    # bot.sendMessage(chat_id=chat_id, text=welcome_msg + cmd_msg)
+    # cmd_msg =  "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
+    # bot.sendMessage(chat_id=chat_id, text=welcome_msg + "\n\n" + cmd_msg)
 
     return {"statusCode": 200}
 
