@@ -6,21 +6,21 @@ import google.cloud.logging
 import pandas as pd
 import telegram
 
+CMD = {
+    "setbookmakers": "Set a new bookmaker",
+    "deletebookmakers": "Delete a bookmaker",
+    "listbookmakers": "List your bookmakers",
+    "setleague": "Set a new league",
+    "deleteleague": "Delete a league",
+    "listleagues": "List your leagues",
+    "setev": "Set your expected value threshold",
+}
+
 client = google.cloud.logging.Client()
 client.setup_logging()
 
 bot = telegram.Bot(os.getenv("TELEGRAM_TOKEN"))
-bot.set_my_commands(
-    {
-        "setbookmakers": "Set a new bookmaker",
-        "deletebookmakers": "Delete a bookmaker",
-        "listbookmakers": "List your bookmakers",
-        "setleague": "Set a new league",
-        "deleteleague": "Delete a league",
-        "listleagues": "List your leagues",
-        "setev": "Set your expected value threshold",
-    }
-)
+bot.set_my_commands(CMD)
 
 context = {}
 
@@ -33,8 +33,10 @@ def handler(request):
 
     update = telegram.Update.de_json(request.get_json(), bot)
     chat_id = update.message.chat.id
+    context[chat_id] = ""
 
     if "/setbookmaker" in update.message.text:
+        context[chat_id] = "/setbookmaker"
         query = f"""
             SELECT key, name
             FROM tipster.bookmaker
@@ -60,6 +62,7 @@ def handler(request):
         return {"statusCode": 200}
 
     if "/setleague" in update.message.text:
+        context[chat_id] = "/setleague"
         query = f"""
             SELECT id, tipster
             FROM tipster.league
@@ -83,15 +86,28 @@ def handler(request):
         text = text if text else "Please set a list one league"
         bot.sendMessage(chat_id=chat_id, text=text)
         return {"statusCode": 200}
-    
-    if chat_id not in context:
-        context[chat_id] = [update.message.text]
-    else:
-        context[chat_id].append(update.message.text)
-    
-    bot.sendMessage(chat_id=chat_id, text="\n".join(context[chat_id]))
+
+    if context[chat_id] == "/setbookmaker":
+        bot.sendMessage(chat_id=chat_id, text=f"Added bookmaker {text}")
+        return {"statusCode": 200}
+
+    if context[chat_id] == "/deletebookmaker":
+        bot.sendMessage(chat_id=chat_id, text=f"Deleted bookmaker {text}")
+        return {"statusCode": 200}
+
+    if context[chat_id] == "/setleague":
+        bot.sendMessage(chat_id=chat_id, text=f"Added league {text}")
+        return {"statusCode": 200}
+
+    if context[chat_id] == "/deleteleague":
+        bot.sendMessage(chat_id=chat_id, text=f"Deleted league {text}")
+        return {"statusCode": 200}
 
     # sent.to_gbq("tipster.sent", if_exists="append")
+
+    welcome_msg = "You can control me by sending these commands:"
+    cmd_msg =  "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
+    bot.sendMessage(chat_id=chat_id, text=welcome_msg + cmd_msg)
 
     return {"statusCode": 200}
 
