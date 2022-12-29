@@ -96,7 +96,7 @@ def handler(request):
         bot.sendMessage(chat_id=chat_id, text=f"Deleted bookmaker {text}")
         return {"statusCode": 200}
 
-    if context;get(chat_id) == "/setleague":
+    if context.get(chat_id) == "/setleague":
         bot.sendMessage(chat_id=chat_id, text=f"Added league {text}")
         return {"statusCode": 200}
 
