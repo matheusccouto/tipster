@@ -40,22 +40,15 @@ ev AS (
 bets AS (
     SELECT
         id,
-        concat(
+        {{ target.dataset }}.message_h2h(
             flag_emoji,
-            ' ',
             league_name,
-            ' ',
             date(start_at),
-            '\\n',
-            '*_',
             home,
-            '_* x ',
             away,
-            '\\n[',
+            home,
             bookmaker_name,
-            '](',
             bookmaker_url,
-            ') ',
             price_home
         ) AS message,  -- noqa: L029
         league_id,
@@ -82,21 +75,15 @@ bets AS (
 
     SELECT
         id,
-        concat(
+        {{ target.dataset }}.message_h2h(
             flag_emoji,
-            ' ',
             league_name,
-            ' ',
             date(start_at),
-            '\\n',
             home,
-            ' *_x_* ',
             away,
-            '\\n[',
+            'Draw',
             bookmaker_name,
-            '](',
             bookmaker_url,
-            ') ',
             price_draw
         ) AS message,  -- noqa: L029
         league_id,
@@ -123,21 +110,15 @@ bets AS (
 
     SELECT
         id,
-        concat(
+        {{ target.dataset }}.message_h2h(
             flag_emoji,
-            ' ',
             league_name,
-            ' ',
             date(start_at),
-            '\\n',
             home,
-            ' x *_',
             away,
-            '_*\\n[',
+            away,
             bookmaker_name,
-            '](',
             bookmaker_url,
-            ') ',
             price_away
         ) AS message,  -- noqa: L029
         league_id,

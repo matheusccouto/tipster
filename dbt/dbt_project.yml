@@ -33,3 +33,6 @@ snapshots:
 
 models:
   tipster:
+
+on-run-start:
+  - '{{ create_udfs() }}'
