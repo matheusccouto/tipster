@@ -34,7 +34,7 @@ def handler(request):
     update = telegram.Update.de_json(request.get_json(), bot)
     chat_id = update.message.chat.id
 
-    bot.sendMessage(chat_id=chat_id, text=f"context: {context[chat_id]}")
+    bot.sendMessage(chat_id=chat_id, text=f"context: {context.get(chat_id)}")
 
     if "/setbookmaker" in update.message.text:
         context[chat_id] = "/setbookmaker"
@@ -106,7 +106,7 @@ def handler(request):
 
     # sent.to_gbq("tipster.sent", if_exists="append")
 
-    bot.sendMessage(chat_id=chat_id, text=f"context: {context[chat_id]}")
+    bot.sendMessage(chat_id=chat_id, text=f"context: {context.get(chat_id)}")
 
     # welcome_msg = "You can control me by sending these commands:"
     # cmd_msg =  "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
