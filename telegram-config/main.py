@@ -88,7 +88,7 @@ def handler(request):
         return {"statusCode": 200}
 
     if context.get(chat_id) == "/setbookmaker":
-        data = run_query(QUERY_SET_BOOKIE.format(chat_id=chat_id))
+        data = list(run_query(QUERY_SET_BOOKIE.format(chat_id=chat_id)))
         try:
             selected = data[int(text)]
         except ValueError:
