@@ -20,7 +20,7 @@ client = google.cloud.logging.Client()
 client.setup_logging()
 
 bot = telegram.Bot(os.getenv("TELEGRAM_TOKEN"))
-bot.set_my_commands(CMD)
+bot.set_my_commands([(key, val) for key, val in CMD.items()])
 
 context = {}
 
@@ -34,6 +34,8 @@ def handler(request):
     update = telegram.Update.de_json(request.get_json(), bot)
     chat_id = update.message.chat.id
     context[chat_id] = ""
+
+    bot.sendMessage(chat_id=chat_id, text=f"context: {context[chat_id]}")
 
     if "/setbookmaker" in update.message.text:
         context[chat_id] = "/setbookmaker"
@@ -106,7 +108,7 @@ def handler(request):
     # sent.to_gbq("tipster.sent", if_exists="append")
 
     welcome_msg = "You can control me by sending these commands:"
-    cmd_msg =  "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
+    cmd_msg =  "\n\n\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
     bot.sendMessage(chat_id=chat_id, text=welcome_msg + cmd_msg)
 
     return {"statusCode": 200}
