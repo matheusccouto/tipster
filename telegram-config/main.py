@@ -75,7 +75,7 @@ def handler(request):
     if "/setbookmaker" in text:
         context[chat_id] = "/setbookmaker"
         data = run_query(QUERY_SET_BOOKIE.format(chat_id=chat_id))
-        text = "\n".join({i: row.name for i, row in enumerate(data)})
+        text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
         bot.sendMessage(
             chat_id=chat_id,
             text=f"Select a number from the list\n\n{text}",
