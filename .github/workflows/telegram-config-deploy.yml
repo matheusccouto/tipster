@@ -8,7 +8,7 @@ on:
       - dev
 
     paths:
-      - telegram/**
+      - telegram-config/**
       - .github/workflows/telegram-config-deploy.yml
 
 jobs:

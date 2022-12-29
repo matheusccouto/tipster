@@ -22,7 +22,12 @@ def handler(request):
     chat_id = update.message.chat.id
 
     if "/listbookmakers" in update.message.text:
-        query = f"SELECT bookmaker FROM tipster.user_bookmaker WHERE user = {chat_id}"
+        query = f"""
+            SELECT bookmaker
+            FROM tipster.user_bookmaker
+            WHERE user = {chat_id}
+            ORDER BY bookmaker
+            """
         text = "\n".join(pd.read_gbq(query=query)["bookmaker"])
         bot.sendMessage(chat_id=chat_id, text=text)
         return {"statusCode": 200}
