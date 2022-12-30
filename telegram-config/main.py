@@ -72,7 +72,7 @@ def run_query(query):
 
 
 def list_available(chat_id, query):
-    data = run_query(query.format(chat_id))
+    data = run_query(query.format(chat_id=chat_id))
     text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
     text = f"Select a number from the list\n\n{text}"
     bot.sendMessage(chat_id=chat_id, text=text)
