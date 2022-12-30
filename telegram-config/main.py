@@ -138,7 +138,7 @@ def handler(request):
 
     # Get user answer when setting a new bookie.
     if context.get(chat_id) == "/deletebookmaker":
-        delete(chat_id, text, QUERY_AVAILABLE_BOOKIE, QUERY_SET_BOOKIE)
+        delete(chat_id, text, QUERY_LIST_BOOKIE, QUERY_DELETE_BOOKIE)
         context[chat_id] = None
         return {"statusCode": 200}
 
