@@ -35,7 +35,7 @@ QUERY_SET_BOOKIE = """
     VALUES ({chat_id}, '{key}')
 """
 QUERY_LIST_BOOKIE = """
-    SELECT bookmaker
+    SELECT bookmaker AS name
     FROM tipster.user_bookmaker
     WHERE user = {chat_id}
     ORDER BY bookmaker
