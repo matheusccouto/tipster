@@ -32,7 +32,7 @@ QUERY_AVAILABLE_BOOKIE = """
 """
 QUERY_SET_BOOKIE = """
     INSERT INTO tipster.user_bookmaker (user, bookmaker)
-    VALUES ({chat_id}, {key})
+    VALUES ({chat_id}, '{key}')
 """
 QUERY_LIST_BOOKIE = """
     SELECT bookmaker
