@@ -6,7 +6,7 @@ WITH users AS (
 )
 SELECT
     u.user,
-    COALESCE(ev.ev, 0)
+    COALESCE(ev.ev, 0) AS ev
 FROM
     users AS u
 LEFT JOIN {{ ref("user_ev") }} AS ev ON u.user = ev.ev
