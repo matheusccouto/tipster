@@ -2,6 +2,7 @@
 
 import os
 
+import emoji
 import google.cloud.bigquery
 import google.cloud.logging
 import telegram
@@ -64,11 +65,19 @@ def run_query(query):
     return job.result()
 
 
+def send_message(bot, chat_id, text):
+    text = emoji.emojize(text.encode("raw-unicode-escape").decode("unicode-escape"))
+    bot.sendMessage(chat_id=chat_id, text=text)
+
+
 def choices(chat_id, query):
     data = run_query(query.format(chat_id=chat_id))
-    text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
-    text = f"Select a number from the list\n\n{text}"
-    bot.sendMessage(chat_id=chat_id, text=text)
+    if len(data) == 0:
+        return "There is nothing left to be selected"
+    else:
+        text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
+        text = f"Select a number from the list\n\n{text}"
+        send_message(bot, chat_id, text)
 
 
 def _read_choice(chat_id, text, query_list, query_update):
@@ -98,7 +107,7 @@ def list_(chat_id, query):
     data = run_query(query.format(chat_id=chat_id))
     text = "\n".join([row.name for row in data])
     text = text if text else "You do not have bookmakers"
-    bot.sendMessage(chat_id=chat_id, text=text)
+    send_message(bot, chat_id, text)
 
 
 def handler(request):
@@ -149,5 +158,5 @@ def handler(request):
 
     welcome_msg = "You can control me by sending these commands:"
     cmd_msg = "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
-    bot.sendMessage(chat_id=chat_id, text=welcome_msg + "\n\n" + cmd_msg)
+    send_message(bot, chat_id, welcome_msg + "\n\n" + cmd_msg)
     return {"statusCode": 200}
