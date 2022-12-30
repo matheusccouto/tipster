@@ -46,6 +46,28 @@ QUERY_DELETE_BOOKIE = """
     WHERE user = {chat_id} AND bookmaker = '{key}'
 """
 
+QUERY_AVAILABLE_LEAGUE = """
+    SELECT b.key, b.name
+    FROM tipster.league AS b
+    LEFT JOIN tipster.stg_user_league AS u ON b.key = u.key AND user = {chat_id}
+    WHERE u.user IS NULL
+    ORDER BY b.name
+"""
+QUERY_SET_LEAGUE = """
+    INSERT INTO tipster.user_bookmaker (user, bookmaker)
+    VALUES ({chat_id}, '{key}')
+"""
+QUERY_LIST_LEAGUE = """
+    SELECT key, name
+    FROM tipster.stg_user_bookmaker
+    WHERE user = {chat_id}
+    ORDER BY name
+    """
+QUERY_DELETE_LEAGUE = """
+    DELETE FROM tipster.user_bookmaker
+    WHERE user = {chat_id} AND bookmaker = '{key}'
+"""
+
 # General config.
 
 logging_client = google.cloud.logging.Client()
@@ -73,7 +95,8 @@ def send_message(bot, chat_id, text):
 def choices(chat_id, query):
     data = list(run_query(query.format(chat_id=chat_id)))
     if len(data) == 0:
-        return send_message(bot, chat_id, "There is nothing to be selected")
+        send_message(bot, chat_id, "There is nothing to be selected")
+        context[chat_id] = None
     else:
         text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
         text = f"Select a number from the list\n\n{text}"
@@ -86,6 +109,7 @@ def _read_choice(chat_id, text, query_list, query_update):
         selected = list(data)[int(text)]
         run_query(query_update.format(chat_id=chat_id, key=selected.key))
         bot.sendMessage(chat_id=chat_id, text=selected.name)
+        context[chat_id] = None
     except ValueError:
         bot.sendMessage(chat_id=chat_id, text="Type only the number")
     except IndexError:
@@ -121,11 +145,11 @@ def handler(request):
 
     # If the user cancels, clear the context.
     if "/cancel" in text:
-        context[chat_id] = None
         if context.get(chat_id) is None:
             send_message(bot, chat_id, "There is nothing to be canceled")
         else:
             send_message(bot, chat_id, f"Canceled {context.get(chat_id)}")
+        context[chat_id] = None
         return {"statusCode": 200}
 
     # Show available bookies if the user wants to set a new one.
@@ -137,7 +161,6 @@ def handler(request):
     # Get user answer when setting a new bookie.
     if context.get(chat_id) == "/setbookmaker":
         add(chat_id, text, QUERY_AVAILABLE_BOOKIE, QUERY_SET_BOOKIE)
-        context[chat_id] = None
         return {"statusCode": 200}
 
     # List bookmakers that could be deleted
@@ -149,7 +172,6 @@ def handler(request):
     # Get user answer when setting a new bookie.
     if context.get(chat_id) == "/deletebookmaker":
         delete(chat_id, text, QUERY_LIST_BOOKIE, QUERY_DELETE_BOOKIE)
-        context[chat_id] = None
         return {"statusCode": 200}
 
     # List user's bookmakers

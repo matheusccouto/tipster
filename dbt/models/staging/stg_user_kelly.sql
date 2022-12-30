@@ -6,7 +6,7 @@ WITH users AS (
 )
 SELECT
     u.user,
-    COALESCE(ev.ev, 0) AS ev
+    COALESCE(k.fraction, 0) AS fraction
 FROM
     users AS u
-LEFT JOIN {{ ref("user_ev") }} AS ev ON u.user = ev.user
+LEFT JOIN {{ ref("user_kelly") }} AS k ON u.user = k.user
