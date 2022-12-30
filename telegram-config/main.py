@@ -84,23 +84,20 @@ def _read_choice(chat_id, text, query_list, query_update):
     data = run_query(query_list.format(chat_id=chat_id))
     try:
         selected = list(data)[int(text)]
+        run_query(query_update.format(chat_id=chat_id, key=selected.key))
+        bot.sendMessage(chat_id=chat_id, text=selected.name)
     except ValueError:
         bot.sendMessage(chat_id=chat_id, text="Type only the number")
     except IndexError:
         bot.sendMessage(chat_id=chat_id, text="Type a number from the list")
-    finally:
-        run_query(query_update.format(chat_id=chat_id, key=selected.key))
-        return selected
 
 
 def add(chat_id, text, query_available, query_set):
-    selected = _read_choice(chat_id, text, query_available, query_set)
-    bot.sendMessage(chat_id=chat_id, text=f"Added {selected.name}")
+    _read_choice(chat_id, text, query_available, query_set)
 
 
 def delete(chat_id, text, query_current, query_delete):
-    selected = _read_choice(chat_id, text, query_current, query_delete)
-    bot.sendMessage(chat_id=chat_id, text=f"Deleted {selected.name}")
+    _read_choice(chat_id, text, query_current, query_delete)
 
 
 def list_(chat_id, query):
