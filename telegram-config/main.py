@@ -27,7 +27,7 @@ CMD = {
 QUERY_AVAILABLE_BOOKIE = """
     SELECT b.key, b.name
     FROM tipster.bookmaker AS b
-    LEFT JOIN tipster.user_bookmaker AS u ON b.key = u.bookmaker AND user = {chat_id}
+    LEFT JOIN tipster.stg_user_bookmaker AS u ON b.key = u.name AND user = {chat_id}
     WHERE u.user IS NULL
     ORDER BY b.name
 """
@@ -36,8 +36,8 @@ QUERY_SET_BOOKIE = """
     VALUES ({chat_id}, '{key}')
 """
 QUERY_LIST_BOOKIE = """
-    SELECT bookmaker AS key, bookmaker AS name
-    FROM tipster.user_bookmaker
+    SELECT key, name
+    FROM tipster.stg_user_bookmaker
     WHERE user = {chat_id}
     ORDER BY bookmaker
     """
