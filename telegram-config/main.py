@@ -16,6 +16,7 @@ CMD = {
     "deleteleague": "Delete a league",
     "listleagues": "List your leagues",
     "setev": "Set your expected value threshold",
+    "setkellyfraction": "Set your fraction for Kelly criterion",
     "cancel": "Cancel current command",
 }
 
@@ -71,7 +72,7 @@ def run_query(query):
 
 
 def list_available(chat_id, query):
-    data = run_query(query)
+    data = run_query(query.format(chat_id))
     text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
     text = f"Select a number from the list\n\n{text}"
     bot.sendMessage(chat_id=chat_id, text=text)
@@ -136,7 +137,3 @@ def handler(request):
     cmd_msg = "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
     bot.sendMessage(chat_id=chat_id, text=welcome_msg + "\n\n" + cmd_msg)
     return {"statusCode": 200}
-
-
-if __name__ == "__main__":
-    print(handler())
