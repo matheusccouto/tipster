@@ -73,7 +73,7 @@ def send_message(bot, chat_id, text):
 def choices(chat_id, query):
     data = list(run_query(query.format(chat_id=chat_id)))
     if len(data) == 0:
-        return send_message(bot, chat_id, "There is nothing left to be selected")
+        return send_message(bot, chat_id, "There is nothing to be selected")
     else:
         text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
         text = f"Select a number from the list\n\n{text}"
@@ -122,6 +122,10 @@ def handler(request):
     # If the user cancels, clear the context.
     if "/cancel" in text:
         context[chat_id] = None
+        if context.get(chat_id) is None:
+            send_message(bot, chat_id, "There is nothing to be canceled")
+        else:
+            send_message(bot, chat_id, f"Canceled {context.get(chat_id)}")
         return {"statusCode": 200}
 
     # Show available bookies if the user wants to set a new one.
