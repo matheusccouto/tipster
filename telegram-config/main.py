@@ -71,7 +71,7 @@ def send_message(bot, chat_id, text):
 
 
 def choices(chat_id, query):
-    data = run_query(query.format(chat_id=chat_id))
+    data = list(run_query(query.format(chat_id=chat_id)))
     if len(data) == 0:
         return "There is nothing left to be selected"
     else:
