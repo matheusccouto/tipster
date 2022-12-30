@@ -14,7 +14,7 @@ CREATE OR REPLACE FUNCTION {{ target.dataset }}.message_h2h(
     concat(
         flag, ' ', league, ' ', date, '\\n',
         home, ' x ', away, '\\n',
-        bet, ' on [', bookmaker, '](', url, ') at ', price
+        'Bet ', bet, ' on [', bookmaker, '](', url, ') at ', price
     )
 );
 
