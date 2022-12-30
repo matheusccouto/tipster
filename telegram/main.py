@@ -34,7 +34,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     for (_, _, user), group in data.groupby(["league_id", "date", "user"]):
 
         bot.sendMessage(
-            chat_id=user,
+            chat_id=str(user),
             text=emojize("\n\n".join(group["message"])),
             parse_mode="markdown",
             disable_web_page_preview=True,
