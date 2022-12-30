@@ -31,6 +31,8 @@ QUERY_AVAILABLE_BOOKIE = """
     ORDER BY b.name
 """
 QUERY_SET_BOOKIE = """
+    INSERT INTO tipster.user_bookmaker (user, bookmaker)
+    VALUES ({chat_id}, {key})
 """
 QUERY_LIST_BOOKIE = """
     SELECT bookmaker
@@ -87,7 +89,7 @@ def add_new(chat_id, text, query_available, query_set):
     except IndexError:
         bot.sendMessage(chat_id=chat_id, text="Type a number from the list")
     finally:
-        # run_query(query_set.format(chat_id=chat_id, key=selected.key))
+        run_query(query_set.format(chat_id=chat_id, key=selected.key))
         bot.sendMessage(chat_id=chat_id, text=f"Added {selected.name}")
     context[chat_id] = None
 
