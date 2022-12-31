@@ -1,24 +1,28 @@
 WITH tips AS (
     SELECT
         bets.*,
-        ubk.user
+        ub.user
     FROM
         {{ ref("fct_h2h") }} AS bets
     INNER JOIN
-        {{ ref("user_bookmaker") }} AS ubk ON bets.bookmaker_key = ubk.bookmaker
+        {{ ref("stg_user_bookmaker") }} AS ub ON bets.bookmaker_key = ub.name
+    INNER JOIN
+        {{ ref("stg_user_league") }} AS ul ON bets.league_id = ul.key
     LEFT JOIN
-        {{ ref("user_ev") }} AS uev ON ubk.user = uev.user
+        {{ ref("stg_user_ev") }} AS ue ON ub.user = ue.user
+    LEFT JOIN
+        {{ ref("stg_user_kelly") }} AS uk ON ub.user = uk.user
     WHERE
-        bets.ev >= uev.ev
+        bets.ev >= ue.ev
     QUALIFY
-        row_number() OVER (
-            PARTITION BY bets.id, ubk.user ORDER BY bets.ev DESC
-        ) = 1
+        row_number() OVER (PARTITION BY bets.id, ub.user ORDER BY bets.ev DESC) = 1
 )
 
-SELECT tips.*
+SELECT
+    tips.*
 FROM
     tips
-LEFT JOIN {{ ref("stg_sent") }} AS s ON tips.user = s.user AND tips.id = s.id
+LEFT JOIN
+    {{ ref("stg_sent") }} AS s ON tips.user = s.user AND tips.id = s.id
 WHERE
     tips.ev > coalesce(s.ev, 0)
