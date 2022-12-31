@@ -1,12 +1,12 @@
 WITH tips AS (
     SELECT
-        replace(bets.message, '{kelly}', CAST(ROUND(100 * uk.fraction * bets.kelly, 1) AS STRING)),
+        replace(bets.message, '{kelly}', CAST(ROUND(100 * uk.fraction * bets.kelly, 1) AS STRING)) AS message,  -- noqa: L029
         bets.* except (message),
         ub.user
     FROM
         {{ ref("fct_h2h") }} AS bets
     INNER JOIN
-        {{ ref("stg_user_bookmaker") }} AS ub ON bets.bookmaker_key = ub.name
+        {{ ref("stg_user_bookmaker") }} AS ub ON bets.bookmaker_key = ub.key
     INNER JOIN
         {{ ref("stg_user_league") }} AS ul ON bets.league_id = ul.key
     LEFT JOIN
