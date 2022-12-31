@@ -47,7 +47,7 @@ QUERY_DELETE_BOOKIE = """
 """
 
 QUERY_AVAILABLE_LEAGUE = """
-    SELECT u.key, u.name
+    SELECT u.key, u.tipster
     FROM `tipster.league` AS l
     LEFT JOIN `tipster.stg_user_league` AS u ON l.id = u.key AND user = {chat_id}
     WHERE u.user IS NULL
@@ -127,7 +127,7 @@ def delete(chat_id, text, query_current, query_delete):
 def list_(chat_id, query):
     data = run_query(query.format(chat_id=chat_id))
     text = "\n".join([row.name for row in data])
-    text = text if text else "You do not have bookmakers"
+    text = text if text else "You do not have any"
     send_message(bot, chat_id, text)
 
 
