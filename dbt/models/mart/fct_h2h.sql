@@ -144,5 +144,6 @@ SELECT
     min(price) OVER (PARTITION BY id, bet) AS market_price_min,
     percentile_cont(price, 0.5) OVER (PARTITION BY id, bet) AS market_price_median,
     max(price) OVER (PARTITION BY id, bet) AS market_price_max,
+    (((price - 1) * prob) - (1 - prob)) / (price - 1) AS kelly
 FROM
   bets_last

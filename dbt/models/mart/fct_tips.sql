@@ -1,6 +1,7 @@
 WITH tips AS (
     SELECT
-        bets.*,
+        replace(bets.message, '{kelly}', CAST(ROUND(100 * bets.kelly, 1) AS STRING)),
+        bets.* except (message),
         ub.user
     FROM
         {{ ref("fct_h2h") }} AS bets
