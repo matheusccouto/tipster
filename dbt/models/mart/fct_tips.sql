@@ -1,6 +1,6 @@
 WITH tips AS (
     SELECT
-        replace(bets.message, '{kelly}', CAST(ROUND(100 * bets.kelly, 1) AS STRING)),
+        replace(bets.message, '{kelly}', CAST(ROUND(100 * uk.fraction * bets.kelly, 1) AS STRING)),
         bets.* except (message),
         ub.user
     FROM
