@@ -47,11 +47,11 @@ QUERY_DELETE_BOOKIE = """
 """
 
 QUERY_AVAILABLE_LEAGUE = """
-    SELECT b.key, b.name
-    FROM tipster.league AS b
-    LEFT JOIN tipster.stg_user_league AS u ON b.key = u.key AND user = {chat_id}
+    SELECT u.key, u.name
+    FROM `tipster.league` AS l
+    LEFT JOIN `tipster.stg_user_league` AS u ON l.id = u.key AND user = {chat_id}
     WHERE u.user IS NULL
-    ORDER BY b.name
+    ORDER BY l.tipster
 """
 QUERY_SET_LEAGUE = """
     INSERT INTO tipster.user_league (user, league)
@@ -175,8 +175,8 @@ def handler(request):
         return {"statusCode": 200}
 
     # List user's leagues
-    if "/listleague" in text:
-        list_(chat_id, QUERY_LIST_LEAGUE)
+    if "/listbookmakers" in text:
+        list_(chat_id, QUERY_LIST_BOOKIE)
         return {"statusCode": 200}
 
     # Show available leagues if the user wants to set a new one.
