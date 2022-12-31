@@ -45,13 +45,13 @@ QUERY_DELETE_BOOKIE = """
     DELETE FROM tipster.user_bookmaker
     WHERE user = {chat_id} AND bookmaker = '{key}'
 """
-
 QUERY_AVAILABLE_LEAGUE = """
-    SELECT l.id AS key, l.tipster AS name
+    SELECT l.id AS key, concat(f.emoji, ' ', l.tipster) AS name
     FROM `tipster.league` AS l
     LEFT JOIN `tipster.stg_user_league` AS u ON l.id = u.key AND user = {chat_id}
+    LEFT JOIN `tipster.flag` AS f on l.country = f.country
     WHERE u.user IS NULL
-    ORDER BY l.tipster
+    ORDER BY l.id
 """
 QUERY_SET_LEAGUE = """
     INSERT INTO tipster.user_league (user, league)
@@ -66,6 +66,14 @@ QUERY_LIST_LEAGUE = """
 QUERY_DELETE_LEAGUE = """
     DELETE FROM tipster.user_league
     WHERE user = {chat_id} AND league = '{key}'
+"""
+QUERY_SET_EV = """
+    INSERT INTO tipster.user_ev (user, value, update_at)
+    VALUES ({chat_id}, '{value}', current_timestamp())
+"""
+QUERY_SET_KELLY= """
+    INSERT INTO tipster.user_kelly (user, value, update_at)
+    VALUES ({chat_id}, '{value}', current_timestamp())
 """
 
 # General config.
