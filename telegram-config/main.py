@@ -54,18 +54,18 @@ QUERY_AVAILABLE_LEAGUE = """
     ORDER BY b.name
 """
 QUERY_SET_LEAGUE = """
-    INSERT INTO tipster.user_bookmaker (user, bookmaker)
+    INSERT INTO tipster.user_league (user, league)
     VALUES ({chat_id}, '{key}')
 """
 QUERY_LIST_LEAGUE = """
     SELECT key, name
-    FROM tipster.stg_user_bookmaker
+    FROM tipster.stg_user_league
     WHERE user = {chat_id}
-    ORDER BY name
+    ORDER BY key
     """
 QUERY_DELETE_LEAGUE = """
-    DELETE FROM tipster.user_bookmaker
-    WHERE user = {chat_id} AND bookmaker = '{key}'
+    DELETE FROM tipster.user_league
+    WHERE user = {chat_id} AND league = '{key}'
 """
 
 # General config.
@@ -174,9 +174,36 @@ def handler(request):
         delete(chat_id, text, QUERY_LIST_BOOKIE, QUERY_DELETE_BOOKIE)
         return {"statusCode": 200}
 
-    # List user's bookmakers
-    if "/listbookmakers" in text:
-        list_(chat_id, QUERY_LIST_BOOKIE)
+    # List user's leagues
+    if "/listleague" in text:
+        list_(chat_id, QUERY_LIST_LEAGUE)
+        return {"statusCode": 200}
+
+    # Show available leagues if the user wants to set a new one.
+    if "/setleague" in text:
+        context[chat_id] = "/setleague"
+        choices(chat_id, QUERY_AVAILABLE_LEAGUE)
+        return {"statusCode": 200}
+
+    # Get user answer when setting a new league.
+    if context.get(chat_id) == "/setleague":
+        add(chat_id, text, QUERY_AVAILABLE_LEAGUE, QUERY_SET_LEAGUE)
+        return {"statusCode": 200}
+
+    # List leagues that could be deleted
+    if "/deleteleague" in text:
+        context[chat_id] = "/deleteleague"
+        choices(chat_id, QUERY_LIST_LEAGUE)
+        return {"statusCode": 200}
+
+    # Get user answer when setting a new league.
+    if context.get(chat_id) == "/deletebookmaker":
+        delete(chat_id, text, QUERY_LIST_LEAGUE, QUERY_DELETE_LEAGUE)
+        return {"statusCode": 200}
+
+    # List user's leagues
+    if "/listleagues" in text:
+        list_(chat_id, QUERY_LIST_LEAGUE)
         return {"statusCode": 200}
 
     welcome_msg = "You can control me by sending these commands:"
