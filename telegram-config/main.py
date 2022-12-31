@@ -47,7 +47,7 @@ QUERY_DELETE_BOOKIE = """
 """
 
 QUERY_AVAILABLE_LEAGUE = """
-    SELECT u.key, u.tipster
+    SELECT l.id, l.tipster
     FROM `tipster.league` AS l
     LEFT JOIN `tipster.stg_user_league` AS u ON l.id = u.key AND user = {chat_id}
     WHERE u.user IS NULL
