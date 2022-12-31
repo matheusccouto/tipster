@@ -65,7 +65,7 @@ QUERY_LIST_LEAGUE = """
     """
 QUERY_DELETE_LEAGUE = """
     DELETE FROM tipster.user_league
-    WHERE user = {chat_id} AND league = '{key}'
+    WHERE user = {chat_id} AND league = {key}
 """
 QUERY_SET_EV = """
     INSERT INTO tipster.user_ev (user, value, update_at)
@@ -116,7 +116,7 @@ def _read_choice(chat_id, text, query_list, query_update):
     try:
         selected = list(data)[int(text)]
         run_query(query_update.format(chat_id=chat_id, key=selected.key))
-        bot.sendMessage(chat_id=chat_id, text=selected.name)
+        send_message(bot, chat_id=chat_id, text=selected.name)
         context[chat_id] = None
     except ValueError:
         bot.sendMessage(chat_id=chat_id, text="Type only the number")
