@@ -55,7 +55,7 @@ QUERY_AVAILABLE_LEAGUE = """
 """
 QUERY_SET_LEAGUE = """
     INSERT INTO tipster.user_league (user, league)
-    VALUES ({chat_id}, '{key}')
+    VALUES ({chat_id}, {key})
 """
 QUERY_LIST_LEAGUE = """
     SELECT key, name
@@ -115,7 +115,7 @@ def _read_choice(chat_id, text, query_list, query_update):
     data = run_query(query_list.format(chat_id=chat_id))
     try:
         selected = list(data)[int(text)]
-        run_query(query_update.format(chat_id=chat_id, key=selected["key"]))
+        run_query(query_update.format(chat_id=chat_id, key=selected.key))
         bot.sendMessage(chat_id=chat_id, text=selected.name)
         context[chat_id] = None
     except ValueError:
