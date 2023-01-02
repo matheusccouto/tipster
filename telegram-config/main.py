@@ -69,15 +69,15 @@ QUERY_DELETE_LEAGUE = """
     WHERE user = {chat_id} AND league = {key}
 """
 QUERY_SET_EV = """
-    INSERT INTO tipster.user_ev (user, ev, update_at)
+    INSERT INTO tipster.user_ev (user, ev, updated_at)
     VALUES ({chat_id}, {value}, current_timestamp())
 """
 QUERY_SET_BANKROLL = """
-    INSERT INTO tipster.user_bankroll (user, bankroll, update_at)
+    INSERT INTO tipster.user_bankroll (user, bankroll, updated_at)
     VALUES ({chat_id}, {value}, current_timestamp())
 """
 QUERY_SET_KELLY= """
-    INSERT INTO tipster.user_kelly (user, fraction, update_at)
+    INSERT INTO tipster.user_kelly (user, fraction, updated_at)
     VALUES ({chat_id}, {value}, current_timestamp())
 """
 
@@ -227,6 +227,7 @@ def handler(request):
     # Set EV threshold
     if "/setev" in text:
         context[chat_id] = "/setev"
+        send_message(bot, chat_id, "Type the value you want to set")
         return {"statusCode": 200}
 
     # Get user answer when setting EV.
@@ -237,6 +238,7 @@ def handler(request):
     # Set bankroll
     if "/setbankroll" in text:
         context[chat_id] = "/setbankroll"
+        send_message(bot, chat_id, "Type the value you want to set")
         return {"statusCode": 200}
 
     # Get user answer when setting bankroll.
@@ -247,6 +249,7 @@ def handler(request):
     # Set kelly fraction
     if "/setkellyfraction" in text:
         context[chat_id] = "/setkellyfraction"
+        send_message(bot, chat_id, "Type the value you want to set")
         return {"statusCode": 200}
 
     # Get user answer when setting kelly fraction.
