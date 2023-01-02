@@ -51,7 +51,7 @@ QUERY_AVAILABLE_LEAGUE = """
     FROM `tipster.league` AS l
     LEFT JOIN `tipster.stg_user_league` AS u ON l.id = u.key AND user = {chat_id}
     LEFT JOIN `tipster.flag` AS f on l.country = f.country
-    WHERE u.user IS NULL
+    WHERE u.user IS NULL AND l.theoddsapi IS NOT NULL
     ORDER BY l.id
 """
 QUERY_SET_LEAGUE = """
