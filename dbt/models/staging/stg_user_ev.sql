@@ -2,7 +2,7 @@ WITH users AS (
     SELECT DISTINCT
         user
     FROM
-        {{ ref("user_bookmaker") }}
+        {{ ref("stg_user_bookmaker") }}
 )
 SELECT
     u.user,
