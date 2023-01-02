@@ -1,8 +1,12 @@
 WITH tips AS (
     SELECT
-        replace(bets.message, '{kelly}', CAST(ROUND(100 * uk.fraction * bets.kelly, 1) AS STRING)) AS message,  -- noqa: L029
-        bets.* except (message),
-        ub.user
+        bets.* EXCEPT (message),
+        ub.user,
+        replace(
+            bets.message,
+            '{kelly}',
+            cast(round(ur.bankroll * uk.fraction * bets.kelly, 2) AS STRING)
+        ) AS message  -- noqa: L029
     FROM
         {{ ref("fct_h2h") }} AS bets
     INNER JOIN
@@ -13,14 +17,17 @@ WITH tips AS (
         {{ ref("stg_user_ev") }} AS ue ON ub.user = ue.user
     LEFT JOIN
         {{ ref("stg_user_kelly") }} AS uk ON ub.user = uk.user
+    LEFT JOIN
+        {{ ref("stg_user_bankroll") }} AS ur ON ub.user = ur.user
     WHERE
         bets.ev >= ue.ev
     QUALIFY
-        row_number() OVER (PARTITION BY bets.id, ub.user ORDER BY bets.ev DESC) = 1
+        row_number() OVER (
+            PARTITION BY bets.id, ub.user ORDER BY bets.ev DESC
+        ) = 1
 )
 
-SELECT
-    tips.*
+SELECT tips.*
 FROM
     tips
 LEFT JOIN

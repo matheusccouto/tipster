@@ -127,23 +127,40 @@ bets AS (
 ),
 
 bets_last AS (
-  SELECT
-      *,
-      first_value(bets.price) OVER (PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at) AS price_open,
-      min(bets.price) OVER (PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at) AS price_min,
-      max(bets.price) OVER (PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at) AS price_max
-  FROM
-      bets
-  QUALIFY
-      row_number() OVER (PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at DESC) = 1
+    SELECT
+        *,
+        first_value(
+            bets.price
+        ) OVER (
+            PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at
+        ) AS price_open,
+        min(
+            bets.price
+        ) OVER (
+            PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at
+        ) AS price_min,
+        max(
+            bets.price
+        ) OVER (
+            PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at
+        ) AS price_max
+    FROM
+        bets
+    QUALIFY
+        row_number() OVER (
+            PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at DESC
+        ) = 1
 )
+
 SELECT
     *,
     timestamp_diff(start_at, loaded_at, HOUR) AS hours_left,
     count(DISTINCT bookmaker_key) OVER (PARTITION BY id, bet) AS market_count,
     min(price) OVER (PARTITION BY id, bet) AS market_price_min,
-    percentile_cont(price, 0.5) OVER (PARTITION BY id, bet) AS market_price_median,
+    percentile_cont(
+        price, 0.5
+    ) OVER (PARTITION BY id, bet) AS market_price_median,
     max(price) OVER (PARTITION BY id, bet) AS market_price_max,
     (((price - 1) * prob) - (1 - prob)) / (price - 1) AS kelly
 FROM
-  bets_last
+    bets_last
