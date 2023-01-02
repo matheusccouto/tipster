@@ -112,17 +112,22 @@ def choices(chat_id, query):
         context[chat_id] = None
     else:
         text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
-        text = f"Select a number from the list\n\n{text}"
+        text = f"Select a number from the list or 'all'\n\n{text}"
         send_message(bot, chat_id, text)
 
 
 def _read_choice(chat_id, text, query_list, query_update):
-    data = run_query(query_list.format(chat_id=chat_id))
+    data = list(run_query(query_list.format(chat_id=chat_id)))
     try:
-        selected = list(data)[int(text)]
-        run_query(query_update.format(chat_id=chat_id, key=selected.key))
-        send_message(bot, chat_id=chat_id, text=f"Selected {selected.name}")
-        context[chat_id] = None
+        if text.strip().lower() == "all":
+            rows = range(len(data))
+        else:
+            rows = int(text)
+        for i in rows:
+            selected = data[i]
+            run_query(query_update.format(chat_id=chat_id, key=selected.key))
+            send_message(bot, chat_id=chat_id, text=f"Selected {selected.name}")
+            context[chat_id] = None
     except ValueError:
         bot.sendMessage(chat_id=chat_id, text="Type only the number")
     except IndexError:
