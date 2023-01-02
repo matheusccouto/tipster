@@ -121,7 +121,7 @@ def _read_choice(chat_id, text, query_list, query_update):
     try:
         selected = list(data)[int(text)]
         run_query(query_update.format(chat_id=chat_id, key=selected.key))
-        send_message(bot, chat_id=chat_id, text=selected.name)
+        send_message(bot, chat_id=chat_id, text=f"Selected {selected.name}")
         context[chat_id] = None
     except ValueError:
         bot.sendMessage(chat_id=chat_id, text="Type only the number")
@@ -147,6 +147,7 @@ def list_(chat_id, query):
 def set_value(chat_id, query, value):
     run_query(query.format(chat_id=chat_id, value=value))
     context[chat_id] = None
+    send_message(bot, chat_id=chat_id, text=f"Set {value}")
 
 
 def handler(request):
