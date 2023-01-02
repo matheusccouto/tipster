@@ -17,6 +17,7 @@ CMD = {
     "deleteleague": "Delete a league",
     "listleagues": "List your leagues",
     "setev": "Set your expected value threshold",
+    "setbankroll": "Set your bankroll",
     "setkellyfraction": "Set your fraction for Kelly criterion",
     "cancel": "Cancel current command",
 }
@@ -68,12 +69,16 @@ QUERY_DELETE_LEAGUE = """
     WHERE user = {chat_id} AND league = {key}
 """
 QUERY_SET_EV = """
-    INSERT INTO tipster.user_ev (user, value, update_at)
-    VALUES ({chat_id}, '{value}', current_timestamp())
+    INSERT INTO tipster.user_ev (user, ev, update_at)
+    VALUES ({chat_id}, {value}, current_timestamp())
+"""
+QUERY_SET_BANKROLL = """
+    INSERT INTO tipster.user_bankroll (user, bankroll, update_at)
+    VALUES ({chat_id}, {value}, current_timestamp())
 """
 QUERY_SET_KELLY= """
-    INSERT INTO tipster.user_kelly (user, value, update_at)
-    VALUES ({chat_id}, '{value}', current_timestamp())
+    INSERT INTO tipster.user_kelly (user, fraction, update_at)
+    VALUES ({chat_id}, {value}, current_timestamp())
 """
 
 # General config.
@@ -137,6 +142,11 @@ def list_(chat_id, query):
     text = "\n".join([row.name for row in data])
     text = text if text else "You do not have any"
     send_message(bot, chat_id, text)
+
+
+def set_value(chat_id, query, value):
+    run_query(query.format(chat_id=chat_id, value=value))
+    context[chat_id] = None
 
 
 def handler(request):
@@ -212,6 +222,36 @@ def handler(request):
     # List user's leagues
     if "/listleagues" in text:
         list_(chat_id, QUERY_LIST_LEAGUE)
+        return {"statusCode": 200}
+    
+    # Set EV threshold
+    if "/setev" in text:
+        context[chat_id] = "/setev"
+        return {"statusCode": 200}
+
+    # Get user answer when setting EV.
+    if context.get(chat_id) == "/setev":
+        set_value(chat_id, QUERY_SET_EV, text)
+        return {"statusCode": 200}
+
+    # Set bankroll
+    if "/setbankroll" in text:
+        context[chat_id] = "/setbankroll"
+        return {"statusCode": 200}
+
+    # Get user answer when setting bankroll.
+    if context.get(chat_id) == "/setbankroll":
+        set_value(chat_id, QUERY_SET_BANKROLL, text)
+        return {"statusCode": 200}
+
+    # Set kelly fraction
+    if "/setkellyfraction" in text:
+        context[chat_id] = "/setkellyfraction"
+        return {"statusCode": 200}
+
+    # Get user answer when setting kelly fraction.
+    if context.get(chat_id) == "/setkellyfraction":
+        set_value(chat_id, QUERY_SET_KELLY, text)
         return {"statusCode": 200}
 
     welcome_msg = "You can control me by sending these commands:"
