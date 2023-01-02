@@ -122,7 +122,7 @@ def _read_choice(chat_id, text, query_list, query_update):
         if text.strip().lower() == "all":
             rows = range(len(data))
         else:
-            rows = int(text)
+            rows = [int(text)]
         for i in rows:
             selected = data[i]
             run_query(query_update.format(chat_id=chat_id, key=selected.key))
