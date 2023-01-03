@@ -41,7 +41,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
             timeout=60,
         )
 
-        sent = group[["user", "id", "bookmaker_key", "bet", "price", "ev"]]
+        sent = group[["user", "id", "bookmaker_key", "bet", "price", "ev", "amount", "message"]]
         sent["sent_at"] = datetime.now()
         sent.to_gbq("tipster.sent", if_exists="append")
 

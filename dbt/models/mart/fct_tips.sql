@@ -4,6 +4,7 @@ WITH tips AS (
         ub.user,
         replace(
             bets.message,
+            round(ur.bankroll * uk.fraction * bets.kelly, 2) AS amount,
             '{kelly}',
             cast(round(ur.bankroll * uk.fraction * bets.kelly, 2) AS STRING)
         ) AS message  -- noqa: L029
