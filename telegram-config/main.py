@@ -76,7 +76,7 @@ QUERY_SET_BANKROLL = """
     INSERT INTO tipster.user_bankroll (user, bankroll, updated_at)
     VALUES ({chat_id}, {value}, current_timestamp())
 """
-QUERY_SET_KELLY= """
+QUERY_SET_KELLY = """
     INSERT INTO tipster.user_kelly (user, fraction, updated_at)
     VALUES ({chat_id}, {value}, current_timestamp())
 """
@@ -167,6 +167,17 @@ def handler(request):
     chat_id = update.message.chat.id
     text = update.message.text
 
+    if update.message.reply_to_message is not None:
+        original_text = update.message.reply_to_message.text
+
+        if "/bet" in original_text:
+            # set_value(chat_id, QUERY_REGISTER_BET, text)
+            return {"statusCode": 200}
+
+        if "/cancel" in original_text:
+            # set_value(chat_id, QUERY_UNREGISTER_BET, text)
+            return {"statusCode": 200}
+
     # If the user cancels, clear the context.
     if "/cancel" in text:
         if context.get(chat_id) is None:
@@ -229,7 +240,7 @@ def handler(request):
     if "/listleagues" in text:
         list_(chat_id, QUERY_LIST_LEAGUE)
         return {"statusCode": 200}
-    
+
     # Set EV threshold
     if "/setev" in text:
         context[chat_id] = "/setev"
