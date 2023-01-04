@@ -164,9 +164,9 @@ def handler(request):
     chat_id = update.message.chat.id
     text = update.message.text
 
-    send_message(bot, chat_id, str(update.message.reply_to_message))
-    if update.message.reply_to_message is not None:
+    if update.message.reply_to_message:
         original_text = update.message.reply_to_message.text
+        send_message(bot, chat_id, original_text)
 
         if "/bet" in original_text:
             # set_value(chat_id, QUERY_REGISTER_BET, text)
