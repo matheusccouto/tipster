@@ -164,7 +164,7 @@ def handler(request):
     chat_id = update.message.chat.id
     text = update.message.text
 
-    send_message(bot, chat_id, str(update.message))
+    send_message(bot, chat_id, str(update.message.reply_to_message))
     if update.message.reply_to_message is not None:
         original_text = update.message.reply_to_message.text
 
