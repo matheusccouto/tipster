@@ -83,11 +83,11 @@ QUERY_SET_KELLY = """
 """
 QUERY_REGISTER_BET = """
     INSERT INTO tipster.bet (user, message, updated_at, delete)
-    VALUES ({chat_id}, {value}, current_timestamp(), TRUE)
+    VALUES ({chat_id}, '{value}', current_timestamp(), TRUE)
 """
 QUERY_UNREGISTER_BET = """
     INSERT INTO tipster.bet (user, message, updated_at, delete)
-    VALUES ({chat_id}, {value}, current_timestamp(), FALSE)
+    VALUES ({chat_id}, '{value}', current_timestamp(), FALSE)
 """
 
 # General config.
