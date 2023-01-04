@@ -101,11 +101,13 @@ def run_query(query):
 
 
 def send_message(bot, chat_id, text):
+    """Send a message with emojis."""
     text = emoji.emojize(text.encode("raw-unicode-escape").decode("unicode-escape"))
     bot.sendMessage(chat_id=chat_id, text=text)
 
 
 def choices(chat_id, query):
+    """List available choices."""
     data = list(run_query(query.format(chat_id=chat_id)))
     if len(data) == 0:
         send_message(bot, chat_id, "There is nothing to be selected")
@@ -116,7 +118,8 @@ def choices(chat_id, query):
         send_message(bot, chat_id, text)
 
 
-def _read_choice(chat_id, text, query_list, query_update):
+def read_choice(chat_id, text, query_list, query_update):
+    """Read choice."""
     data = list(run_query(query_list.format(chat_id=chat_id)))
     try:
         if text.strip().lower() == "all":
@@ -134,15 +137,8 @@ def _read_choice(chat_id, text, query_list, query_update):
         bot.sendMessage(chat_id=chat_id, text="Type a number from the list")
 
 
-def add(chat_id, text, query_available, query_set):
-    _read_choice(chat_id, text, query_available, query_set)
-
-
-def delete(chat_id, text, query_current, query_delete):
-    _read_choice(chat_id, text, query_current, query_delete)
-
-
 def list_(chat_id, query):
+    """List items."""
     data = run_query(query.format(chat_id=chat_id))
     text = "\n".join([row.name for row in data])
     text = text if text else "You do not have any"
@@ -150,6 +146,7 @@ def list_(chat_id, query):
 
 
 def set_value(chat_id, query, value):
+    """Set a value."""
     run_query(query.format(chat_id=chat_id, value=value))
     context[chat_id] = None
     send_message(bot, chat_id=chat_id, text=f"Set {value}")
@@ -195,7 +192,7 @@ def handler(request):
 
     # Get user answer when setting a new bookie.
     if context.get(chat_id) == "/setbookmaker":
-        add(chat_id, text, QUERY_AVAILABLE_BOOKIE, QUERY_SET_BOOKIE)
+        read_choice(chat_id, text, QUERY_AVAILABLE_BOOKIE, QUERY_SET_BOOKIE)
         return {"statusCode": 200}
 
     # List bookmakers that could be deleted
@@ -206,7 +203,7 @@ def handler(request):
 
     # Get user answer when setting a new bookie.
     if context.get(chat_id) == "/deletebookmaker":
-        delete(chat_id, text, QUERY_LIST_BOOKIE, QUERY_DELETE_BOOKIE)
+        read_choice(chat_id, text, QUERY_LIST_BOOKIE, QUERY_DELETE_BOOKIE)
         return {"statusCode": 200}
 
     # List user's leagues
@@ -222,7 +219,7 @@ def handler(request):
 
     # Get user answer when setting a new league.
     if context.get(chat_id) == "/setleague":
-        add(chat_id, text, QUERY_AVAILABLE_LEAGUE, QUERY_SET_LEAGUE)
+        read_choice(chat_id, text, QUERY_AVAILABLE_LEAGUE, QUERY_SET_LEAGUE)
         return {"statusCode": 200}
 
     # List leagues that could be deleted
@@ -233,7 +230,7 @@ def handler(request):
 
     # Get user answer when setting a new league.
     if context.get(chat_id) == "/deletebookmaker":
-        delete(chat_id, text, QUERY_LIST_LEAGUE, QUERY_DELETE_LEAGUE)
+        read_choice(chat_id, text, QUERY_LIST_LEAGUE, QUERY_DELETE_LEAGUE)
         return {"statusCode": 200}
 
     # List user's leagues
