@@ -2,9 +2,9 @@ WITH tips AS (
     SELECT
         bets.* EXCEPT (message),
         ub.user,
+        round(ur.bankroll * uk.fraction * bets.kelly, 2) AS amount,
         replace(
             bets.message,
-            round(ur.bankroll * uk.fraction * bets.kelly, 2) AS amount,
             '{kelly}',
             cast(round(ur.bankroll * uk.fraction * bets.kelly, 2) AS STRING)
         ) AS message  -- noqa: L029
