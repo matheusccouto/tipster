@@ -2,6 +2,7 @@
 
 import os
 from datetime import datetime
+from time import sleep
 
 import emoji
 import google.cloud.logging
@@ -31,19 +32,19 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """
     data = pd.read_gbq(query=query)
 
-    for (_, _, user), group in data.groupby(["league_id", "date", "user"]):
-
+    for _, row in data.iterrows():
         bot.sendMessage(
-            chat_id=str(user),
-            text=emojize("\n\n".join(group["message"])),
+            chat_id=str(row["user"]),
+            text=emojize(row["message"]),
             parse_mode="markdown",
             disable_web_page_preview=True,
             timeout=60,
         )
+        sleep(20 / 60)  # Rate limit is 20 messages per minute to the same group.
 
-        sent = group[["user", "id", "bookmaker_key", "bet", "price", "ev", "amount", "message"]]
-        sent["sent_at"] = datetime.now()
-        sent.to_gbq("tipster.sent", if_exists="append")
+    sent = data[["user", "id", "bookmaker_key", "bet", "price", "ev", "amount", "message"]]
+    sent["sent_at"] = datetime.now()
+    sent.to_gbq("tipster.sent", if_exists="append")
 
     return {"statusCode": 200}
 

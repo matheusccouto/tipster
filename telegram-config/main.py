@@ -100,10 +100,10 @@ def run_query(query):
     return job.result()
 
 
-def send_message(bot, chat_id, text):
+def send_message(bot_, chat_id, text):
     """Send a message with emojis."""
     text = emoji.emojize(text.encode("raw-unicode-escape").decode("unicode-escape"))
-    bot.sendMessage(chat_id=chat_id, text=text)
+    bot_.sendMessage(chat_id=chat_id, text=text)
 
 
 def choices(chat_id, query):
@@ -164,6 +164,7 @@ def handler(request):
     chat_id = update.message.chat.id
     text = update.message.text
 
+    send_message(bot, chat_id, str(update.message))
     if update.message.reply_to_message is not None:
         original_text = update.message.reply_to_message.text
 
