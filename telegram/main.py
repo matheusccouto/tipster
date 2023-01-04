@@ -1,6 +1,7 @@
 """Telegram bot for sending betting tips."""
 
 import os
+import re
 from datetime import datetime
 from time import sleep
 
@@ -25,8 +26,8 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         FROM
             tipster.fct_tips
     """
-    data = pd.read_gbq(query=query)
-    data["message"] = data["message"].str.replace("\\n", "\n")
+    data = pd.read_gbq(query=query).head()
+    data["message"] = data["message"].str.replace("\\n", "\n", regex=False)
 
     for _, row in data.iterrows():
         bot.sendMessage(
@@ -38,7 +39,11 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         )
         sleep(20 / 60)  # Rate limit is 20 messages per minute to the same group.
 
-    sent = data[["user", "id", "bookmaker_key", "bet", "price", "ev", "amount", "message"]]
+    data["message"] = data["message"].apply(
+        lambda x: re.sub(r"\[.+\]\(.+\)", re.findall(r"(?<=\[)(.+)(?=\])", x)[0], x)
+    )
+    cols = ["user", "id", "bookmaker_key", "bet", "price", "ev", "amount", "message"]
+    sent = data[cols]
     sent["sent_at"] = datetime.now()
     sent.to_gbq("tipster.sent", if_exists="append")
 
