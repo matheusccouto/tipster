@@ -166,8 +166,7 @@ def handler(request):
 
     if update.message.reply_to_message:
         original_text = update.message.reply_to_message.text
-        import json
-        send_message(bot, chat_id, json.dumps(update.message.reply_to_message))
+        send_message(bot, chat_id, str(update.message.reply_to_message))
 
         if "/bet" in original_text:
             # set_value(chat_id, QUERY_REGISTER_BET, text)
