@@ -22,3 +22,4 @@ sources:
   - name: tipster
     tables:
       - name: sent
+      - name: bet

@@ -1,4 +1,4 @@
-SELECT DISTINCT
+SELECT
     user,
     id,
     ev,
