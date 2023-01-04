@@ -111,22 +111,16 @@ def run_query(query):
     return job.result()
 
 
-def send_message(bot_, chat_id, text):
-    """Send a message with emojis."""
-    text = emoji.emojize(text.encode("raw-unicode-escape").decode("unicode-escape"))
-    bot_.sendMessage(chat_id=chat_id, text=text)
-
-
 def choices(chat_id, query):
     """List available choices."""
     data = list(run_query(query.format(chat_id=chat_id)))
     if len(data) == 0:
-        send_message(bot, chat_id, "There is nothing to be selected")
+        bot.sendMessage(chat_id, "There is nothing to be selected")
         context[chat_id] = None
     else:
         text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
         text = f"Select a number from the list or 'all'\n\n{text}"
-        send_message(bot, chat_id, text)
+        bot.sendMessage(chat_id, emoji.emojize(text))
 
 
 def read_choice(chat_id, text, query_list, query_update):
@@ -140,7 +134,7 @@ def read_choice(chat_id, text, query_list, query_update):
         for i in rows:
             selected = data[i]
             run_query(query_update.format(chat_id=chat_id, key=selected.key))
-            send_message(bot, chat_id=chat_id, text=f"Selected {selected.name}")
+            bot.sendMessage(chat_id, text=emoji.emojize(f"Selected {selected.name}"))
             context[chat_id] = None
     except ValueError:
         bot.sendMessage(chat_id=chat_id, text="Type only the number")
@@ -153,15 +147,14 @@ def list_(chat_id, query):
     data = run_query(query.format(chat_id=chat_id))
     text = "\n".join([row.name for row in data])
     text = text if text else "You do not have any"
-    send_message(bot, chat_id, text)
+    bot.sendMessage(chat_id, emoji.emojize(text))
 
 
 def set_value(chat_id, query, value):
     """Set a value."""
-    value = value.encode("raw-unicode-escape").decode("utf-8")
-    run_query(query.format(chat_id=chat_id, value=value))
+    run_query(query.format(chat_id=chat_id, value=emoji.demojize(value)))
     context[chat_id] = None
-    send_message(bot, chat_id=chat_id, text=f"Set {value}")
+    bot.sendMessage(chat_id, text=f"Set {value}")
 
 
 def handler(request):
@@ -190,9 +183,9 @@ def handler(request):
     # If the user cancels, clear the context.
     if "/cancel" in text:
         if context.get(chat_id) is None:
-            send_message(bot, chat_id, "There is nothing to be canceled")
+            bot.sendMessage(chat_id, "There is nothing to be canceled")
         else:
-            send_message(bot, chat_id, f"Canceled {context.get(chat_id)}")
+            bot.sendMessage(chat_id, f"Canceled {context.get(chat_id)}")
         context[chat_id] = None
         return {"statusCode": 200}
 
@@ -253,7 +246,7 @@ def handler(request):
     # Set EV threshold
     if "/setev" in text:
         context[chat_id] = "/setev"
-        send_message(bot, chat_id, "Type the value you want to set")
+        bot.sendMessage(chat_id, "Type the value you want to set")
         return {"statusCode": 200}
 
     # Get user answer when setting EV.
@@ -264,7 +257,7 @@ def handler(request):
     # Set bankroll
     if "/setbankroll" in text:
         context[chat_id] = "/setbankroll"
-        send_message(bot, chat_id, "Type the value you want to set")
+        bot.sendMessage(chat_id, "Type the value you want to set")
         return {"statusCode": 200}
 
     # Get user answer when setting bankroll.
@@ -275,7 +268,7 @@ def handler(request):
     # Set kelly fraction
     if "/setkellyfraction" in text:
         context[chat_id] = "/setkellyfraction"
-        send_message(bot, chat_id, "Type the value you want to set")
+        bot.sendMessage(chat_id, "Type the value you want to set")
         return {"statusCode": 200}
 
     # Get user answer when setting kelly fraction.
@@ -285,5 +278,5 @@ def handler(request):
 
     welcome_msg = "You can control me by sending these commands:"
     cmd_msg = "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
-    send_message(bot, chat_id, welcome_msg + "\n\n" + cmd_msg)
+    bot.sendMessage(chat_id, welcome_msg + "\n\n" + cmd_msg)
     return {"statusCode": 200}

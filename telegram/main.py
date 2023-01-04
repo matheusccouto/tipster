@@ -14,11 +14,6 @@ client.setup_logging()
 pd.options.mode.chained_assignment = None
 
 
-def emojize(string):
-    """Create emojis from unicode."""
-    return emoji.emojize(string.encode("raw-unicode-escape").decode("unicode-escape"))
-
-
 def handler(*args, **kwargs):  # pylint: disable=unused-argument
     """Send telegrams messages."""
     bot = telegram.Bot(os.getenv("TELEGRAM_TOKEN"))
@@ -35,7 +30,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     for _, row in data.iterrows():
         bot.sendMessage(
             chat_id=str(row["user"]),
-            text=emojize(row["message"]),
+            text=emoji.emojize(row["message"]),
             parse_mode="markdown",
             disable_web_page_preview=True,
             timeout=60,
