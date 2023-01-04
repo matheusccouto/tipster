@@ -30,7 +30,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     for _, row in data.iterrows():
         bot.sendMessage(
             chat_id=str(row["user"]),
-            text=emoji.emojize(row["message"]),
+            text=emoji.emojize(row["message"].replace("\\n", "\n")),
             parse_mode="markdown",
             disable_web_page_preview=True,
             timeout=60,
