@@ -19,6 +19,7 @@ CMD = {
     "setev": "Set your expected value threshold",
     "setbankroll": "Set your bankroll",
     "setkellyfraction": "Set your fraction for Kelly criterion",
+    "bet": "Include this on a reply to indicated that replied bet was placed",
     "cancel": "Cancel current command",
 }
 
@@ -79,6 +80,14 @@ QUERY_SET_BANKROLL = """
 QUERY_SET_KELLY = """
     INSERT INTO tipster.user_kelly (user, fraction, updated_at)
     VALUES ({chat_id}, {value}, current_timestamp())
+"""
+QUERY_REGISTER_BET = """
+    INSERT INTO tipster.bet (user, message, updated_at, delete)
+    VALUES ({chat_id}, {value}, current_timestamp(), TRUE)
+"""
+QUERY_UNREGISTER_BET = """
+    INSERT INTO tipster.bet (user, message, updated_at, delete)
+    VALUES ({chat_id}, {value}, current_timestamp(), FALSE)
 """
 
 # General config.
@@ -168,11 +177,11 @@ def handler(request):
         original_text = update.message.reply_to_message.text
 
         if "/bet" in text:
-            # set_value(chat_id, QUERY_REGISTER_BET, text)
+            set_value(chat_id, QUERY_REGISTER_BET, original_text)
             return {"statusCode": 200}
 
         if "/cancel" in text:
-            # set_value(chat_id, QUERY_UNREGISTER_BET, text)
+            set_value(chat_id, QUERY_UNREGISTER_BET, original_text)
             return {"statusCode": 200}
 
     # If the user cancels, clear the context.

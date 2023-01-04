@@ -16,7 +16,7 @@ seeds:
       column_types:
         bankroll: FLOAT64
         updated_at: TIMESTAMP
-  - name: reply
+  - name: bet
     config:
       column_types:
         user: INT64
