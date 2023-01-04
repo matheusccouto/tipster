@@ -84,11 +84,11 @@ QUERY_SET_KELLY = """
 """
 QUERY_REGISTER_BET = """
     INSERT INTO tipster.bet (user, message, updated_at, delete)
-    VALUES ({chat_id}, '{value}', current_timestamp(), TRUE)
+    VALUES ({chat_id}, '{value}', current_timestamp(), FALSE)
 """
 QUERY_UNREGISTER_BET = """
     INSERT INTO tipster.bet (user, message, updated_at, delete)
-    VALUES ({chat_id}, '{value}', current_timestamp(), FALSE)
+    VALUES ({chat_id}, '{value}', current_timestamp(), TRUE)
 """
 
 # General config.
@@ -111,7 +111,7 @@ def run_query(query):
     return job.result()
 
 
-def choices(chat_id, query):
+def choices(chat_id, query, message_id=None):
     """List available choices."""
     data = list(run_query(query.format(chat_id=chat_id)))
     if len(data) == 0:
@@ -120,10 +120,10 @@ def choices(chat_id, query):
     else:
         text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
         text = f"Select a number from the list or 'all'\n\n{text}"
-        bot.sendMessage(chat_id, emoji.emojize(text))
+        bot.sendMessage(chat_id, emoji.emojize(text), reply_to_message_id=message_id)
 
 
-def read_choice(chat_id, text, query_list, query_update):
+def read_choice(chat_id, text, query_list, query_update, message_id=None):
     """Read choice."""
     data = list(run_query(query_list.format(chat_id=chat_id)))
     try:
@@ -134,7 +134,11 @@ def read_choice(chat_id, text, query_list, query_update):
         for i in rows:
             selected = data[i]
             run_query(query_update.format(chat_id=chat_id, key=selected.key))
-            bot.sendMessage(chat_id, text=emoji.emojize(f"Selected {selected.name}"))
+            bot.sendMessage(
+                chat_id,
+                text=emoji.emojize(f"Selected {selected.name}"),
+                reply_to_message_id=message_id,
+            )
             context[chat_id] = None
     except ValueError:
         bot.sendMessage(chat_id=chat_id, text="Type only the number")
@@ -142,20 +146,23 @@ def read_choice(chat_id, text, query_list, query_update):
         bot.sendMessage(chat_id=chat_id, text="Type a number from the list")
 
 
-def list_(chat_id, query):
+def list_(chat_id, query, message_id=None):
     """List items."""
     data = run_query(query.format(chat_id=chat_id))
     text = "\n".join([row.name for row in data])
     text = text if text else "You do not have any"
-    bot.sendMessage(chat_id, emoji.emojize(text))
+    bot.sendMessage(chat_id, emoji.emojize(text), reply_to_message_id=message_id)
 
 
-def set_value(chat_id, query, value):
+def set_value(chat_id, query, value, message_id=None):
     """Set a value."""
-    value = emoji.demojize(value).replace("\n", "\\n")
-    run_query(query.format(chat_id=chat_id, value=value))
+    query = query.format(
+        chat_id=chat_id,
+        value=emoji.demojize(value).replace("\n", "\\n"),
+    )
+    run_query(query)
     context[chat_id] = None
-    bot.sendMessage(chat_id, text=f"Set {value}")
+    bot.sendMessage(chat_id, text="Ok", reply_to_message_id=message_id)
 
 
 def handler(request):
@@ -169,112 +176,133 @@ def handler(request):
     update = telegram.Update.de_json(request.get_json(), bot)
     chat_id = update.message.chat.id
     text = update.message.text
+    message_id = update.message.message_id
 
     if update.message.reply_to_message:
         original_text = update.message.reply_to_message.text
 
         if "/bet" in text:
-            set_value(chat_id, QUERY_REGISTER_BET, original_text)
+            set_value(chat_id, QUERY_REGISTER_BET, original_text, message_id)
             return {"statusCode": 200}
 
         if "/cancel" in text:
-            set_value(chat_id, QUERY_UNREGISTER_BET, original_text)
+            set_value(chat_id, QUERY_UNREGISTER_BET, original_text, message_id)
             return {"statusCode": 200}
 
     # If the user cancels, clear the context.
     if "/cancel" in text:
         if context.get(chat_id) is None:
-            bot.sendMessage(chat_id, "There is nothing to be canceled")
+            bot.sendMessage(
+                chat_id,
+                "There is nothing to be canceled",
+                reply_to_message_id=message_id,
+            )
         else:
-            bot.sendMessage(chat_id, f"Canceled {context.get(chat_id)}")
+            bot.sendMessage(
+                chat_id,
+                f"Canceled {context.get(chat_id)}",
+                reply_to_message_id=message_id,
+            )
         context[chat_id] = None
         return {"statusCode": 200}
 
     # Show available bookies if the user wants to set a new one.
     if "/setbookmaker" in text:
         context[chat_id] = "/setbookmaker"
-        choices(chat_id, QUERY_AVAILABLE_BOOKIE)
+        choices(chat_id, QUERY_AVAILABLE_BOOKIE, message_id)
         return {"statusCode": 200}
 
     # Get user answer when setting a new bookie.
     if context.get(chat_id) == "/setbookmaker":
-        read_choice(chat_id, text, QUERY_AVAILABLE_BOOKIE, QUERY_SET_BOOKIE)
+        read_choice(chat_id, text, QUERY_AVAILABLE_BOOKIE, QUERY_SET_BOOKIE, message_id)
         return {"statusCode": 200}
 
     # List bookmakers that could be deleted
     if "/deletebookmaker" in text:
         context[chat_id] = "/deletebookmaker"
-        choices(chat_id, QUERY_LIST_BOOKIE)
+        choices(chat_id, QUERY_LIST_BOOKIE, message_id)
         return {"statusCode": 200}
 
     # Get user answer when setting a new bookie.
     if context.get(chat_id) == "/deletebookmaker":
-        read_choice(chat_id, text, QUERY_LIST_BOOKIE, QUERY_DELETE_BOOKIE)
+        read_choice(chat_id, text, QUERY_LIST_BOOKIE, QUERY_DELETE_BOOKIE, message_id)
         return {"statusCode": 200}
 
     # List user's leagues
     if "/listbookmakers" in text:
-        list_(chat_id, QUERY_LIST_BOOKIE)
+        list_(chat_id, QUERY_LIST_BOOKIE, message_id)
         return {"statusCode": 200}
 
     # Show available leagues if the user wants to set a new one.
     if "/setleague" in text:
         context[chat_id] = "/setleague"
-        choices(chat_id, QUERY_AVAILABLE_LEAGUE)
+        choices(chat_id, QUERY_AVAILABLE_LEAGUE, message_id)
         return {"statusCode": 200}
 
     # Get user answer when setting a new league.
     if context.get(chat_id) == "/setleague":
-        read_choice(chat_id, text, QUERY_AVAILABLE_LEAGUE, QUERY_SET_LEAGUE)
+        read_choice(chat_id, text, QUERY_AVAILABLE_LEAGUE, QUERY_SET_LEAGUE, message_id)
         return {"statusCode": 200}
 
     # List leagues that could be deleted
     if "/deleteleague" in text:
         context[chat_id] = "/deleteleague"
-        choices(chat_id, QUERY_LIST_LEAGUE)
+        choices(chat_id, QUERY_LIST_LEAGUE, message_id)
         return {"statusCode": 200}
 
     # Get user answer when setting a new league.
     if context.get(chat_id) == "/deletebookmaker":
-        read_choice(chat_id, text, QUERY_LIST_LEAGUE, QUERY_DELETE_LEAGUE)
+        read_choice(chat_id, text, QUERY_LIST_LEAGUE, QUERY_DELETE_LEAGUE, message_id)
         return {"statusCode": 200}
 
     # List user's leagues
     if "/listleagues" in text:
-        list_(chat_id, QUERY_LIST_LEAGUE)
+        list_(chat_id, QUERY_LIST_LEAGUE, message_id)
         return {"statusCode": 200}
 
     # Set EV threshold
     if "/setev" in text:
         context[chat_id] = "/setev"
-        bot.sendMessage(chat_id, "Type the value you want to set")
+        bot.sendMessage(
+            chat_id,
+            "Type the value you want to set",
+            reply_to_message_id=message_id,
+        )
         return {"statusCode": 200}
 
     # Get user answer when setting EV.
     if context.get(chat_id) == "/setev":
-        set_value(chat_id, QUERY_SET_EV, text)
+        set_value(chat_id, QUERY_SET_EV, text, message_id)
         return {"statusCode": 200}
 
     # Set bankroll
     if "/setbankroll" in text:
         context[chat_id] = "/setbankroll"
-        bot.sendMessage(chat_id, "Type the value you want to set")
+        bot.sendMessage(
+            chat_id,
+            "Type the value you want to set",
+            reply_to_message_id=message_id,
+        )
         return {"statusCode": 200}
 
     # Get user answer when setting bankroll.
     if context.get(chat_id) == "/setbankroll":
-        set_value(chat_id, QUERY_SET_BANKROLL, text)
+        set_value(chat_id, QUERY_SET_BANKROLL, text, message_id)
         return {"statusCode": 200}
 
     # Set kelly fraction
     if "/setkellyfraction" in text:
         context[chat_id] = "/setkellyfraction"
-        bot.sendMessage(chat_id, "Type the value you want to set")
+        bot.sendMessage(
+            chat_id,
+            "Type the value you want to set",
+            reply_to_message_id=message_id,
+        )
         return {"statusCode": 200}
 
     # Get user answer when setting kelly fraction.
     if context.get(chat_id) == "/setkellyfraction":
-        set_value(chat_id, QUERY_SET_KELLY, text)
+        set_value(chat_id, QUERY_SET_KELLY, text, message_id)
         return {"statusCode": 200}
 
     welcome_msg = "You can control me by sending these commands:"
