@@ -115,7 +115,11 @@ def choices(chat_id, query, message_id=None):
     """List available choices."""
     data = list(run_query(query.format(chat_id=chat_id)))
     if len(data) == 0:
-        bot.sendMessage(chat_id, "There is nothing to be selected")
+        bot.sendMessage(
+            chat_id,
+            "There is nothing to be selected",
+            reply_to_message_id=message_id,
+        )
         context[chat_id] = None
     else:
         text = "\n".join([f"{i}. {row.name}" for i, row in enumerate(data)])
@@ -141,9 +145,17 @@ def read_choice(chat_id, text, query_list, query_update, message_id=None):
             )
             context[chat_id] = None
     except ValueError:
-        bot.sendMessage(chat_id=chat_id, text="Type only the number")
+        bot.sendMessage(
+            chat_id=chat_id,
+            text="Type only the number",
+            reply_to_message_id=message_id,
+        )
     except IndexError:
-        bot.sendMessage(chat_id=chat_id, text="Type a number from the list")
+        bot.sendMessage(
+            chat_id=chat_id,
+            text="Type a number from the list",
+            reply_to_message_id=message_id,
+        )
 
 
 def list_(chat_id, query, message_id=None):
@@ -162,7 +174,7 @@ def set_value(chat_id, query, value, message_id=None):
     )
     run_query(query)
     context[chat_id] = None
-    bot.sendMessage(chat_id, text="Ok", reply_to_message_id=message_id)
+    bot.sendMessage(chat_id, text="Done", reply_to_message_id=message_id)
 
 
 def handler(request):
@@ -307,5 +319,9 @@ def handler(request):
 
     welcome_msg = "You can control me by sending these commands:"
     cmd_msg = "\n".join(f"/{cmd} - {descr}" for cmd, descr in CMD.items())
-    bot.sendMessage(chat_id, welcome_msg + "\n\n" + cmd_msg)
+    bot.sendMessage(
+        chat_id,
+        welcome_msg + "\n\n" + cmd_msg,
+        reply_to_message_id=message_id,
+    )
     return {"statusCode": 200}
