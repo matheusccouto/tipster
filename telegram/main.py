@@ -26,7 +26,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
         FROM
             tipster.fct_tips
     """
-    data = pd.read_gbq(query=query).head()
+    data = pd.read_gbq(query=query)
 
     for _, row in data.iterrows():
         bot.sendMessage(
