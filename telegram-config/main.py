@@ -170,7 +170,7 @@ def set_value(chat_id, query, value, message_id=None):
     """Set a value."""
     query = query.format(
         chat_id=chat_id,
-        value=emoji.demojize(value).replace("\n", "\\\\n"),
+        value=emoji.demojize(value),
     )
     run_query(query)
     context[chat_id] = None

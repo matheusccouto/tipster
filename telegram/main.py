@@ -26,11 +26,12 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
             tipster.fct_tips
     """
     data = pd.read_gbq(query=query)
+    data["message"] = data["message"].str.replace("\\n", "\n")
 
     for _, row in data.iterrows():
         bot.sendMessage(
             chat_id=str(row["user"]),
-            text=emoji.emojize(row["message"].replace("\\n", "\n")),
+            text=emoji.emojize(row["message"]),
             parse_mode="markdown",
             disable_web_page_preview=True,
             timeout=60,
