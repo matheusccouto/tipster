@@ -158,6 +158,7 @@ def list_(chat_id, query):
 
 def set_value(chat_id, query, value):
     """Set a value."""
+    value = value.encode("raw-unicode-escape")
     run_query(query.format(chat_id=chat_id, value=value))
     context[chat_id] = None
     send_message(bot, chat_id=chat_id, text=f"Set {value}")
