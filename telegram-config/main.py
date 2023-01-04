@@ -1,5 +1,6 @@
 """Telegram bot for sending betting tips."""
 
+import logging
 import os
 
 import emoji
@@ -98,13 +99,14 @@ logging_client.setup_logging()
 bigquery_client = google.cloud.bigquery.Client()
 
 bot = telegram.Bot(os.getenv("TELEGRAM_TOKEN"))
-bot.set_my_commands([(key, val) for key, val in CMD.items()])
+bot.set_my_commands(list(CMD.items()))
 
 context = {}
 
 
 def run_query(query):
     """Run a query in BigQuery."""
+    logging.info("run: %s", query)
     job = bigquery_client.query(query)
     return job.result()
 
