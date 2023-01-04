@@ -166,16 +166,13 @@ def handler(request):
 
     if update.message.reply_to_message:
         original_text = update.message.reply_to_message.text
-        send_message(bot, chat_id, str(update.message.reply_to_message))
 
-        if "/bet" in original_text:
+        if "/bet" in text:
             # set_value(chat_id, QUERY_REGISTER_BET, text)
-            send_message(bot, chat_id, "inside bet if clause")
             return {"statusCode": 200}
 
-        if "/cancel" in original_text:
+        if "/cancel" in text:
             # set_value(chat_id, QUERY_UNREGISTER_BET, text)
-            send_message(bot, chat_id, "inside cancel if clause")
             return {"statusCode": 200}
 
     # If the user cancels, clear the context.
