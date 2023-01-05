@@ -23,3 +23,8 @@ sources:
     tables:
       - name: sent
       - name: bet
+      - name: user_bankroll
+      - name: user_bookmaker
+      - name: user_ev
+      - name: user_kelly
+      - name: user_league
