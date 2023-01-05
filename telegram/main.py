@@ -25,6 +25,8 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
             date(start_at, 'America/Sao_Paulo') AS date
         FROM
             tipster.fct_tips
+        ORDER BY
+            bookmaker_key, league_id, start_at
     """
     data = pd.read_gbq(query=query)
 

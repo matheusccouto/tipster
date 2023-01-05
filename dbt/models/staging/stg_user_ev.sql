@@ -9,5 +9,5 @@ SELECT
     COALESCE(e.ev, 0) AS ev
 FROM
     users AS u
-LEFT JOIN {{ ref("user_ev") }} AS e ON u.user = e.user
+LEFT JOIN {{ source("tipster", "user_ev") }} AS e ON u.user = e.user
 QUALIFY ROW_NUMBER() OVER (PARTITION BY u.user ORDER BY e.updated_at DESC) = 1

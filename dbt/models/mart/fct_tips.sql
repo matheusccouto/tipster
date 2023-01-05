@@ -33,5 +33,7 @@ FROM
     tips
 LEFT JOIN
     {{ ref("stg_sent") }} AS s ON tips.user = s.user AND tips.id = s.id
+LEFT JOIN
+    {{ ref("stg_bet") }} AS b ON s.user = b.user AND s.message = b.message
 WHERE
-    tips.ev > coalesce(s.ev, 0)
+    b.message IS NULL

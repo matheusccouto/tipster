@@ -1,7 +1,7 @@
 SELECT
     user,
     id,
-    ev,
+    message,  -- noqa: L029
     sent_at
 FROM
     {{ source("tipster", "sent") }}

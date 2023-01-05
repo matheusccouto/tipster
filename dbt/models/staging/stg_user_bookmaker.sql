@@ -3,5 +3,5 @@ SELECT
     b.key,
     b.name
 FROM
-    {{ ref("user_bookmaker") }} AS u
+    {{ source("tipster", "user_bookmaker") }} AS u
 LEFT JOIN {{ ref("bookmaker") }} AS b ON u.bookmaker = b.key
