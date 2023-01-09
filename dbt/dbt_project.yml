@@ -24,12 +24,24 @@ snapshots:
         strategy: check
         unique_key: date || ' - ' || team1 || ' - ' || team2
         check_cols: all
+
     tipster:
       +target_schema: tipster
       fct_h2h:
-        strategy: timestamp
+        strategy: check
         unique_key: id || ' - '  || bet || ' - ' || bookmaker_key
-        updated_at: loaded_at
+        check_cols:
+          - start_at
+          - price
+          - prob
+          - quality
+          - importance
+          - rating
+          - market_count
+          - market_price_min
+          - market_price_median
+          - market_price_max
+
 
 models:
   tipster:
