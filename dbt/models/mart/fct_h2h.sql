@@ -17,7 +17,7 @@ ev AS (
         spi.quality,
         spi.rating,
         spi.score_home,
-        spi.score_away
+        spi.score_away,
         spi.prob_home * (odds.price_home - 1) - (1 - spi.prob_home) AS ev_home,
         spi.prob_draw * (odds.price_draw - 1) - (1 - spi.prob_draw) AS ev_draw,
         spi.prob_away * (odds.price_away - 1) - (1 - spi.prob_away) AS ev_away
