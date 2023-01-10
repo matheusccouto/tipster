@@ -165,6 +165,6 @@ SELECT
         price, 0.5
     ) OVER (PARTITION BY id, bet) AS market_price_median,
     max(price) OVER (PARTITION BY id, bet) AS market_price_max,
-    (((price - 1) * prob) - (1 - prob)) / (price - 1) AS kelly
+    (((price - 1) * prob) - (1 - prob)) / (if(price < 1.01, 1.01, price) - 1) AS kelly
 FROM
     bets_last
