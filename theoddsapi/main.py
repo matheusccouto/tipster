@@ -11,8 +11,8 @@ import google.cloud.logging
 import pandas as pd
 import requests
 
-# client_logging = google.cloud.logging.Client()
-# client_logging.setup_logging()
+client_logging = google.cloud.logging.Client()
+client_logging.setup_logging()
 
 client_bigquery = google.cloud.bigquery.Client()
 
@@ -20,37 +20,37 @@ client_bigquery = google.cloud.bigquery.Client()
 URL = "https://api.the-odds-api.com/v4/sports/{sport}/odds"
 SPORTS = [
     'soccer_uefa_champs_league', # Champions League
-    # 'soccer_uefa_europa_conference_league', # Europa Conference League
-    # 'soccer_uefa_europa_league', # Europa League
-    # 'soccer_epl', # Premier League
-    # 'soccer_germany_bundesliga', # Bundesliga
-    # 'soccer_spain_la_liga', # LaLiga
-    # 'soccer_italy_serie_a', # Serie A
-    # 'soccer_france_ligue_one', # Ligue 1
-    # 'soccer_netherlands_eredivisie', # Eredivisie
-    # 'soccer_portugal_primeira_liga', # Primeira Liga
-    # 'soccer_brazil_campeonato', # Série A
-    # 'soccer_mexico_ligamx', # Liga MX Apertura
-    # 'soccer_russia_premier_league', # Premier League
-    # 'soccer_efl_champ', # Championship
-    # 'soccer_belgium_first_div', # Pro League
-    # 'soccer_turkey_super_league', # Süper Lig
-    # 'soccer_usa_mls', # MLS
-    # 'soccer_denmark_superliga', # Superliga
-    # 'soccer_spl', # Premiership
-    # 'soccer_switzerland_superleague', # Super League
-    # 'soccer_argentina_primera_division', # Primera División
-    # 'soccer_japan_j_league', # J League
-    # 'soccer_norway_eliteserien', # Eliteserien
-    # 'soccer_france_ligue_two', # Ligue 2
-    # 'soccer_spain_segunda_division', # LaLiga 2
-    # 'soccer_italy_serie_b', # Serie B
-    # 'soccer_germany_bundesliga2', # 2. Bundesliga
-    # 'soccer_sweden_allsvenskan', # Allsvenskan
-    # 'soccer_england_league1', # League One
-    # 'soccer_australia_aleague', # A-League
-    # 'soccer_china_superleague', # Super League
-    # 'soccer_england_league2', # League Two
+    'soccer_uefa_europa_conference_league', # Europa Conference League
+    'soccer_uefa_europa_league', # Europa League
+    'soccer_epl', # Premier League
+    'soccer_germany_bundesliga', # Bundesliga
+    'soccer_spain_la_liga', # LaLiga
+    'soccer_italy_serie_a', # Serie A
+    'soccer_france_ligue_one', # Ligue 1
+    'soccer_netherlands_eredivisie', # Eredivisie
+    'soccer_portugal_primeira_liga', # Primeira Liga
+    'soccer_brazil_campeonato', # Série A
+    'soccer_mexico_ligamx', # Liga MX Apertura
+    'soccer_russia_premier_league', # Premier League
+    'soccer_efl_champ', # Championship
+    'soccer_belgium_first_div', # Pro League
+    'soccer_turkey_super_league', # Süper Lig
+    'soccer_usa_mls', # MLS
+    'soccer_denmark_superliga', # Superliga
+    'soccer_spl', # Premiership
+    'soccer_switzerland_superleague', # Super League
+    'soccer_argentina_primera_division', # Primera División
+    'soccer_japan_j_league', # J League
+    'soccer_norway_eliteserien', # Eliteserien
+    'soccer_france_ligue_two', # Ligue 2
+    'soccer_spain_segunda_division', # LaLiga 2
+    'soccer_italy_serie_b', # Serie B
+    'soccer_germany_bundesliga2', # 2. Bundesliga
+    'soccer_sweden_allsvenskan', # Allsvenskan
+    'soccer_england_league1', # League One
+    'soccer_australia_aleague', # A-League
+    'soccer_china_superleague', # Super League
+    'soccer_england_league2', # League Two
 ]
 
 
