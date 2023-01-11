@@ -25,6 +25,17 @@ snapshots:
         unique_key: date || ' - ' || team1 || ' - ' || team2
         check_cols: all
 
+    fivethirtyeight:
+      +target_schema: theoddsapi
+      spi:
+        strategy: check
+        unique_key: id || ' - ' || bookmaker_key || ' - ' || market_key
+        check_cols:
+          - commence_time
+          - price_home_team
+          - price_draw
+          - price_away_team
+
     tipster:
       +target_schema: tipster
       fct_h2h:

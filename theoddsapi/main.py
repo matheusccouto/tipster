@@ -109,7 +109,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     data["bookmaker_last_update"] = pd.to_datetime(data["bookmaker_last_update"])
     data["commence_time"] = pd.to_datetime(data["commence_time"])
 
-    data.to_gbq(destination_table="theoddsapi.odds", if_exists="append")
+    data.to_gbq(destination_table="theoddsapi.odds", if_exists="replace")
 
     logging.info("loaded %s rows", data.shape[0])
     logging.info("requests used: %s", response.headers["x-requests-used"])
