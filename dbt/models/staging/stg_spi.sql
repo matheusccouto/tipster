@@ -24,9 +24,9 @@ SELECT
     spi.importance2 AS importance_away,
     spi.quality AS quality,
     spi.importance AS importance,
-    (spi.quality + spi.importance) / 2 AS rating,
     spi.score1 AS score_home,
     spi.score2 AS score_away,
+    (spi.quality + spi.importance) / 2 AS rating,
     DATE(spi.date) AS date  -- noqa: L029
 FROM
     spi

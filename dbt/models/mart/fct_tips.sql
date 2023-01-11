@@ -13,7 +13,8 @@ WITH tips AS (
     INNER JOIN
         {{ ref("stg_user_bookmaker") }} AS ub ON bets.bookmaker_key = ub.key
     INNER JOIN
-        {{ ref("stg_user_league") }} AS ul ON ub.user = ul.user AND bets.league_id = ul.key
+        {{ ref("stg_user_league") }} AS ul ON
+            ub.user = ul.user AND bets.league_id = ul.key
     LEFT JOIN
         {{ ref("stg_user_ev") }} AS ue ON ub.user = ue.user
     LEFT JOIN
@@ -21,7 +22,7 @@ WITH tips AS (
     LEFT JOIN
         {{ ref("stg_user_bankroll") }} AS ur ON ub.user = ur.user
     WHERE
-        outcome IS NULL
+        bets.outcome IS NULL
         AND bets.ev >= ue.ev
     QUALIFY
         row_number() OVER (
