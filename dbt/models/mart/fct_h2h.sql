@@ -128,32 +128,6 @@ bets AS (
         loaded_at
     FROM
         ev
-),
-
-bets_last AS (
-    SELECT
-        *,
-        first_value(
-            bets.price
-        ) OVER (
-            PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at
-        ) AS price_open,
-        min(
-            bets.price
-        ) OVER (
-            PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at
-        ) AS price_min,
-        max(
-            bets.price
-        ) OVER (
-            PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at
-        ) AS price_max
-    FROM
-        bets
-    QUALIFY
-        row_number() OVER (
-            PARTITION BY id, bet, bookmaker_key ORDER BY loaded_at DESC
-        ) = 1
 )
 
 SELECT
@@ -167,4 +141,4 @@ SELECT
     max(price) OVER (PARTITION BY id, bet) AS market_price_max,
     (((price - 1) * prob) - (1 - prob)) / (if(price < 1.01, 1.01, price) - 1) AS kelly
 FROM
-    bets_last
+    bets

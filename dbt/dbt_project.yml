@@ -25,9 +25,9 @@ snapshots:
         unique_key: date || ' - ' || team1 || ' - ' || team2
         check_cols: all
 
-    fivethirtyeight:
+    theoddsapi:
       +target_schema: theoddsapi
-      spi:
+      odds:
         strategy: check
         unique_key: id || ' - ' || bookmaker_key || ' - ' || market_key
         check_cols:
