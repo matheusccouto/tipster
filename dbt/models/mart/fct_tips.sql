@@ -37,5 +37,7 @@ LEFT JOIN
     {{ ref("stg_sent") }} AS s ON tips.user = s.user AND tips.id = s.id
 LEFT JOIN
     {{ ref("stg_bet") }} AS b ON s.user = b.user AND s.message = b.message
+LEFT JOIN
+    {{ ref("stg_ignore") }} AS i ON s.user = i.user AND s.message = i.message
 WHERE
-    b.message IS NULL
+    b.message IS NULL AND i.message IS NULL

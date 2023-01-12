@@ -23,6 +23,7 @@ sources:
     tables:
       - name: sent
       - name: bet
+      - name: ignore
       - name: user_bankroll
       - name: user_bookmaker
       - name: user_ev

@@ -11,6 +11,8 @@ import telegram
 # Bot config
 
 CMD = {
+    "bet": "Include this on a reply to indicated that replied bet was placed",
+    "ignore": "Include this on a reply to indicated that replied bet should be ignored",
     "setbookmakers": "Set a new bookmaker",
     "deletebookmakers": "Delete a bookmaker",
     "listbookmakers": "List your bookmakers",
@@ -20,7 +22,6 @@ CMD = {
     "setev": "Set your expected value threshold",
     "setbankroll": "Set your bankroll",
     "setkellyfraction": "Set your fraction for Kelly criterion",
-    "bet": "Include this on a reply to indicated that replied bet was placed",
     "cancel": "Cancel current command",
 }
 
@@ -88,6 +89,14 @@ QUERY_REGISTER_BET = """
 """
 QUERY_UNREGISTER_BET = """
     INSERT INTO tipster.bet (user, message, updated_at, delete)
+    VALUES ({chat_id}, '{value}', current_timestamp(), TRUE)
+"""
+QUERY_IGNORE_BET = """
+    INSERT INTO tipster.ignore (user, message, updated_at, delete)
+    VALUES ({chat_id}, '{value}', current_timestamp(), FALSE)
+"""
+QUERY_UNIGNORE_BET = """
+    INSERT INTO tipster.ignore (user, message, updated_at, delete)
     VALUES ({chat_id}, '{value}', current_timestamp(), TRUE)
 """
 
@@ -196,9 +205,14 @@ def handler(request):
         if "/bet" in text:
             set_value(chat_id, QUERY_REGISTER_BET, original_text, message_id)
             return {"statusCode": 200}
+        
+        if "/ignore" in text:
+            set_value(chat_id, QUERY_IGNORE_BET, original_text, message_id)
+            return {"statusCode": 200}
 
         if "/cancel" in text:
             set_value(chat_id, QUERY_UNREGISTER_BET, original_text, message_id)
+            set_value(chat_id, QUERY_UNIGNORE_BET, original_text, message_id)
             return {"statusCode": 200}
 
     # If the user cancels, clear the context.

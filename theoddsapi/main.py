@@ -134,7 +134,7 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
     logging.info("requests remaining: %s", response.headers["x-requests-remaining"])
 
     n_affected_rows = run_query(
-        f"""
+        """
         MERGE `theoddsapi.odds` a
         USING `theoddsapi.odds_last` b
             ON a.id = b.id
