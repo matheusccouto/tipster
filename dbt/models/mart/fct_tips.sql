@@ -22,7 +22,7 @@ WITH tips AS (
     LEFT JOIN
         {{ ref("stg_user_bankroll") }} AS ur ON ub.user = ur.user
     WHERE
-        bets.outcome IS NULL
+        current_timestamp() < bets.start_at
         AND bets.ev >= ue.ev
     QUALIFY
         row_number() OVER (
