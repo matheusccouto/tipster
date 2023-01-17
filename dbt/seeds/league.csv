@@ -1,41 +1,45 @@
-id,tipster,theoddsapi,fivethirtyeight,country
-10,Champions League,soccer_uefa_champs_league,1818,European Union
-20,Europa League,soccer_uefa_europa_league,1820,European Union
-30,Europa Conference League,soccer_uefa_europa_conference_league,10281,European Union
-40,Premier League,soccer_epl,2411,England
-50,Bundesliga,soccer_germany_bundesliga,1845,Germany
-60,LaLiga,soccer_spain_la_liga,1869,Spain
-70,Serie A,soccer_italy_serie_a,1854,Italy
-80,Ligue 1,soccer_france_ligue_one,1843,France
-90,Eredivisie,soccer_netherlands_eredivisie,1849,Netherlands
-100,Primeira Liga,soccer_portugal_primeira_liga,1864,Portugal
-110,Série A,soccer_brazil_campeonato,2105,Brazil
-120,Liga MX Apertura,soccer_mexico_ligamx,1952,Mexico
-130,Liga MX Clausura,soccer_mexico_ligamx,1975,Mexico
-140,Premier League,soccer_russia_premier_league,1866,Russia
-150,Championship,soccer_efl_champ,2412,England
-160,Pro League,soccer_belgium_first_div,1832,Belgium
-170,Austrian Bundesliga,,1827,Austria
-180,Süper Lig,soccer_turkey_super_league,1882,Turkey
-190,MLS,soccer_usa_mls,1951,United States
-200,Superliga,soccer_denmark_superliga,1837,Denmark
-210,Premiership,soccer_spl,2417,Scotland
-220,Super League,soccer_switzerland_superleague,1879,Switzerland
-230,Primera División,soccer_argentina_primera_division,5641,Argentina
-240,J League,soccer_japan_j_league,1947,Japan
-250,Eliteserien,soccer_norway_eliteserien,1859,Norway
-260,Ligue 2,soccer_france_ligue_two,1844,France
-270,LaLiga 2,soccer_spain_segunda_division,1871,Spain
-280,Serie B,soccer_italy_serie_b,1856,Italy
-290,Super League 1,,1884,Greece
-300,2. Bundesliga,soccer_germany_bundesliga2,1846,Germany
-310,Allsvenskan,soccer_sweden_allsvenskan,1874,Sweden
-320,League One,soccer_england_league1,2413,England
-330,A-League,soccer_australia_aleague,1948,Australia
-340,USL,,2160,United States
-350,Premier Division,,1983,South Africa
-360,Super League,soccer_china_superleague,1979,China
-370,League Two,soccer_england_league2,2414,England
-1010,Women's Super League,,7921,England
-1020,NWSL,,4582,United States
-1030,NWSL Challenge Cup,,9541,United States
+id,tipster,theoddsapi,fivethirtyeight,country,sport
+10,Champions League,soccer_uefa_champs_league,1818,European Union,soccer
+20,Europa League,soccer_uefa_europa_league,1820,European Union,soccer
+30,Europa Conference League,soccer_uefa_europa_conference_league,10281,European Union,soccer
+40,Premier League,soccer_epl,2411,England,soccer
+50,Bundesliga,soccer_germany_bundesliga,1845,Germany,soccer
+60,LaLiga,soccer_spain_la_liga,1869,Spain,soccer
+70,Serie A,soccer_italy_serie_a,1854,Italy,soccer
+80,Ligue 1,soccer_france_ligue_one,1843,France,soccer
+90,Eredivisie,soccer_netherlands_eredivisie,1849,Netherlands,soccer
+100,Primeira Liga,soccer_portugal_primeira_liga,1864,Portugal,soccer
+110,Série A,soccer_brazil_campeonato,2105,Brazil,soccer
+120,Liga MX Apertura,soccer_mexico_ligamx,1952,Mexico,soccer
+130,Liga MX Clausura,soccer_mexico_ligamx,1975,Mexico,soccer
+140,Premier League,soccer_russia_premier_league,1866,Russia,soccer
+150,Championship,soccer_efl_champ,2412,England,soccer
+160,Pro League,soccer_belgium_first_div,1832,Belgium,soccer
+170,Austrian Bundesliga,,1827,Austria,soccer
+180,Süper Lig,soccer_turkey_super_league,1882,Turkey,soccer
+190,MLS,soccer_usa_mls,1951,United States,soccer
+200,Superliga,soccer_denmark_superliga,1837,Denmark,soccer
+210,Premiership,soccer_spl,2417,Scotland,soccer
+220,Super League,soccer_switzerland_superleague,1879,Switzerland,soccer
+230,Primera División,soccer_argentina_primera_division,5641,Argentina,soccer
+240,J League,soccer_japan_j_league,1947,Japan,soccer
+250,Eliteserien,soccer_norway_eliteserien,1859,Norway,soccer
+260,Ligue 2,soccer_france_ligue_two,1844,France,soccer
+270,LaLiga 2,soccer_spain_segunda_division,1871,Spain,soccer
+280,Serie B,soccer_italy_serie_b,1856,Italy,soccer
+290,Super League 1,,1884,Greece,soccer
+300,2. Bundesliga,soccer_germany_bundesliga2,1846,Germany,soccer
+310,Allsvenskan,soccer_sweden_allsvenskan,1874,Sweden,soccer
+320,League One,soccer_england_league1,2413,England,soccer
+330,A-League,soccer_australia_aleague,1948,Australia,soccer
+340,USL,,2160,United States,soccer
+350,Premier Division,,1983,South Africa,soccer
+360,Super League,soccer_china_superleague,1979,China,soccer
+370,League Two,soccer_england_league2,2414,England,soccer
+1010,Women's Super League,,7921,England,soccer
+1020,NWSL,,4582,United States,soccer
+1030,NWSL Challenge Cup,,9541,United States,soccer
+10010,NFL,americanfootball_nfl,-1,United States,football
+20010,NBA,basketball_nba,-1,United States,basketball
+30010,NBA,baseball_mlb,-1,United States,baseball
+40010,NHL,icehockey_nhl,-1,United States,icehockey

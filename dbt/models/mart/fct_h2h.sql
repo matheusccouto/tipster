@@ -10,6 +10,7 @@ ev AS (
     SELECT
         odds.*,
         flag.emoji AS flag_emoji,
+        sport.emoji AS sport_emoji,
         spi.prob_home,
         spi.prob_draw,
         spi.prob_away,
@@ -29,15 +30,16 @@ ev AS (
             AND odds.league_id = spi.league_id
             AND odds.home = spi.home
             AND odds.away = spi.away
-    LEFT JOIN
-        {{ ref("flag" ) }} AS flag ON
-            odds.league_country = flag.country
+    LEFT JOIN {{ ref("flag" ) }} AS flag ON odds.league_country = flag.country
+    LEFT JOIN {{ ref("sport") }} AS sport ON odds.sport = sport.key
+
 ),
 
 bets AS (
     SELECT
         id,
         tipster.message_h2h(
+            sport_emoji,
             flag_emoji,
             league_name,
             date(start_at),
@@ -70,6 +72,7 @@ bets AS (
     SELECT
         id,
         tipster.message_h2h(
+            sport_emoji,
             flag_emoji,
             league_name,
             date(start_at),
@@ -102,6 +105,7 @@ bets AS (
     SELECT
         id,
         tipster.message_h2h(
+            sport_emoji,
             flag_emoji,
             league_name,
             date(start_at),

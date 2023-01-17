@@ -1,6 +1,6 @@
 SELECT
     odd.id,
-    odd.sport_key,
+    league.sport,
     league.id AS league_id,
     league.tipster AS league_name,
     league.country AS league_country,

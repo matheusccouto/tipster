@@ -1,6 +1,7 @@
 {% macro message_h2h() %}
 
 CREATE OR REPLACE FUNCTION {{ target.dataset }}.message_h2h(
+    sport STRING,
     flag STRING,
     league STRING,
     date DATE,
@@ -12,7 +13,7 @@ CREATE OR REPLACE FUNCTION {{ target.dataset }}.message_h2h(
     price FLOAT64
 ) RETURNS STRING AS (
     concat(
-        flag, ' ', league, ' ', date, '\\n',
+        sport, flag, ' ', league, ' ', date, '\\n',
         home, ' x ', away, '\\n',
         'Bet ${kelly} on ', bet, ' on [', bookmaker, '](', url, ') at ', price
     )
