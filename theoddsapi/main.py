@@ -51,6 +51,10 @@ SPORTS = [
     'soccer_australia_aleague', # A-League
     'soccer_china_superleague', # Super League
     'soccer_england_league2', # League Two
+    'americanfootball_nfl', # NFL
+    'baseball_mlb', # MLB
+    'basketball_nba', # NBA
+    'icehockey_nhl', # NHL
 ]
 
 
