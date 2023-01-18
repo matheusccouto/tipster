@@ -13,7 +13,7 @@ CREATE OR REPLACE FUNCTION {{ target.dataset }}.message_h2h(
     price FLOAT64
 ) RETURNS STRING AS (
     concat(
-        sport, ' ', flag, ' ', league, ' ', date, '\\n',
+        sport, flag, ' ', league, ' ', date, '\\n',
         home, ' x ', away, '\\n',
         'Bet ${kelly} on ', bet, ' on [', bookmaker, '](', url, ') at ', price
     )

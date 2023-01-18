@@ -6,30 +6,138 @@ WITH odds AS (
         market_key = 'h2h'
 ),
 
+preds AS (
+    SELECT
+        date,  -- noqa: L029
+        league_id,
+        home,
+        away,
+        prob_home,
+        prob_draw,
+        prob_away,
+        importance,
+        quality,
+        rating,
+        score_home,
+        score_away
+    FROM
+        {{ ref("stg_spi" ) }}
+    
+    UNION ALL
+
+    SELECT
+        date,  -- noqa: L029
+        league_id,
+        home,
+        away,
+        prob_home,
+        NULL AS prob_draw,
+        prob_away,
+        importance,
+        quality,
+        rating,
+        score_home,
+        score_away
+    FROM
+        {{ ref("stg_nfl" ) }}
+    
+    UNION ALL
+
+    SELECT
+        date,  -- noqa: L029
+        league_id,
+        home,
+        away,
+        prob_home,
+        NULL AS prob_draw,
+        prob_away,
+        importance,
+        quality,
+        rating,
+        score_home,
+        score_away
+    FROM
+        {{ ref("stg_nba" ) }}
+    
+    UNION ALL
+
+    SELECT
+        date,  -- noqa: L029
+        league_id,
+        home,
+        away,
+        prob_home,
+        NULL AS prob_draw,
+        prob_away,
+        NULL AS importance,
+        NULL AS quality,
+        NULL AS rating,
+        score_home,
+        score_away
+    FROM
+        {{ ref("stg_wnba" ) }}
+    
+    UNION ALL
+
+    SELECT
+        date,  -- noqa: L029
+        league_id,
+        home,
+        away,
+        prob_home,
+        NULL AS prob_draw,
+        prob_away,
+        NULL AS importance,
+        NULL AS quality,
+        NULL AS rating,
+        score_home,
+        score_away
+    FROM
+        {{ ref("stg_mlb" ) }}
+    
+    UNION ALL
+
+    SELECT
+        date,  -- noqa: L029
+        league_id,
+        home,
+        away,
+        prob_home,
+        NULL AS prob_draw,
+        prob_away,
+        NULL AS importance,
+        NULL AS quality,
+        NULL AS rating,
+        score_home,
+        score_away
+    FROM
+        {{ ref("stg_nhl" ) }}
+),
+
 ev AS (
     SELECT
         odds.*,
         flag.emoji AS flag_emoji,
         sport.emoji AS sport_emoji,
-        spi.prob_home,
-        spi.prob_draw,
-        spi.prob_away,
-        spi.importance,
-        spi.quality,
-        spi.rating,
-        spi.score_home,
-        spi.score_away,
-        spi.prob_home * (odds.price_home - 1) - (1 - spi.prob_home) AS ev_home,
-        spi.prob_draw * (odds.price_draw - 1) - (1 - spi.prob_draw) AS ev_draw,
-        spi.prob_away * (odds.price_away - 1) - (1 - spi.prob_away) AS ev_away
+        preds.prob_home,
+        preds.prob_draw,
+        preds.prob_away,
+        preds.importance,
+        preds.quality,
+        preds.rating,
+        preds.score_home,
+        preds.score_away,
+        preds.prob_home * (odds.price_home - 1) - (1 - preds.prob_home) AS ev_home,
+        preds.prob_draw * (odds.price_draw - 1) - (1 - preds.prob_draw) AS ev_draw,
+        preds.prob_away * (odds.price_away - 1) - (1 - preds.prob_away) AS ev_away
     FROM
         odds
     INNER JOIN
-        {{ ref("stg_spi" ) }} AS spi
-        ON date(odds.start_at, 'America/Los_Angeles') = spi.date
-            AND odds.league_id = spi.league_id
-            AND odds.home = spi.home
-            AND odds.away = spi.away
+        preds
+        ON date(odds.start_at, 'America/Los_Angeles') = preds.date
+            AND odds.league_id = preds.league_id
+            AND odds.home = preds.home
+            AND odds.away = preds.away
     LEFT JOIN {{ ref("flag" ) }} AS flag ON odds.league_country = flag.country
     LEFT JOIN {{ ref("sport") }} AS sport ON odds.sport = sport.key
 

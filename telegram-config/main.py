@@ -50,10 +50,11 @@ QUERY_DELETE_BOOKIE = """
     WHERE user = {chat_id} AND bookmaker = '{key}'
 """
 QUERY_AVAILABLE_LEAGUE = """
-    SELECT l.id AS key, concat(f.emoji, ' ', l.tipster) AS name
+    SELECT l.id AS key, concat(s.emoji, f.emoji, ' ', l.tipster) AS name
     FROM `tipster.league` AS l
     LEFT JOIN `tipster.stg_user_league` AS u ON l.id = u.key AND user = {chat_id}
     LEFT JOIN `tipster.flag` AS f on l.country = f.country
+    LEFT JOIN `tipster.sport` AS s on l.sport = s.key
     WHERE u.user IS NULL AND l.theoddsapi IS NOT NULL
     ORDER BY l.id
 """
