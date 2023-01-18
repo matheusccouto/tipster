@@ -278,7 +278,7 @@ def handler(request):
         return {"statusCode": 200}
 
     # Get user answer when setting a new league.
-    if context.get(chat_id) == "/deletebookmaker":
+    if context.get(chat_id) == "/deleteleague":
         read_choice(chat_id, text, QUERY_LIST_LEAGUE, QUERY_DELETE_LEAGUE, message_id)
         return {"statusCode": 200}
 
