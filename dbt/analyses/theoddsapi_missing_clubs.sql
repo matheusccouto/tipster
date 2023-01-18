@@ -13,8 +13,19 @@ teams AS (
         o.sport_key,
         o.home_team AS team
     FROM odds AS o
-    LEFT JOIN {{ ref("club") }} AS c ON o.home_team = c.old
-    WHERE c.new IS NULL
+    LEFT JOIN {{ ref("club") }} AS club ON o.home_team = club.old
+    LEFT JOIN {{ ref("mlb") }} AS mlb ON o.home_team = mlb.old
+    LEFT JOIN {{ ref("nba") }} AS nba ON o.home_team = nba.old
+    LEFT JOIN {{ ref("nfl") }} AS nfl ON o.home_team = nfl.old
+    LEFT JOIN {{ ref("nhl") }} AS nhl ON o.home_team = nhl.old
+    LEFT JOIN {{ ref("wnba") }} AS wnba ON o.home_team = wnba.old
+    WHERE
+        club.new IS NULL
+        AND mlb.new IS NULL 
+        AND nba.new IS NULL 
+        AND nfl.new IS NULL 
+        AND nhl.new IS NULL 
+        AND wnba.new IS NULL 
 
     UNION ALL
 
@@ -22,8 +33,19 @@ teams AS (
         o.sport_key,
         o.away_team AS team
     FROM odds AS o
-    LEFT JOIN {{ ref("club") }} AS c ON o.away_team = c.old
-    WHERE c.new IS NULL
+    LEFT JOIN {{ ref("club") }} AS club ON o.away_team = club.old
+    LEFT JOIN {{ ref("mlb") }} AS mlb ON o.away_team = mlb.old
+    LEFT JOIN {{ ref("nba") }} AS nba ON o.away_team = nba.old
+    LEFT JOIN {{ ref("nfl") }} AS nfl ON o.away_team = nfl.old
+    LEFT JOIN {{ ref("nhl") }} AS nhl ON o.away_team = nhl.old
+    LEFT JOIN {{ ref("wnba") }} AS wnba ON o.away_team = wnba.old
+    WHERE
+        club.new IS NULL
+        AND mlb.new IS NULL 
+        AND nba.new IS NULL 
+        AND nfl.new IS NULL 
+        AND nhl.new IS NULL 
+        AND wnba.new IS NULL 
 )
 
 SELECT DISTINCT *

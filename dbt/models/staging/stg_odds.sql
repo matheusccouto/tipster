@@ -1,3 +1,50 @@
+WITH teams AS (
+    SELECT
+        t.new,
+        t.old
+    FROM
+        {{ ref("club")}} AS t
+    
+    UNION ALL
+
+    SELECT
+        t.new,
+        t.old
+    FROM
+        {{ ref("mlb")}} AS t
+    
+    UNION ALL
+
+    SELECT
+        t.new,
+        t.old
+    FROM
+        {{ ref("nba")}} AS t
+    
+    UNION ALL
+
+    SELECT
+        t.new,
+        t.old
+    FROM
+        {{ ref("nfl")}} AS t
+    
+    UNION ALL
+
+    SELECT
+        t.new,
+        t.old
+    FROM
+        {{ ref("nhl")}} AS t
+    
+    UNION ALL
+
+    SELECT
+        t.new,
+        t.old
+    FROM
+        {{ ref("wnba")}} AS t
+)
 SELECT
     odd.id,
     league.sport,
@@ -20,5 +67,5 @@ FROM
     {{ source ('theoddsapi', 'odds') }} AS odd
 LEFT JOIN {{ ref("league") }} AS league ON odd.sport_key = league.theoddsapi
 LEFT JOIN {{ ref("bookmaker") }} AS book ON odd.bookmaker_key = book.key
-LEFT JOIN {{ ref("club") }} AS home ON odd.home_team = home.old
-LEFT JOIN {{ ref("club") }} AS away ON odd.away_team = away.old
+LEFT JOIN teams AS home ON odd.home_team = home.old
+LEFT JOIN teams AS away ON odd.away_team = away.old

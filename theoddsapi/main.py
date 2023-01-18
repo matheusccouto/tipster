@@ -103,11 +103,14 @@ def handler(*args, **kwargs):  # pylint: disable=unused-argument
                         if outcome["name"] == row["away_team"]
                     ][0]
 
-                    price_draw = [
-                        outcome["price"]
-                        for outcome in market["outcomes"]
-                        if outcome["name"] == "Draw"
-                    ][0]
+                    try:
+                        price_draw = [
+                            outcome["price"]
+                            for outcome in market["outcomes"]
+                            if outcome["name"] == "Draw"
+                        ][0]
+                    except IndexError:
+                        price_draw = None
 
                     records.append(
                         {

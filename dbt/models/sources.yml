@@ -9,6 +9,11 @@ sources:
     loaded_at_field: loaded_at
     tables:
       - name: spi
+      - name: nfl
+      - name: nba
+      - name: wnba
+      - name: mlb
+      - name: nhl
 
   - name: theoddsapi
     freshness:

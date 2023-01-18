@@ -7,8 +7,8 @@ import google.cloud.logging
 import pandas as pd
 import requests
 
-# client = google.cloud.logging.Client()
-# client.setup_logging()
+client = google.cloud.logging.Client()
+client.setup_logging()
 
 
 URLS = {
