@@ -39,7 +39,8 @@ id,tipster,theoddsapi,fivethirtyeight,country,sport
 1010,Women's Super League,,7921,England,soccer
 1020,NWSL,,4582,United States,soccer
 1030,NWSL Challenge Cup,,9541,United States,soccer
-10010,NFL,americanfootball_nfl,-1,United States,football
-20010,NBA,basketball_nba,-1,United States,basketball
-30010,NBA,baseball_mlb,-1,United States,baseball
-40010,NHL,icehockey_nhl,-1,United States,icehockey
+10010,NFL,americanfootball_nfl,,United States,football
+20010,NBA,basketball_nba,,United States,basketball
+21010,WNBA,basketball_wnba,,United States,basketball
+30010,NBA,baseball_mlb,,United States,baseball
+40010,NHL,icehockey_nhl,,United States,icehockey

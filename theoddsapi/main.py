@@ -54,6 +54,7 @@ SPORTS = [
     'americanfootball_nfl', # NFL
     'baseball_mlb', # MLB
     'basketball_nba', # NBA
+    'basketball_wnba', # WNBA
     'icehockey_nhl', # NHL
 ]
 
