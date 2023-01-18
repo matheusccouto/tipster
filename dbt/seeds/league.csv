@@ -42,5 +42,5 @@ id,tipster,theoddsapi,fivethirtyeight,country,sport
 10010,NFL,americanfootball_nfl,,United States,football
 20010,NBA,basketball_nba,,United States,basketball
 21010,WNBA,basketball_wnba,,United States,basketball
-30010,NBA,baseball_mlb,,United States,baseball
+30010,MLB,baseball_mlb,,United States,baseball
 40010,NHL,icehockey_nhl,,United States,icehockey
