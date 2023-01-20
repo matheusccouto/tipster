@@ -2,9 +2,11 @@ new,old
 Hawks,ATL
 Hawks,Atlanta Hawks
 Celtics,BOS
+Celtics,Boston Celtics
 Nets,BRK
 Nets,Brooklyn Nets
 Bulls,CHI
+Bulls,Chicago Bulls
 Hornets,CHO
 Hornets,Charlotte Hornets
 Cavaliers,CLE
@@ -14,7 +16,9 @@ Mavericks,Dallas Mavericks
 Nuggets,DEN
 Nuggets,Denver Nuggets
 Pistons,DET
+Pistons,Detroit Pistons
 Warriors,GSW
+Warriors,Golden State Warriors
 Rockets,HOU
 Rockets,Houston Rockets
 Pacers,IND
@@ -38,9 +42,11 @@ Knicks,New York Knicks
 Thunder,OKC
 Thunder,Oklahoma City Thunder
 Magic,ORL
+Magic,Orlando Magic
 76ers,PHI
 76ers,Philadelphia 76ers
 Suns,PHO
+Suns,Phoenix Suns
 Trail Blazers,POR
 Trail Blazers,Portland Trail Blazers
 Kings,SAC
