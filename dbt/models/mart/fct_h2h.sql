@@ -4,6 +4,7 @@ WITH odds AS (
         {{ ref("stg_odds" ) }}
     WHERE
         market_key = 'h2h'
+        AND NOT (sport = 'icehockey' AND price_draw IS NOT NULL)
 ),
 
 preds AS (
