@@ -2,6 +2,7 @@
 
 import os
 
+import emoji
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
@@ -55,12 +56,27 @@ def transform_data(dataframe):
 
 st.title("Tipster Backtesting")
 
-all_bookmakers = run_query("SELECT key, name FROM tipster.bookmaker ORDER BY name").set_index("key")["name"].to_dict()
-all_leagues = run_query("SELECT CAST(id AS STRING) AS key, tipster AS name FROM tipster.league ORDER BY id").set_index("key")["name"].to_dict()
+bookmakers_query = """SELECT key, name FROM tipster.stg_bookmaker ORDER BY name"""
+all_bookmakers = run_query(bookmakers_query).set_index("key")["name"].to_dict()
+leagues_query = "SELECT key, name FROM tipster.stg_league ORDER BY key"
+all_leagues = run_query(leagues_query).set_index("key")["name"].to_dict()
 
-bookmakers = st.sidebar.multiselect("Bookmakers", options=all_bookmakers, format_func=lambda x: all_bookmakers[x], default=all_bookmakers)
-leagues = st.sidebar.multiselect("Leagues", options=all_leagues, format_func=lambda x: all_leagues[x], default=all_leagues)
-    
+bookmakers = st.sidebar.multiselect(
+    "Bookmakers",
+    options=all_bookmakers,
+    format_func=lambda x: all_bookmakers[x],
+    default=all_bookmakers,
+)
+leagues = st.sidebar.multiselect(
+    "Leagues",
+    options=all_leagues,
+    format_func=lambda x: emoji.emojize(
+        all_leagues[x]
+        .replace(":England:", ":United_Kingdom:")
+        .replace(":Scotland:", ":United_Kingdom:")
+    ),
+    default=all_leagues,
+)
 
 
 if not bookmakers or not leagues:
@@ -68,7 +84,12 @@ if not bookmakers or not leagues:
 
 
 query = read_query(os.path.join(THIS_DIR, "query.sql"))
-query = query.format(bookmakers="','".join(bookmakers), leagues=",".join(leagues), kelly="{kelly}")
+query = query.format(
+    bookmakers="','".join([str(b) for b in bookmakers]),
+    leagues=",".join([str(l) for l in leagues]),
+    kelly="{kelly}",
+)
+
 data = run_query(query)
 data = transform_data(data)
 

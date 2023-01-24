@@ -1,6 +1,9 @@
 # GCP
 keyfile.json
 
+# Streamlit
+secrets.toml
+
 # dbt
 dbt/target/
 dbt/dbt_packages/
