@@ -174,13 +174,15 @@ def main():
 
         cats_left, cats_right = st.columns(2)
 
+        scale = [(-kpi['net'], "red"), (0.0, "white"), (kpi['net'], "green")]
+        
         fig = px.bar(
             data.groupby(["Bookmaker"], as_index=False)["Net"].sum().sort_values("Net"),
             x="Net",
             y="Bookmaker",
             color="Net",
             orientation="h",
-            color_continuous_scale="rdylgn",
+            color_continuous_scale=scale,
         )
         cats_right.plotly_chart(fig, use_container_width=True)
 
@@ -190,7 +192,7 @@ def main():
             y="League",
             color="Net",
             orientation="h",
-            color_continuous_scale="rdylgn",
+            color_continuous_scale=scale,
         )
         cats_left.plotly_chart(fig, use_container_width=True)
 
