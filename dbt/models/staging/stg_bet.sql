@@ -10,6 +10,7 @@ WITH bet AS (
 
 SELECT
     bet.user,
-    bet.message
+    bet.message,
+    bet.updated_at
 FROM bet
 WHERE bet.delete IS FALSE
