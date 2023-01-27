@@ -77,7 +77,12 @@ def calculate_kpi(data):
 def main():
     """Main execution."""
 
-    st.set_page_config(layout="wide", initial_sidebar_state="expanded")
+    st.set_page_config(
+        page_title="Tipster",
+        page_icon=":slot_machine:",
+        layout="wide",
+        initial_sidebar_state="expanded",
+    )
 
     st.title("Tipster Backtesting")
 
