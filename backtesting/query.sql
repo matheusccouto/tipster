@@ -2,20 +2,23 @@ WITH tips AS (
   SELECT
     *
   FROM
-    `tipster-main`.`tipster`.`fct_h2h_snapshot`
+    `tipster`.`fct_h2h_snapshot`
   WHERE
-    bookmaker_key IN ('{bookmakers}') AND league_id IN ({leagues})
+    bookmaker_key IN ('{bookmakers}')
+    AND league_id IN ({leagues})
+    AND date(start_at) >= '{start}'
+    AND date(start_at) <= '{end}'
   QUALIFY
     row_number() OVER (PARTITION BY id ORDER BY ev DESC) = 1
 ),
 bets AS (
   SELECT
     *,
-    0.1 * kelly * 100 AS amount
+    {factor} * kelly * 100 AS amount
   FROM
     tips
   WHERE
-    ev > 0
+    ev > {ev}
 
 )
 SELECT
@@ -23,9 +26,14 @@ SELECT
   start_at,
   date(start_at) AS start_date,
   bookmaker_key,
+  league_id,
   amount,
   price,
   ev,
+  CASE
+    WHEN outcome IS TRUE THEN amount * price
+    ELSE 0
+  END AS prize,
   CASE
     WHEN outcome IS TRUE THEN amount * price
     ELSE -1 * amount
@@ -34,5 +42,3 @@ FROM
   bets
 WHERE
   outcome IS NOT NULL
-ORDER BY
-  start_at

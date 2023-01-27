@@ -1,0 +1,5 @@
+streamlit==1.17.0
+pandas==1.5.2
+google-cloud-bigquery==2.34.4
+plotly==5.13.0
+emoji==2.2.0
