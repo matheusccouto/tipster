@@ -178,7 +178,7 @@ def main():
             data.groupby(["Bookmaker"], as_index=False)["Net"].sum().sort_values("Net"),
             x="Net",
             y="Bookmaker",
-            color="Net"
+            color="Net",
             orientation="h",
         )
         cats_right.plotly_chart(fig, use_container_width=True)
