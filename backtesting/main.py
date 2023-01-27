@@ -180,6 +180,7 @@ def main():
             y="Bookmaker",
             color="Net",
             orientation="h",
+            color_continuous_scale="rdylgn",
         )
         cats_right.plotly_chart(fig, use_container_width=True)
 
@@ -189,8 +190,9 @@ def main():
             y="League",
             color="Net",
             orientation="h",
+            color_continuous_scale="rdylgn",
         )
-        cats_left.plotly_chart(fig, use_container_width=True)    
+        cats_left.plotly_chart(fig, use_container_width=True)
 
 
     with st.expander("Bets"):
