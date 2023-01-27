@@ -164,7 +164,7 @@ def main():
     )
     fig.update_layout(margin=dict(l=20, r=20, t=20, b=20), xaxis_rangeslider_visible=False)
     st.plotly_chart(fig, use_container_width=True)
-    
+
 
     data["Bookmaker"] = data["bookmaker_key"].apply(lambda x: format_text(all_bookmakers[x]))
     data["League"] = data["league_id"].apply(lambda x: format_text(all_leagues[x]))
@@ -178,6 +178,7 @@ def main():
             data.groupby(["Bookmaker"], as_index=False)["Net"].sum().sort_values("Net"),
             x="Net",
             y="Bookmaker",
+            color="Net"
             orientation="h",
         )
         cats_right.plotly_chart(fig, use_container_width=True)
@@ -186,8 +187,8 @@ def main():
             data.groupby(["League"], as_index=False)["Net"].sum().sort_values("Net"),
             x="Net",
             y="League",
+            color="Net",
             orientation="h",
-
         )
         cats_left.plotly_chart(fig, use_container_width=True)    
 
