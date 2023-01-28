@@ -1,41 +1,44 @@
-WITH bet AS (
+WITH tips AS (
   SELECT
-    bet.user,
-    bet.message,
-    bet.updated_at AS placed_at,
-    h2h.* EXCEPT (message, dbt_scd_id, dbt_updated_at, dbt_valid_from, dbt_valid_to)
+    *
   FROM
-    `tipster-main.tipster.stg_bet` AS bet
-  INNER JOIN
-    `tipster-main.tipster.fct_h2h_snapshot` AS h2h 
-      ON REGEXP_REPLACE(bet.message, r'\$[0-9]+(\.[0-9]{2})?', '${kelly}') = REGEXP_REPLACE(h2h.message, r'on \[(.*?)\]\((.*?)\) at', 'on \\1 at')
-        AND bet.updated_at > h2h.loaded_at
+    `tipster`.`fct_h2h_snapshot`
+  WHERE
+    bookmaker_key IN ('{bookmakers}')
+    AND league_id IN ({leagues})
+    AND date(start_at) >= '{start}'
+    AND date(start_at) <= '{end}'
   QUALIFY
-    row_number() OVER (PARTITION BY id ORDER BY loaded_at DESC) = 1
+    row_number() OVER (PARTITION BY id ORDER BY ev DESC) = 1
 ),
-res AS (
+bets AS (
   SELECT
-    bet.* EXCEPT(outcome),
-    h2h.outcome,
-    CAST(REGEXP_EXTRACT(bet.message, r'Bet \$([0-9]*\.[0-9]+)') AS FLOAT64) as amount
+    *,
+    {factor} * kelly * 100 AS amount
   FROM
-    bet
-  LEFT JOIN
-    `tipster-main.tipster.fct_h2h` AS h2h
-      ON bet.id = h2h.id
-      AND bet.bookmaker_key = h2h.bookmaker_key
-      AND bet.bet = h2h.bet
-      AND h2h.outcome IS NOT NULL
+    tips
+  WHERE
+    ev > {ev}
+
 )
 SELECT
-  *,
+  replace(message, '{kelly}', CAST(ROUND(amount, 2) AS STRING)) AS message,
+  start_at,
+  date(start_at) AS start_date,
+  bookmaker_key,
+  league_id,
+  amount,
+  price,
+  ev,
   CASE
-    WHEN outcome IS TRUE THEN amount * price - price
+    WHEN outcome IS TRUE THEN amount * price
     ELSE 0
   END AS prize,
   CASE
-    WHEN outcome IS TRUE THEN amount * price
+    WHEN outcome IS TRUE THEN amount * price - amount
     ELSE -1 * amount
   END AS result
 FROM
-  res
+  bets
+WHERE
+  outcome IS NOT NULL
