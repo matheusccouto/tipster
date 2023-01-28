@@ -33,7 +33,7 @@ SELECT
     WHEN outcome IS FALSE THEN 0
   END AS prize,
   CASE
-    WHEN outcome IS TRUE THEN amount * price
+    WHEN outcome IS TRUE THEN amount * price - amount
     WHEN outcome IS FALSE THEN -1 * amount
   END AS result
 FROM

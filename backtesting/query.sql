@@ -30,7 +30,7 @@ res AS (
 SELECT
   *,
   CASE
-    WHEN outcome IS TRUE THEN amount * price
+    WHEN outcome IS TRUE THEN amount * price - price
     ELSE 0
   END AS prize,
   CASE
