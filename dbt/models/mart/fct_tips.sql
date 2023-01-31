@@ -40,4 +40,6 @@ LEFT JOIN
 LEFT JOIN
     {{ ref("stg_ignore") }} AS i ON s.user = i.user AND s.message = i.message
 WHERE
-    b.message IS NULL AND i.message IS NULL
+    b.message IS NULL
+    AND i.message IS NULL
+    AND REGEXP_REPLACE(tips.message, r'on \[(.*?)\]\((.*?)\) at', 'on \\1 at') != s.message
