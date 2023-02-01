@@ -56,7 +56,7 @@ SELECT
     away.new AS away,
     odd.bookmaker_key,
     book.name AS bookmaker_name,
-    book.url AS bookmaker_url,
+    COALESCE(url.url, book.url) AS bookmaker_url,
     odd.bookmaker_last_update AS updated_at,
     odd.market_key,
     odd.price_home_team AS price_home,
@@ -67,5 +67,6 @@ FROM
     {{ source ('theoddsapi', 'odds') }} AS odd
 LEFT JOIN {{ ref("league") }} AS league ON odd.sport_key = league.theoddsapi
 LEFT JOIN {{ ref("bookmaker") }} AS book ON odd.bookmaker_key = book.key
+LEFT JOIN {{ ref("url") }} AS url ON url.bookmaker = book.key AND url.league = league.id
 LEFT JOIN teams AS home ON odd.home_team = home.old
 LEFT JOIN teams AS away ON odd.away_team = away.old
