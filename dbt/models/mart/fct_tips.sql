@@ -42,4 +42,4 @@ LEFT JOIN
 WHERE
     b.message IS NULL
     AND i.message IS NULL
-    AND REGEXP_REPLACE(tips.message, r'on \[(.*?)\]\((.*?)\) at', 'on \\1 at') != s.message
+    AND REGEXP_REPLACE(tips.message, r'on \[(.*?)\]\((.*?)\) at', 'on \\1 at') != COALESCE(s.message, '')
