@@ -452,6 +452,7 @@ Kashiwa Reysol,Kashiwa Reysol
 Kawasaki Frontale,Kawasaki Frontale
 Kyoto Sanga,Kyoto Purple Sanga
 Nagoya Grampus,Nagoya Grampus Eight
+Nagoya Grampus,Nagoya Grampus
 Sagan Tosu,Sagan Tosu
 Sanfrecce Hiroshima,Sanfrecce Hiroshima
 Shimizu S-Pulse,Shimizu S-Pulse
@@ -459,6 +460,9 @@ Shonan Bellmare,Shonan Bellmare
 Urawa Red Diamonds,Urawa Red Diamonds
 Vissel Kobe,Vissel Kobe
 Yokohama F. Marinos,Yokohama F. Marinos
+Yokohama F. Marinos,Yokohama F Marinos
+Niigata,Albirex Niigata
+Sanfrecce,Hiroshima Sanfrecce FC
 Adelaide United,Adelaide United
 Brisbane Roar,Brisbane Roar
 Central Coast Mariners,Central Coast Mariners
@@ -508,6 +512,7 @@ Toronto,Toronto FC
 Vancouver Whitecaps,Vancouver Whitecaps
 Vancouver Whitecaps,Vancouver Whitecaps FC
 St. Louis City,St. Louis City SC
+St. Louis City,St. Louis CITY SC
 Atlas,Atlas
 San Luis,Atlético San Luis
 Club América,Club América
@@ -781,7 +786,9 @@ Unión Santa Fé,Union Santa Fe
 Vélez Sarsfield,Velez Sarsfield
 Vélez Sarsfield,Velez Sarsfield BA
 Belgrano,Belgrano de Cordoba
-Instituto ACC,Instituto de Córdoba
+Belgrano,Belgrano Cordoba
+Instituto,Instituto de Córdoba
+Instituto,Instituto
 Arsenal,Arsenal Women
 Chelsea,Chelsea FC Women
 Everton,Everton Ladies
