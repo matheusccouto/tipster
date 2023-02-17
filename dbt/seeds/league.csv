@@ -15,7 +15,7 @@ id,tipster,theoddsapi,fivethirtyeight,country,sport
 140,Premier League,soccer_russia_premier_league,1866,Russia,soccer
 150,Championship,soccer_efl_champ,2412,England,soccer
 160,Pro League,soccer_belgium_first_div,1832,Belgium,soccer
-170,Austrian Bundesliga,,1827,Austria,soccer
+170,Austrian Bundesliga,soccer_austria_bundesliga,1827,Austria,soccer
 180,Süper Lig,soccer_turkey_super_league,1882,Turkey,soccer
 190,MLS,soccer_usa_mls,1951,United States,soccer
 200,Superliga,soccer_denmark_superliga,1837,Denmark,soccer
@@ -27,7 +27,7 @@ id,tipster,theoddsapi,fivethirtyeight,country,sport
 260,Ligue 2,soccer_france_ligue_two,1844,France,soccer
 270,LaLiga 2,soccer_spain_segunda_division,1871,Spain,soccer
 280,Serie B,soccer_italy_serie_b,1856,Italy,soccer
-290,Super League 1,,1884,Greece,soccer
+290,Super League 1,soccer_greece_super_league,1884,Greece,soccer
 300,2. Bundesliga,soccer_germany_bundesliga2,1846,Germany,soccer
 310,Allsvenskan,soccer_sweden_allsvenskan,1874,Sweden,soccer
 320,League One,soccer_england_league1,2413,England,soccer
